@@ -164,6 +164,7 @@ en:
   text_message: "Text Message"
   print: "Print"
   show: "Show"
+  calendar: "Calendar"
 
   coordinator: "Coordinator"
   participant: "Participant"

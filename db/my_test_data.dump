@@ -1,0 +1,2292 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: cg_production
+-- ------------------------------------------------------
+-- Server version	5.0.95
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `activities`
+--
+
+DROP TABLE IF EXISTS `activities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `activities` (
+  `id` int(11) NOT NULL auto_increment,
+  `subject_id` bigint(11) default NULL,
+  `subject_type` varchar(255) default NULL,
+  `subject_name` varchar(255) default NULL,
+  `object_id` bigint(11) default NULL,
+  `object_type` varchar(255) default NULL,
+  `object_name` varchar(255) default NULL,
+  `type` varchar(255) default NULL,
+  `extra` varchar(255) default NULL,
+  `key` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `access` smallint(1) default '2',
+  `related_id` bigint(11) default NULL,
+  `site_id` bigint(11) default NULL,
+  `flag` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `created_at` (`created_at`),
+  KEY `subject_0_4_0` (`subject_id`,`subject_type`(4),`access`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `activities`
+--
+
+LOCK TABLES `activities` WRITE;
+/*!40000 ALTER TABLE `activities` DISABLE KEYS */;
+INSERT INTO `activities` VALUES (1,1,'Group','berlinag1',1,'User','cosch','GroupCreatedActivity',NULL,873799137,'2012-08-20 15:22:30',2,NULL,NULL,NULL),(2,1,'User','cosch',1,'Group','berlinag1','UserCreatedGroupActivity',NULL,873799137,'2012-08-20 15:22:30',2,NULL,NULL,NULL),(3,1,'User','cosch',1,'Group','berlinag1','UserJoinedGroupActivity',NULL,461222650,'2012-08-20 15:22:30',2,NULL,NULL,NULL),(4,1,'Group','berlinag1',1,'User','cosch','GroupGainedUserActivity',NULL,461222650,'2012-08-20 15:22:30',2,NULL,NULL,NULL),(5,2,'Group','berlinag2',1,'User','cosch','GroupCreatedActivity',NULL,974480942,'2012-08-20 15:22:57',2,NULL,NULL,NULL),(6,1,'User','cosch',2,'Group','berlinag2','UserCreatedGroupActivity',NULL,974480942,'2012-08-20 15:22:57',2,NULL,NULL,NULL),(7,1,'User','cosch',2,'Group','berlinag2','UserJoinedGroupActivity',NULL,718982019,'2012-08-20 15:22:57',2,NULL,NULL,NULL),(8,2,'Group','berlinag2',1,'User','cosch','GroupGainedUserActivity',NULL,718982019,'2012-08-20 15:22:57',2,NULL,NULL,NULL),(9,3,'Group','berlinog',NULL,NULL,NULL,'GroupCreatedActivity',NULL,29675494,'2012-08-20 15:23:36',2,NULL,NULL,NULL),(10,1,'User','cosch',3,'Group','berlinog','UserJoinedGroupActivity',NULL,361933440,'2012-08-20 15:23:36',2,NULL,NULL,NULL),(11,3,'Group','berlinog',1,'User','cosch','GroupGainedUserActivity',NULL,361933440,'2012-08-20 15:23:36',2,NULL,NULL,NULL),(12,4,'Group','vorwaertz',NULL,NULL,NULL,'GroupCreatedActivity',NULL,532465280,'2012-08-20 15:24:23',2,NULL,NULL,NULL),(13,1,'User','cosch',4,'Group','vorwaertz','UserJoinedGroupActivity',NULL,1269097556,'2012-08-20 15:24:23',2,NULL,NULL,NULL),(14,4,'Group','vorwaertz',1,'User','cosch','GroupGainedUserActivity',NULL,1269097556,'2012-08-20 15:24:23',2,NULL,NULL,NULL),(15,5,'Group','hhag1',2,'User','coschhh','GroupCreatedActivity',NULL,904240367,'2012-08-20 15:25:38',2,NULL,NULL,NULL),(16,2,'User','coschhh',5,'Group','hhag1','UserCreatedGroupActivity',NULL,904240367,'2012-08-20 15:25:38',2,NULL,NULL,NULL),(17,2,'User','coschhh',5,'Group','hhag1','UserJoinedGroupActivity',NULL,182268584,'2012-08-20 15:25:38',2,NULL,NULL,NULL),(18,5,'Group','hhag1',2,'User','coschhh','GroupGainedUserActivity',NULL,182268584,'2012-08-20 15:25:38',2,NULL,NULL,NULL),(19,6,'Group','hhag2',2,'User','coschhh','GroupCreatedActivity',NULL,667329286,'2012-08-20 15:26:00',2,NULL,NULL,NULL),(20,2,'User','coschhh',6,'Group','hhag2','UserCreatedGroupActivity',NULL,667329286,'2012-08-20 15:26:00',2,NULL,NULL,NULL),(21,2,'User','coschhh',6,'Group','hhag2','UserJoinedGroupActivity',NULL,637852901,'2012-08-20 15:26:00',2,NULL,NULL,NULL),(22,6,'Group','hhag2',2,'User','coschhh','GroupGainedUserActivity',NULL,637852901,'2012-08-20 15:26:00',2,NULL,NULL,NULL),(23,7,'Group','hhog',NULL,NULL,NULL,'GroupCreatedActivity',NULL,207144672,'2012-08-20 15:26:44',2,NULL,NULL,NULL),(24,2,'User','coschhh',7,'Group','hhog','UserJoinedGroupActivity',NULL,55766549,'2012-08-20 15:26:44',2,NULL,NULL,NULL),(25,7,'Group','hhog',2,'User','coschhh','GroupGainedUserActivity',NULL,55766549,'2012-08-20 15:26:44',2,NULL,NULL,NULL),(26,2,'User','coschhh',2,'User','coschhh','MessageWallActivity','--- \n:type: status\n:snippet: hello\n',819345519,'2012-08-20 15:28:23',2,1,NULL,NULL),(27,2,'User','coschhh',2,'User','coschhh','MessageWallActivity','--- \n:type: status\n:snippet: hello\n',602369752,'2012-08-20 15:45:22',2,4,NULL,NULL),(28,8,'Group','berlinadmin',1,'User','cosch','GroupCreatedActivity',NULL,1254769815,'2012-08-20 15:49:12',2,NULL,NULL,NULL),(29,1,'User','cosch',8,'Group','berlinadmin','UserCreatedGroupActivity',NULL,1254769815,'2012-08-20 15:49:12',2,NULL,NULL,NULL),(30,1,'User','cosch',8,'Group','berlinadmin','UserJoinedGroupActivity',NULL,1026289308,'2012-08-20 15:49:12',2,NULL,NULL,NULL),(31,8,'Group','berlinadmin',1,'User','cosch','GroupGainedUserActivity',NULL,1026289308,'2012-08-20 15:49:12',2,NULL,NULL,NULL),(32,2,'User','coschhh',4,'Group','vorwaertz','UserJoinedGroupActivity',NULL,359357411,'2012-08-20 16:02:57',2,NULL,NULL,NULL),(33,4,'Group','vorwaertz',2,'User','coschhh','GroupGainedUserActivity',NULL,359357411,'2012-08-20 16:02:57',2,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `activities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `asset_versions`
+--
+
+DROP TABLE IF EXISTS `asset_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `asset_versions` (
+  `id` int(11) NOT NULL auto_increment,
+  `asset_id` bigint(11) default NULL,
+  `version` bigint(11) default NULL,
+  `content_type` varchar(255) default NULL,
+  `filename` varchar(255) default NULL,
+  `size` bigint(11) default NULL,
+  `width` bigint(11) default NULL,
+  `height` bigint(11) default NULL,
+  `page_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `versioned_type` varchar(255) default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_asset_versions_asset_id` (`asset_id`),
+  KEY `index_asset_versions_version` (`version`),
+  KEY `index_asset_versions_page_id` (`page_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `asset_versions`
+--
+
+LOCK TABLES `asset_versions` WRITE;
+/*!40000 ALTER TABLE `asset_versions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `asset_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `assets`
+--
+
+DROP TABLE IF EXISTS `assets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `assets` (
+  `id` int(11) NOT NULL auto_increment,
+  `content_type` varchar(255) default NULL,
+  `filename` varchar(255) default NULL,
+  `size` bigint(11) default NULL,
+  `width` bigint(11) default NULL,
+  `height` bigint(11) default NULL,
+  `page_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `version` bigint(11) default NULL,
+  `type` varchar(255) default NULL,
+  `page_terms_id` bigint(11) default NULL,
+  `is_attachment` tinyint(1) default '0',
+  `is_image` tinyint(1) default NULL,
+  `is_audio` tinyint(1) default NULL,
+  `is_video` tinyint(1) default NULL,
+  `is_document` tinyint(1) default NULL,
+  `updated_at` datetime default NULL,
+  `caption` varchar(255) default NULL,
+  `taken_at` datetime default NULL,
+  `credit` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_assets_version` (`version`),
+  KEY `index_assets_page_id` (`page_id`),
+  KEY `pterms` (`page_terms_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assets`
+--
+
+LOCK TABLES `assets` WRITE;
+/*!40000 ALTER TABLE `assets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `assets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `avatars`
+--
+
+DROP TABLE IF EXISTS `avatars`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `avatars` (
+  `id` int(11) NOT NULL auto_increment,
+  `image_file_data` longblob,
+  `public` tinyint(1) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `avatars`
+--
+
+LOCK TABLES `avatars` WRITE;
+/*!40000 ALTER TABLE `avatars` DISABLE KEYS */;
+INSERT INTO `avatars` VALUES (1,NULL,0),(2,NULL,0),(3,NULL,0),(4,NULL,0),(5,NULL,0),(6,NULL,0),(7,NULL,0),(8,NULL,0),(9,NULL,0),(10,NULL,0);
+/*!40000 ALTER TABLE `avatars` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bdrb_job_queues`
+--
+
+DROP TABLE IF EXISTS `bdrb_job_queues`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bdrb_job_queues` (
+  `id` int(11) NOT NULL auto_increment,
+  `args` longtext,
+  `worker_name` varchar(255) default NULL,
+  `worker_method` varchar(255) default NULL,
+  `job_key` varchar(255) default NULL,
+  `taken` bigint(11) default NULL,
+  `finished` bigint(11) default NULL,
+  `timeout` bigint(11) default NULL,
+  `priority` bigint(11) default NULL,
+  `submitted_at` datetime default NULL,
+  `started_at` datetime default NULL,
+  `finished_at` datetime default NULL,
+  `archived_at` datetime default NULL,
+  `tag` varchar(255) default NULL,
+  `submitter_info` varchar(255) default NULL,
+  `runner_info` varchar(255) default NULL,
+  `worker_key` varchar(255) default NULL,
+  `scheduled_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bdrb_job_queues`
+--
+
+LOCK TABLES `bdrb_job_queues` WRITE;
+/*!40000 ALTER TABLE `bdrb_job_queues` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bdrb_job_queues` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channels`
+--
+
+DROP TABLE IF EXISTS `channels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channels` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `group_id` bigint(11) default NULL,
+  `public` tinyint(1) default '0',
+  PRIMARY KEY  (`id`),
+  KEY `index_channels_group_id` (`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `channels`
+--
+
+LOCK TABLES `channels` WRITE;
+/*!40000 ALTER TABLE `channels` DISABLE KEYS */;
+INSERT INTO `channels` VALUES (1,'berlinog',3,0);
+/*!40000 ALTER TABLE `channels` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channels_users`
+--
+
+DROP TABLE IF EXISTS `channels_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channels_users` (
+  `id` int(11) NOT NULL auto_increment,
+  `channel_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `last_seen` datetime default NULL,
+  `status` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_channels_users` (`channel_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `channels_users`
+--
+
+LOCK TABLES `channels_users` WRITE;
+/*!40000 ALTER TABLE `channels_users` DISABLE KEYS */;
+INSERT INTO `channels_users` VALUES (1,1,1,'2012-08-20 19:45:27',0);
+/*!40000 ALTER TABLE `channels_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `codes`
+--
+
+DROP TABLE IF EXISTS `codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `codes` (
+  `id` int(11) NOT NULL auto_increment,
+  `code` varchar(10) default NULL,
+  `page_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `access` bigint(11) default NULL,
+  `expires_at` datetime default NULL,
+  `email` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `index_codes_on_code` (`code`),
+  KEY `index_codes_on_expires_at` (`expires_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `codes`
+--
+
+LOCK TABLES `codes` WRITE;
+/*!40000 ALTER TABLE `codes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `crypt_keys`
+--
+
+DROP TABLE IF EXISTS `crypt_keys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `crypt_keys` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `key` longtext,
+  `keyring` varchar(255) default NULL,
+  `fingerprint` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `description` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `crypt_keys`
+--
+
+LOCK TABLES `crypt_keys` WRITE;
+/*!40000 ALTER TABLE `crypt_keys` DISABLE KEYS */;
+/*!40000 ALTER TABLE `crypt_keys` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `custom_appearances`
+--
+
+DROP TABLE IF EXISTS `custom_appearances`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `custom_appearances` (
+  `id` int(11) NOT NULL auto_increment,
+  `parameters` longtext,
+  `parent_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `masthead_asset_id` bigint(11) default NULL,
+  `favicon_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `custom_appearances`
+--
+
+LOCK TABLES `custom_appearances` WRITE;
+/*!40000 ALTER TABLE `custom_appearances` DISABLE KEYS */;
+/*!40000 ALTER TABLE `custom_appearances` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dailies`
+--
+
+DROP TABLE IF EXISTS `dailies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dailies` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `views` bigint(11) default NULL,
+  `stars` bigint(11) default NULL,
+  `edits` bigint(11) default NULL,
+  `created_at` date default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_dailies_on_page_id` (`page_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dailies`
+--
+
+LOCK TABLES `dailies` WRITE;
+/*!40000 ALTER TABLE `dailies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dailies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `discussions`
+--
+
+DROP TABLE IF EXISTS `discussions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `discussions` (
+  `id` int(11) NOT NULL auto_increment,
+  `posts_count` bigint(11) default '0',
+  `replied_at` datetime default NULL,
+  `replied_by_id` bigint(11) default NULL,
+  `last_post_id` bigint(11) default NULL,
+  `page_id` bigint(11) default NULL,
+  `commentable_id` bigint(11) default NULL,
+  `commentable_type` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_discussions_page_id` (`page_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `discussions`
+--
+
+LOCK TABLES `discussions` WRITE;
+/*!40000 ALTER TABLE `discussions` DISABLE KEYS */;
+INSERT INTO `discussions` VALUES (1,0,NULL,NULL,NULL,NULL,1,'User'),(2,2,'2012-08-20 15:45:22',2,4,NULL,2,'User'),(3,0,NULL,NULL,NULL,1,NULL,NULL),(4,0,NULL,NULL,NULL,2,NULL,NULL),(5,0,NULL,NULL,NULL,3,NULL,NULL),(6,2,'2012-08-20 15:45:01',2,3,NULL,NULL,NULL),(7,0,NULL,NULL,NULL,4,NULL,NULL),(8,0,NULL,NULL,NULL,5,NULL,NULL),(9,0,NULL,NULL,NULL,6,NULL,NULL),(10,0,NULL,NULL,NULL,7,NULL,NULL);
+/*!40000 ALTER TABLE `discussions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `email_addresses`
+--
+
+DROP TABLE IF EXISTS `email_addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `email_addresses` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `email_type` varchar(255) default NULL,
+  `email_address` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `email_addresses_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `email_addresses`
+--
+
+LOCK TABLES `email_addresses` WRITE;
+/*!40000 ALTER TABLE `email_addresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `email_addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `events`
+--
+
+DROP TABLE IF EXISTS `events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL auto_increment,
+  `description` longtext,
+  `description_html` longtext,
+  `is_all_day` tinyint(1) default '0',
+  `is_cancelled` tinyint(1) default '0',
+  `is_tentative` tinyint(1) default '1',
+  `location` varchar(255) default NULL,
+  `starts_at` datetime default NULL,
+  `ends_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_events_on_starts_at` (`starts_at`),
+  KEY `index_events_on_ends_at` (`ends_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,NULL,NULL,1,0,1,'berlin alex','2012-08-31 09:00:00','2012-08-31 17:00:00'),(2,NULL,NULL,1,0,1,'nirgendwo','2012-09-19 09:00:00','2012-09-19 17:00:00');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `external_videos`
+--
+
+DROP TABLE IF EXISTS `external_videos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `external_videos` (
+  `id` int(11) NOT NULL auto_increment,
+  `media_key` varchar(255) default NULL,
+  `media_url` varchar(255) default NULL,
+  `media_thumbnail_url` varchar(255) default NULL,
+  `media_embed` longtext,
+  `page_terms_id` bigint(11) default NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `height` smallint(3) default NULL,
+  `width` smallint(3) default NULL,
+  `player` smallint(1) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `external_videos`
+--
+
+LOCK TABLES `external_videos` WRITE;
+/*!40000 ALTER TABLE `external_videos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `external_videos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `federatings`
+--
+
+DROP TABLE IF EXISTS `federatings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `federatings` (
+  `id` int(11) NOT NULL auto_increment,
+  `group_id` bigint(11) default NULL,
+  `network_id` bigint(11) default NULL,
+  `council_id` bigint(11) default NULL,
+  `delegation_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `gn` (`group_id`,`network_id`),
+  KEY `ng` (`network_id`,`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `federatings`
+--
+
+LOCK TABLES `federatings` WRITE;
+/*!40000 ALTER TABLE `federatings` DISABLE KEYS */;
+INSERT INTO `federatings` VALUES (1,1,3,3,NULL,'2012-08-20 15:23:36'),(2,3,4,4,NULL,'2012-08-20 15:24:23'),(3,5,7,7,NULL,'2012-08-20 15:26:44'),(4,7,4,4,NULL,'2012-08-20 15:30:25'),(5,8,3,3,NULL,'2012-08-20 15:58:50');
+/*!40000 ALTER TABLE `federatings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `geo_admin_codes`
+--
+
+DROP TABLE IF EXISTS `geo_admin_codes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `geo_admin_codes` (
+  `id` int(11) NOT NULL auto_increment,
+  `geo_country_id` bigint(11) NOT NULL,
+  `admin1_code` varchar(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `geo_admin_codes_index` (`geo_country_id`,`admin1_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `geo_admin_codes`
+--
+
+LOCK TABLES `geo_admin_codes` WRITE;
+/*!40000 ALTER TABLE `geo_admin_codes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `geo_admin_codes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `geo_countries`
+--
+
+DROP TABLE IF EXISTS `geo_countries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `geo_countries` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  `code` varchar(3) NOT NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `geo_countries_index` (`name`,`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `geo_countries`
+--
+
+LOCK TABLES `geo_countries` WRITE;
+/*!40000 ALTER TABLE `geo_countries` DISABLE KEYS */;
+/*!40000 ALTER TABLE `geo_countries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `geo_locations`
+--
+
+DROP TABLE IF EXISTS `geo_locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `geo_locations` (
+  `id` int(11) NOT NULL auto_increment,
+  `geo_country_id` bigint(11) NOT NULL,
+  `geo_admin_code_id` bigint(11) default NULL,
+  `geo_place_id` bigint(11) default NULL,
+  `profile_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `geo_locations`
+--
+
+LOCK TABLES `geo_locations` WRITE;
+/*!40000 ALTER TABLE `geo_locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `geo_locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `geo_places`
+--
+
+DROP TABLE IF EXISTS `geo_places`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `geo_places` (
+  `id` int(11) NOT NULL auto_increment,
+  `geo_country_id` bigint(11) NOT NULL,
+  `geonameid` bigint(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `alternatenames` varchar(5000) default NULL,
+  `latitude` decimal(24,20) NOT NULL,
+  `longitude` decimal(24,20) NOT NULL,
+  `geo_admin_code_id` bigint(11) NOT NULL,
+  `population` bigint(20) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_geo_places_on_name` (`name`),
+  KEY `index_geo_places_on_geo_country_id` (`geo_country_id`),
+  KEY `index_geo_places_on_geo_admin_code_id` (`geo_admin_code_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `geo_places`
+--
+
+LOCK TABLES `geo_places` WRITE;
+/*!40000 ALTER TABLE `geo_places` DISABLE KEYS */;
+/*!40000 ALTER TABLE `geo_places` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_participations`
+--
+
+DROP TABLE IF EXISTS `group_participations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_participations` (
+  `id` int(11) NOT NULL auto_increment,
+  `group_id` bigint(11) default NULL,
+  `page_id` bigint(11) default NULL,
+  `access` bigint(11) default NULL,
+  `static` tinyint(1) default '0',
+  `static_expires` datetime default NULL,
+  `static_expired` tinyint(1) default '0',
+  `featured_position` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_group_participations` (`group_id`,`page_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_participations`
+--
+
+LOCK TABLES `group_participations` WRITE;
+/*!40000 ALTER TABLE `group_participations` DISABLE KEYS */;
+INSERT INTO `group_participations` VALUES (1,4,1,1,0,NULL,0,NULL),(2,4,2,1,0,NULL,0,NULL),(3,4,3,1,0,NULL,0,NULL),(4,3,4,1,0,NULL,0,NULL),(5,4,5,1,0,NULL,0,NULL);
+/*!40000 ALTER TABLE `group_participations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `group_settings`
+--
+
+DROP TABLE IF EXISTS `group_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_settings` (
+  `id` int(11) NOT NULL auto_increment,
+  `group_id` bigint(11) default NULL,
+  `template_data` varchar(255) default NULL,
+  `allowed_tools` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_settings`
+--
+
+LOCK TABLES `group_settings` WRITE;
+/*!40000 ALTER TABLE `group_settings` DISABLE KEYS */;
+INSERT INTO `group_settings` VALUES (1,1,NULL,NULL),(2,2,NULL,NULL),(3,3,NULL,NULL),(4,4,NULL,NULL),(5,5,NULL,NULL),(6,6,NULL,NULL),(7,7,NULL,NULL),(8,8,NULL,NULL);
+/*!40000 ALTER TABLE `group_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `groups`
+--
+
+DROP TABLE IF EXISTS `groups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groups` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `full_name` varchar(255) default NULL,
+  `url` varchar(255) default NULL,
+  `type` varchar(255) default NULL,
+  `parent_id` bigint(11) default NULL,
+  `council_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `avatar_id` bigint(11) default NULL,
+  `style` varchar(255) default NULL,
+  `language` varchar(5) default NULL,
+  `version` bigint(11) default '0',
+  `min_stars` bigint(11) default '1',
+  `site_id` bigint(11) default NULL,
+  `full_council_powers` tinyint(1) default '0',
+  PRIMARY KEY  (`id`),
+  KEY `index_groups_on_name` (`name`),
+  KEY `index_groups_parent_id` (`parent_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groups`
+--
+
+LOCK TABLES `groups` WRITE;
+/*!40000 ALTER TABLE `groups` DISABLE KEYS */;
+INSERT INTO `groups` VALUES (1,'berlinag1','Berlin AG 1',NULL,NULL,NULL,NULL,'2012-08-20 15:22:30','2012-08-20 15:24:23',2,NULL,'de',3,1,NULL,0),(2,'berlinag2','Berlin AG 2',NULL,NULL,NULL,NULL,'2012-08-20 15:22:57','2012-08-20 15:22:57',3,NULL,'de',1,1,NULL,0),(3,'berlinog','Berlin OG',NULL,'Network',NULL,NULL,'2012-08-20 15:23:36','2012-08-20 15:24:23',4,NULL,'de',4,1,NULL,0),(4,'vorwaertz','Vorwaertz',NULL,'Network',NULL,NULL,'2012-08-20 15:24:23','2012-08-20 16:02:57',5,NULL,'de',4,1,NULL,0),(5,'hhag1','HH AG1',NULL,NULL,NULL,NULL,'2012-08-20 15:25:38','2012-08-20 15:30:25',7,NULL,'de',3,1,NULL,0),(6,'hhag2','HH AG 2',NULL,NULL,NULL,NULL,'2012-08-20 15:26:00','2012-08-20 15:26:00',8,NULL,'de',1,1,NULL,0),(7,'hhog','HH OG',NULL,'Network',NULL,NULL,'2012-08-20 15:26:44','2012-08-20 15:30:25',9,NULL,'de',3,1,NULL,0),(8,'berlinadmin','BerlinAdmin',NULL,NULL,NULL,NULL,'2012-08-20 15:49:12','2012-08-20 15:58:50',10,NULL,'de',2,1,NULL,0);
+/*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hourlies`
+--
+
+DROP TABLE IF EXISTS `hourlies`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hourlies` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `views` bigint(11) default NULL,
+  `stars` bigint(11) default NULL,
+  `edits` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_hourlies_on_page_id` (`page_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hourlies`
+--
+
+LOCK TABLES `hourlies` WRITE;
+/*!40000 ALTER TABLE `hourlies` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hourlies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `im_addresses`
+--
+
+DROP TABLE IF EXISTS `im_addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `im_addresses` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `im_type` varchar(255) default NULL,
+  `im_address` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `im_addresses_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `im_addresses`
+--
+
+LOCK TABLES `im_addresses` WRITE;
+/*!40000 ALTER TABLE `im_addresses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `im_addresses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `languages`
+--
+
+DROP TABLE IF EXISTS `languages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `languages` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `code` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `rtl` tinyint(1) default '0',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `languages_index` (`name`,`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `languages`
+--
+
+LOCK TABLES `languages` WRITE;
+/*!40000 ALTER TABLE `languages` DISABLE KEYS */;
+INSERT INTO `languages` VALUES (1,'??','zh','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(2,'?????','hi','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(3,'Español','es','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(4,'English','en','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(5,'???????','ar','2012-08-20 15:20:03','2012-08-20 15:20:03',1),(6,'Português','pt','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(8,'Pycc???','ru','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(10,'Deutsch','de','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(12,'Kiswahili','sw','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(20,'Français','fr','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(21,'Italiano','it','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(24,'Türkçe','tr','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(28,'Polski','pl','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(44,'Nederlands','nl','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(53,'????????','el','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(78,'????????','he','2012-08-20 15:20:03','2012-08-20 15:20:03',1),(79,'Svenska','sv','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(85,'????????? ????','bg','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(92,'Català','ca','2012-08-20 15:20:03','2012-08-20 15:20:03',0),(104,'Dansk','da','2012-08-20 15:20:03','2012-08-20 15:20:03',0);
+/*!40000 ALTER TABLE `languages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `location_type` varchar(255) default NULL,
+  `street` varchar(255) default NULL,
+  `city` varchar(255) default NULL,
+  `state` varchar(255) default NULL,
+  `postal_code` varchar(255) default NULL,
+  `geocode` varchar(255) default NULL,
+  `country_name` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `locations_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `memberships`
+--
+
+DROP TABLE IF EXISTS `memberships`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `memberships` (
+  `id` int(11) NOT NULL auto_increment,
+  `group_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `admin` tinyint(1) default '0',
+  `visited_at` datetime NOT NULL default '1000-01-01 00:00:00',
+  `total_visits` bigint(11) default '0',
+  `join_method` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `gu` (`group_id`,`user_id`),
+  KEY `ug` (`user_id`,`group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `memberships`
+--
+
+LOCK TABLES `memberships` WRITE;
+/*!40000 ALTER TABLE `memberships` DISABLE KEYS */;
+INSERT INTO `memberships` VALUES (1,1,1,'2012-08-20 15:22:30',0,'1000-01-01 00:00:00',0,NULL),(2,2,1,'2012-08-20 15:22:57',0,'1000-01-01 00:00:00',0,NULL),(3,3,1,'2012-08-20 15:23:36',0,'1000-01-01 00:00:00',0,NULL),(4,4,1,'2012-08-20 15:24:23',0,'1000-01-01 00:00:00',0,NULL),(5,5,2,'2012-08-20 15:25:38',0,'1000-01-01 00:00:00',0,NULL),(6,6,2,'2012-08-20 15:26:00',0,'1000-01-01 00:00:00',0,NULL),(7,7,2,'2012-08-20 15:26:44',0,'1000-01-01 00:00:00',0,NULL),(8,8,1,'2012-08-20 15:49:12',0,'1000-01-01 00:00:00',0,NULL),(9,4,2,'2012-08-20 16:02:57',0,'1000-01-01 00:00:00',0,NULL);
+/*!40000 ALTER TABLE `memberships` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu_items`
+--
+
+DROP TABLE IF EXISTS `menu_items`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_items` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) default NULL,
+  `link` varchar(255) default NULL,
+  `position` bigint(11) default NULL,
+  `default` tinyint(1) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `profile_id` bigint(11) default NULL,
+  `parent_id` bigint(11) default NULL,
+  `widget_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+LOCK TABLES `menu_items` WRITE;
+/*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
+/*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_at` datetime default NULL,
+  `type` varchar(255) default NULL,
+  `content` longtext,
+  `channel_id` bigint(11) default NULL,
+  `sender_id` bigint(11) default NULL,
+  `sender_name` varchar(255) default NULL,
+  `level` varchar(255) default NULL,
+  `deleted_at` datetime default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_messages_on_channel_id` (`channel_id`),
+  KEY `index_messages_channel` (`sender_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `messages`
+--
+
+LOCK TABLES `messages` WRITE;
+/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+INSERT INTO `messages` VALUES (1,'2012-08-20 18:57:54',NULL,'joins the chatroom',1,1,'cosch','sys',NULL),(2,'2012-08-20 19:45:23',NULL,'joins the chatroom',1,1,'cosch','sys',NULL);
+/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `migrations_info`
+--
+
+DROP TABLE IF EXISTS `migrations_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations_info` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `migrations_info`
+--
+
+LOCK TABLES `migrations_info` WRITE;
+/*!40000 ALTER TABLE `migrations_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `migrations_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `page_histories`
+--
+
+DROP TABLE IF EXISTS `page_histories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `page_histories` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` bigint(11) default NULL,
+  `page_id` bigint(11) default NULL,
+  `type` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `object_id` bigint(11) default NULL,
+  `object_type` varchar(255) default NULL,
+  `notification_sent_at` datetime default NULL,
+  `notification_digest_sent_at` datetime default NULL,
+  `details` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_page_histories_on_user_id` (`user_id`),
+  KEY `index_page_histories_on_object_id_and_object_type` (`object_id`,`object_type`),
+  KEY `index_page_histories_on_page_id` (`page_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `page_histories`
+--
+
+LOCK TABLES `page_histories` WRITE;
+/*!40000 ALTER TABLE `page_histories` DISABLE KEYS */;
+INSERT INTO `page_histories` VALUES (1,1,1,'PageCreated','2012-08-20 15:33:18',NULL,NULL,NULL,NULL,NULL),(2,1,1,'GrantGroupFullAccess','2012-08-20 15:33:18',4,'Group',NULL,NULL,NULL),(3,1,2,'PageCreated','2012-08-20 15:35:51',NULL,NULL,NULL,NULL,NULL),(4,1,2,'GrantGroupFullAccess','2012-08-20 15:35:51',4,'Group',NULL,NULL,NULL),(5,1,3,'PageCreated','2012-08-20 15:36:03',NULL,NULL,NULL,NULL,NULL),(6,1,3,'GrantGroupFullAccess','2012-08-20 15:36:03',4,'Group',NULL,NULL,NULL),(7,1,4,'PageCreated','2012-08-20 16:00:51',NULL,NULL,NULL,NULL,NULL),(8,1,4,'GrantUserFullAccess','2012-08-20 16:00:51',1,'User',NULL,NULL,NULL),(9,1,4,'GrantGroupFullAccess','2012-08-20 16:00:51',3,'Group',NULL,NULL,NULL),(10,2,5,'PageCreated','2012-08-20 16:04:01',NULL,NULL,NULL,NULL,NULL),(11,2,5,'GrantGroupFullAccess','2012-08-20 16:04:01',4,'Group',NULL,NULL,NULL),(12,1,5,'StartWatching','2012-08-20 20:25:17',NULL,NULL,NULL,NULL,NULL),(13,1,5,'StopWatching','2012-08-20 20:25:19',NULL,NULL,NULL,NULL,NULL),(14,1,6,'PageCreated','2012-08-21 08:18:11',NULL,NULL,NULL,NULL,NULL),(15,1,6,'GrantUserFullAccess','2012-08-21 08:18:11',1,'User',NULL,NULL,NULL),(16,1,3,'Deleted','2012-08-21 08:23:06',NULL,NULL,NULL,NULL,NULL),(17,1,7,'PageCreated','2012-08-21 08:33:35',NULL,NULL,NULL,NULL,NULL),(18,1,7,'GrantUserFullAccess','2012-08-21 08:33:35',1,'User',NULL,NULL,NULL),(19,1,7,'Deleted','2012-08-21 08:33:50',NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `page_histories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `page_terms`
+--
+
+DROP TABLE IF EXISTS `page_terms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `page_terms` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `page_type` varchar(255) default NULL,
+  `access_ids` longtext,
+  `body` longtext,
+  `comments` longtext,
+  `tags` varchar(255) default NULL,
+  `title` varchar(255) default NULL,
+  `resolved` tinyint(1) default NULL,
+  `rating` bigint(11) default NULL,
+  `contributors_count` bigint(11) default NULL,
+  `flow` bigint(11) default NULL,
+  `created_by_login` varchar(255) default NULL,
+  `updated_by_login` varchar(255) default NULL,
+  `created_by_id` bigint(11) default NULL,
+  `updated_by_id` bigint(11) default NULL,
+  `page_updated_at` datetime default NULL,
+  `page_created_at` datetime default NULL,
+  `delta` tinyint(1) default NULL,
+  `media` varchar(255) default NULL,
+  `stars_count` bigint(11) default '0',
+  `views_count` bigint(11) NOT NULL default '0',
+  `owner_name` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `page_id` (`page_id`),
+  FULLTEXT KEY `idx_fulltext` (`access_ids`,`tags`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `page_terms`
+--
+
+LOCK TABLES `page_terms` WRITE;
+/*!40000 ALTER TABLE `page_terms` DISABLE KEYS */;
+INSERT INTO `page_terms` VALUES (1,1,'ArticlePage','0084','test-article\ntest article\ntest where this reads\n\n','','test_article','Test article test article',1,NULL,0,NULL,NULL,NULL,1,1,NULL,NULL,1,'--- []\n\n',0,0,'vorwaertz'),(2,2,'ArticlePage','0084','test-article-2\ntest article 2\ntest where this reads\n\n','','test_article','Test article 2 test article',1,NULL,0,NULL,NULL,NULL,1,1,NULL,NULL,1,'--- []\n\n',0,0,'vorwaertz'),(3,3,'ArticlePage','0084','test-article-3\ntest article 3\ntest where this reads\n\nasdasd asd','','test_article','Test article 3 test article',1,NULL,0,3,'cosch','cosch',1,1,'2012-08-20 15:36:03','2012-08-20 15:36:03',1,'--- []\n\n',0,0,'vorwaertz'),(4,4,'EventPage','0083 0011','\ntest event belin\ntest it out','','Test Event','Test event belin Test Event',1,NULL,0,NULL,NULL,NULL,1,1,NULL,NULL,1,'--- []\n\n',0,0,'cosch'),(5,5,'EventPage','0084','\ntest event Vorwaertz\n','','','Test event vorwaertz ',1,NULL,0,NULL,NULL,NULL,2,2,NULL,NULL,1,'--- []\n\n',0,0,'vorwaertz'),(6,6,'DiscussionPage','0011','\nTest Discussion page Cosch\n','','Discussion','Test discussion page cosch Discussion',1,NULL,0,NULL,NULL,NULL,1,1,NULL,NULL,1,'--- []\n\n',0,0,'cosch'),(7,7,'ArticlePage','0011','article-cosch\nArticle cosch\n\n\ntesf asd asd asd lorem s ','','Article','Article cosch Article',1,NULL,0,3,'cosch','cosch',1,1,'2012-08-21 08:33:35','2012-08-21 08:33:34',1,'--- []\n\n',0,0,'cosch');
+/*!40000 ALTER TABLE `page_terms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `page_tools`
+--
+
+DROP TABLE IF EXISTS `page_tools`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `page_tools` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `tool_id` bigint(11) default NULL,
+  `tool_type` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_page_tools` (`page_id`,`tool_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `page_tools`
+--
+
+LOCK TABLES `page_tools` WRITE;
+/*!40000 ALTER TABLE `page_tools` DISABLE KEYS */;
+/*!40000 ALTER TABLE `page_tools` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pages`
+--
+
+DROP TABLE IF EXISTS `pages`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `resolved` tinyint(1) default '1',
+  `public` tinyint(1) default NULL,
+  `created_by_id` bigint(11) default NULL,
+  `updated_by_id` bigint(11) default NULL,
+  `summary` longtext,
+  `type` varchar(255) default NULL,
+  `message_count` bigint(11) default '0',
+  `data_id` bigint(11) default NULL,
+  `data_type` varchar(255) default NULL,
+  `contributors_count` bigint(11) default '0',
+  `posts_count` bigint(11) default '0',
+  `name` varchar(255) default NULL,
+  `updated_by_login` varchar(255) default NULL,
+  `created_by_login` varchar(255) default NULL,
+  `flow` bigint(11) default NULL,
+  `stars_count` bigint(11) default '0',
+  `views_count` bigint(11) NOT NULL default '0',
+  `owner_id` bigint(11) default NULL,
+  `owner_type` varchar(255) default NULL,
+  `owner_name` varchar(255) default NULL,
+  `is_image` tinyint(1) default NULL,
+  `is_audio` tinyint(1) default NULL,
+  `is_video` tinyint(1) default NULL,
+  `is_document` tinyint(1) default NULL,
+  `site_id` bigint(11) default NULL,
+  `happens_at` datetime default NULL,
+  `cover_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_pages_on_type` (`type`),
+  KEY `index_pages_on_flow` (`flow`),
+  KEY `index_pages_on_created_at` (`created_at`),
+  KEY `index_pages_on_updated_at` (`updated_at`),
+  KEY `owner_name_4` (`owner_name`(4)),
+  KEY `index_pages_on_name` (`name`,`owner_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pages`
+--
+
+LOCK TABLES `pages` WRITE;
+/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+INSERT INTO `pages` VALUES (1,'test article','2012-08-20 15:33:18','2012-08-20 15:33:18',1,NULL,1,1,'test where this reads','ArticlePage',0,2,'Wiki',0,0,'test-article','cosch','cosch',NULL,0,0,4,'Group','vorwaertz',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'test article 2','2012-08-20 15:35:51','2012-08-20 15:35:51',1,NULL,1,1,'test where this reads','ArticlePage',0,3,'Wiki',0,0,'test-article-2','cosch','cosch',NULL,0,0,4,'Group','vorwaertz',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(3,'test article 3','2012-08-20 15:36:03','2012-08-21 08:23:06',1,NULL,1,1,'test where this reads','ArticlePage',0,4,'Wiki',0,0,'test-article-3','cosch','cosch',3,0,0,4,'Group','vorwaertz',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(4,'test event belin','2012-08-20 16:00:51','2012-08-20 16:00:51',1,NULL,1,1,'test it out','EventPage',0,1,'Event',0,0,NULL,'cosch','cosch',NULL,0,0,1,'User','cosch',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(5,'test event Vorwaertz','2012-08-20 16:04:01','2012-08-20 16:04:01',1,NULL,2,2,'','EventPage',0,2,'Event',0,0,NULL,'coschhh','coschhh',NULL,0,0,4,'Group','vorwaertz',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,'Test Discussion page Cosch','2012-08-21 08:18:11','2012-08-21 08:18:11',1,NULL,1,1,'','DiscussionPage',0,NULL,NULL,0,0,NULL,'cosch','cosch',NULL,0,0,1,'User','cosch',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,'Article cosch','2012-08-21 08:33:34','2012-08-21 08:33:50',1,NULL,1,1,'','ArticlePage',0,11,'Wiki',0,0,'article-cosch','cosch','cosch',3,0,0,1,'User','cosch',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `phone_numbers`
+--
+
+DROP TABLE IF EXISTS `phone_numbers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `phone_numbers` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `provider` varchar(255) default NULL,
+  `phone_number_type` varchar(255) default NULL,
+  `phone_number` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `phone_numbers_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `phone_numbers`
+--
+
+LOCK TABLES `phone_numbers` WRITE;
+/*!40000 ALTER TABLE `phone_numbers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `phone_numbers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `plugin_schema_info`
+--
+
+DROP TABLE IF EXISTS `plugin_schema_info`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `plugin_schema_info` (
+  `plugin_name` varchar(255) default NULL,
+  `version` int(11) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `plugin_schema_info`
+--
+
+LOCK TABLES `plugin_schema_info` WRITE;
+/*!40000 ALTER TABLE `plugin_schema_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `plugin_schema_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `polls`
+--
+
+DROP TABLE IF EXISTS `polls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `polls` (
+  `id` int(11) NOT NULL auto_increment,
+  `type` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `polls`
+--
+
+LOCK TABLES `polls` WRITE;
+/*!40000 ALTER TABLE `polls` DISABLE KEYS */;
+/*!40000 ALTER TABLE `polls` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `possibles`
+--
+
+DROP TABLE IF EXISTS `possibles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `possibles` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `action` longtext,
+  `poll_id` bigint(11) default NULL,
+  `description` longtext,
+  `description_html` longtext,
+  `position` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_possibles_poll_id` (`poll_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `possibles`
+--
+
+LOCK TABLES `possibles` WRITE;
+/*!40000 ALTER TABLE `possibles` DISABLE KEYS */;
+/*!40000 ALTER TABLE `possibles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` bigint(11) default NULL,
+  `discussion_id` bigint(11) default NULL,
+  `body` longtext,
+  `body_html` longtext,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `deleted_at` datetime default NULL,
+  `type` varchar(255) default NULL,
+  `page_terms_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_posts_on_user_id` (`user_id`),
+  KEY `index_posts_on_discussion_id` (`discussion_id`,`created_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `posts`
+--
+
+LOCK TABLES `posts` WRITE;
+/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,2,2,'hello','hello','2012-08-20 15:28:23','2012-08-20 15:28:23',NULL,'StatusPost',NULL),(2,1,6,'test message','<p>test message</p>','2012-08-20 15:44:36','2012-08-20 15:44:36',NULL,'PrivatePost',NULL),(3,2,6,'klar so machen wir das','<p>klar so machen wir das</p>','2012-08-20 15:45:01','2012-08-20 15:45:01',NULL,'PrivatePost',NULL),(4,2,2,'hello','hello','2012-08-20 15:45:22','2012-08-20 15:45:22',NULL,'StatusPost',NULL);
+/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `profile_notes`
+--
+
+DROP TABLE IF EXISTS `profile_notes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `profile_notes` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `note_type` varchar(255) default NULL,
+  `body` longtext,
+  PRIMARY KEY  (`id`),
+  KEY `profile_notes_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profile_notes`
+--
+
+LOCK TABLES `profile_notes` WRITE;
+/*!40000 ALTER TABLE `profile_notes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `profile_notes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `profiles`
+--
+
+DROP TABLE IF EXISTS `profiles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `profiles` (
+  `id` int(11) NOT NULL auto_increment,
+  `entity_id` bigint(11) default NULL,
+  `entity_type` varchar(255) default NULL,
+  `stranger` tinyint(1) NOT NULL default '0',
+  `peer` tinyint(1) NOT NULL default '0',
+  `friend` tinyint(1) NOT NULL default '0',
+  `foe` tinyint(1) NOT NULL default '0',
+  `name_prefix` varchar(255) default NULL,
+  `first_name` varchar(255) default NULL,
+  `middle_name` varchar(255) default NULL,
+  `last_name` varchar(255) default NULL,
+  `name_suffix` varchar(255) default NULL,
+  `nickname` varchar(255) default NULL,
+  `role` varchar(255) default NULL,
+  `organization` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `birthday` datetime default NULL,
+  `fof` tinyint(1) NOT NULL default '0',
+  `summary` longtext,
+  `wiki_id` bigint(11) default NULL,
+  `photo_id` bigint(11) default NULL,
+  `layout_id` bigint(11) default NULL,
+  `may_see` tinyint(1) default '1',
+  `may_see_committees` tinyint(1) default NULL,
+  `may_see_networks` tinyint(1) default NULL,
+  `may_see_members` tinyint(1) default NULL,
+  `may_request_membership` tinyint(1) default NULL,
+  `membership_policy` bigint(11) default '0',
+  `may_see_groups` tinyint(1) default NULL,
+  `may_see_contacts` tinyint(1) default NULL,
+  `may_request_contact` tinyint(1) default '1',
+  `may_pester` tinyint(1) default '1',
+  `may_burden` tinyint(1) default NULL,
+  `may_spy` tinyint(1) default NULL,
+  `language` varchar(5) default NULL,
+  `discussion_id` bigint(11) default NULL,
+  `place` varchar(255) default NULL,
+  `video_id` bigint(11) default NULL,
+  `summary_html` longtext,
+  `members_may_edit_wiki` tinyint(1) default '1',
+  PRIMARY KEY  (`id`),
+  KEY `profiles_index` (`entity_id`,`entity_type`,`language`,`stranger`,`peer`,`friend`,`foe`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `profiles`
+--
+
+LOCK TABLES `profiles` WRITE;
+/*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
+INSERT INTO `profiles` VALUES (1,1,'User',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:22:30','2012-08-20 20:54:07',NULL,0,NULL,NULL,NULL,NULL,0,0,0,0,NULL,0,0,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(2,3,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:23:36','2012-08-20 19:10:44',NULL,0,NULL,5,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(3,4,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:24:24','2012-08-20 19:10:19',NULL,0,NULL,1,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(4,2,'User',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:25:38','2012-08-20 15:25:38',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(5,7,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:26:44','2012-08-20 19:15:04',NULL,0,NULL,8,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(6,4,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:28:57','2012-08-20 16:02:08',NULL,0,NULL,9,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(7,3,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:55:18','2012-08-20 15:55:18',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(8,8,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:55:50','2012-08-20 15:55:50',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(9,8,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:55:50','2012-08-20 19:18:03',NULL,0,NULL,6,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(10,1,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:56:07','2012-08-20 15:56:07',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(11,1,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 15:56:07','2012-08-20 19:16:39',NULL,0,NULL,7,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(12,7,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 16:01:50','2012-08-20 16:01:50',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(13,1,'User',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 16:06:02','2012-08-20 16:06:02',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(14,2,'Group',0,0,1,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 19:16:59','2012-08-20 19:16:59',NULL,0,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,0,NULL,NULL,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(15,2,'Group',1,0,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2012-08-20 19:16:59','2012-08-20 19:17:45',NULL,0,NULL,10,NULL,NULL,0,0,0,0,0,0,0,0,1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
+/*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ratings`
+--
+
+DROP TABLE IF EXISTS `ratings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ratings` (
+  `id` int(11) NOT NULL auto_increment,
+  `rating` bigint(11) default '0',
+  `created_at` datetime NOT NULL,
+  `rateable_type` varchar(15) NOT NULL default '',
+  `rateable_id` bigint(11) NOT NULL default '0',
+  `user_id` bigint(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
+  KEY `fk_ratings_user` (`user_id`),
+  KEY `fk_ratings_rateable` (`rateable_type`,`rateable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ratings`
+--
+
+LOCK TABLES `ratings` WRITE;
+/*!40000 ALTER TABLE `ratings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ratings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `relationships`
+--
+
+DROP TABLE IF EXISTS `relationships`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `relationships` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` bigint(11) default NULL,
+  `contact_id` bigint(11) default NULL,
+  `type` varchar(10) default NULL,
+  `discussion_id` bigint(11) default NULL,
+  `visited_at` datetime NOT NULL default '1000-01-01 00:00:00',
+  `unread_count` bigint(11) default '0',
+  `total_visits` bigint(11) default '0',
+  PRIMARY KEY  (`id`),
+  KEY `index_contacts` (`contact_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `relationships`
+--
+
+LOCK TABLES `relationships` WRITE;
+/*!40000 ALTER TABLE `relationships` DISABLE KEYS */;
+INSERT INTO `relationships` VALUES (1,2,1,NULL,6,'1000-01-01 00:00:00',0,0),(2,1,2,NULL,6,'1000-01-01 00:00:00',0,0);
+/*!40000 ALTER TABLE `relationships` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `requests`
+--
+
+DROP TABLE IF EXISTS `requests`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `requests` (
+  `id` int(11) NOT NULL auto_increment,
+  `created_by_id` bigint(11) default NULL,
+  `approved_by_id` bigint(11) default NULL,
+  `recipient_id` bigint(11) default NULL,
+  `recipient_type` varchar(5) default NULL,
+  `email` varchar(255) default NULL,
+  `code` varchar(8) default NULL,
+  `requestable_id` bigint(11) default NULL,
+  `requestable_type` varchar(10) default NULL,
+  `shared_discussion_id` bigint(11) default NULL,
+  `private_discussion_id` bigint(11) default NULL,
+  `state` varchar(10) default NULL,
+  `type` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `language` varchar(255) default NULL,
+  `site_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `created_by_0_2` (`created_by_id`,`state`(2)),
+  KEY `recipient_0_2_2` (`recipient_id`,`recipient_type`(2),`state`(2)),
+  KEY `requestable_0_2_2` (`requestable_id`,`requestable_type`(2),`state`(2)),
+  KEY `code` (`code`),
+  KEY `created_at` (`created_at`),
+  KEY `updated_at` (`updated_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `requests`
+--
+
+LOCK TABLES `requests` WRITE;
+/*!40000 ALTER TABLE `requests` DISABLE KEYS */;
+INSERT INTO `requests` VALUES (1,1,2,7,'Group',NULL,NULL,4,'Group',NULL,NULL,'approved','RequestToJoinOurNetwork','2012-08-20 15:29:27','2012-08-20 15:30:26',NULL,NULL),(2,1,1,8,'Group',NULL,NULL,3,'Group',NULL,NULL,'approved','RequestToJoinOurNetwork','2012-08-20 15:55:40','2012-08-20 15:58:50',NULL,NULL);
+/*!40000 ALTER TABLE `requests` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  UNIQUE KEY `unique_schema_migrations` (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('0'),('1'),('10'),('11'),('1196752821'),('1199048662'),('1199056420'),('1199079410'),('1202420617'),('1202880178'),('1203982868'),('1204080236'),('1207167581'),('1207336152'),('1207708164'),('13'),('14'),('15'),('18'),('19'),('2'),('20'),('20080620070118'),('20080620234804'),('20080622060535'),('20080630165341'),('20080718223626'),('20080722224129'),('20080723045752'),('20080813192928'),('20080818190745'),('20080828211205'),('20080830081508'),('20080830111231'),('20080831003129'),('20080901002452'),('20080903043715'),('20080904213700'),('20080907063057'),('20080910214455'),('20080915045315'),('20080918080439'),('20080919225737'),('20080922055141'),('20080922055157'),('20080926185318'),('20080926190649'),('20081009073916'),('20081009173845'),('20081009190941'),('20081010061917'),('20081012053137'),('20081012185547'),('20081015154838'),('20081017071525'),('20081018181941'),('20081021190947'),('20081022084343'),('20081022100817'),('20081022210659'),('20081026033235'),('20081027074143'),('20081027170835'),('20081029060705'),('20081107204004'),('20081107231213'),('20081119013729'),('20081214021332'),('20081215005628'),('20081217074019'),('20090107235220'),('20090109204824'),('20090114040410'),('20090119235038'),('20090226132926'),('20090226132927'),('20090304164312'),('20090306225231'),('20090306235933'),('20090311171519'),('20090316005547'),('20090316014728'),('20090322000446'),('20090329214543'),('20090329214611'),('20090414212813'),('20090417181020'),('20090419190955'),('20090423054704'),('20090423143227'),('20090425132642'),('20090427080711'),('20090427080832'),('20090429074713'),('20090505085632'),('20090506095212'),('20090509074131'),('20090510032300'),('20090515002003'),('20090515071217'),('20090523034728'),('20090601212548'),('20090603221951'),('20090605190832'),('20090609065603'),('20090609220813'),('20090611160556'),('20090613085915'),('20090613205749'),('20090616073637'),('20090619075032'),('20090620193638'),('20090621045020'),('20090623111827'),('20090625135501'),('20090626071633'),('20090626081151'),('20090626232457'),('20090626234003'),('20090703041927'),('20090703091241'),('20090704052640'),('20090704125143'),('20090704125157'),('20090704130039'),('20090704155537'),('20090705050858'),('20090705092448'),('20090706040853'),('20090711054954'),('20090723070206'),('20090729020153'),('20090730115644'),('20090802032835'),('20090805215912'),('20090806021857'),('20090812060606'),('20090813194055'),('20090821060849'),('20090906000716'),('20090908234522'),('20090911183629'),('20090916163145'),('20090922172745'),('20091005201103'),('20091009023935'),('20091014211442'),('20091020182112'),('20091022220942'),('20091023194253'),('20091101000109'),('20091102131455'),('20091105213521'),('20091119101227'),('20091122090010'),('20091123062514'),('20091123062515'),('20091123094947'),('20091124104449'),('20091124131837'),('20091124133538'),('20091216093545'),('20100106094419'),('20100106094441'),('20100203133636'),('20100211213933'),('20100510210655'),('20100510212536'),('20100603010101'),('20100603010102'),('20100813161008'),('20100919103645'),('20110301094152'),('20110301224959'),('20110306111938'),('20110310095819'),('20110310101180'),('20110314131417'),('20110320204954'),('20110411112810'),('20110426233945'),('21'),('22'),('23'),('24'),('25'),('26'),('27'),('28'),('29'),('3'),('30'),('31'),('32'),('33'),('34'),('35'),('36'),('37'),('38'),('39'),('4'),('41'),('42'),('43'),('44'),('45'),('46'),('47'),('48'),('49'),('5'),('51'),('52'),('53'),('54'),('55'),('56'),('58'),('59'),('6'),('60'),('61'),('7'),('8');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `showings`
+--
+
+DROP TABLE IF EXISTS `showings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `showings` (
+  `id` int(11) NOT NULL auto_increment,
+  `asset_id` bigint(11) default NULL,
+  `gallery_id` bigint(11) default NULL,
+  `position` bigint(11) default '0',
+  `is_cover` tinyint(1) default '0',
+  `stars` bigint(11) default NULL,
+  `comment_id_cache` bigint(11) default NULL,
+  `discussion_id` bigint(11) default NULL,
+  `title` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `ga` (`gallery_id`,`asset_id`),
+  KEY `ag` (`asset_id`,`gallery_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `showings`
+--
+
+LOCK TABLES `showings` WRITE;
+/*!40000 ALTER TABLE `showings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `showings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sites`
+--
+
+DROP TABLE IF EXISTS `sites`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sites` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `domain` varchar(255) default NULL,
+  `email_sender` varchar(255) default NULL,
+  `pagination_size` bigint(11) default NULL,
+  `super_admin_group_id` bigint(11) default NULL,
+  `translators` longtext,
+  `translation_group` varchar(255) default NULL,
+  `default_language` varchar(255) default NULL,
+  `available_page_types` longtext,
+  `evil` longtext,
+  `tracking` tinyint(1) default NULL,
+  `default` tinyint(1) default '0',
+  `network_id` bigint(11) default NULL,
+  `custom_appearance_id` bigint(11) default NULL,
+  `has_networks` tinyint(1) default '1',
+  `signup_redirect_url` varchar(255) default NULL,
+  `title` varchar(255) default NULL,
+  `enforce_ssl` tinyint(1) default NULL,
+  `show_exceptions` tinyint(1) default NULL,
+  `require_user_email` tinyint(1) default NULL,
+  `council_id` bigint(11) default NULL,
+  `login_redirect_url` varchar(255) default NULL,
+  `chat` tinyint(1) default NULL,
+  `limited` tinyint(1) default NULL,
+  `signup_mode` smallint(1) default NULL,
+  `email_sender_name` varchar(40) default NULL,
+  `profiles` varchar(255) default NULL,
+  `profile_fields` varchar(255) default NULL,
+  `require_user_full_info` tinyint(1) default NULL,
+  `never_pester_users` tinyint(1) default '0',
+  `show_expanded_group_wikis` tinyint(1) default NULL,
+  `all_profiles_visible` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `index_sites_on_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sites`
+--
+
+LOCK TABLES `sites` WRITE;
+/*!40000 ALTER TABLE `sites` DISABLE KEYS */;
+INSERT INTO `sites` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL);
+/*!40000 ALTER TABLE `sites` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `survey_answers`
+--
+
+DROP TABLE IF EXISTS `survey_answers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `survey_answers` (
+  `id` int(11) NOT NULL auto_increment,
+  `question_id` bigint(11) default NULL,
+  `response_id` bigint(11) default NULL,
+  `asset_id` bigint(11) default NULL,
+  `value` longtext,
+  `type` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `external_video_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey_answers`
+--
+
+LOCK TABLES `survey_answers` WRITE;
+/*!40000 ALTER TABLE `survey_answers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `survey_answers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `survey_questions`
+--
+
+DROP TABLE IF EXISTS `survey_questions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `survey_questions` (
+  `id` int(11) NOT NULL auto_increment,
+  `type` varchar(255) default NULL,
+  `choices` longtext,
+  `survey_id` bigint(11) default NULL,
+  `position` bigint(11) default NULL,
+  `label` varchar(255) default NULL,
+  `details` longtext,
+  `required` tinyint(1) default NULL,
+  `created_at` datetime default NULL,
+  `expires_at` datetime default NULL,
+  `regex` varchar(255) default NULL,
+  `maximum` bigint(11) default NULL,
+  `minimum` bigint(11) default NULL,
+  `private` tinyint(1) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey_questions`
+--
+
+LOCK TABLES `survey_questions` WRITE;
+/*!40000 ALTER TABLE `survey_questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `survey_questions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `survey_responses`
+--
+
+DROP TABLE IF EXISTS `survey_responses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `survey_responses` (
+  `id` int(11) NOT NULL auto_increment,
+  `survey_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `name` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `stars_count` bigint(11) default '0',
+  `created_at` datetime default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `survey_responses`
+--
+
+LOCK TABLES `survey_responses` WRITE;
+/*!40000 ALTER TABLE `survey_responses` DISABLE KEYS */;
+/*!40000 ALTER TABLE `survey_responses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `surveys`
+--
+
+DROP TABLE IF EXISTS `surveys`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `surveys` (
+  `id` int(11) NOT NULL auto_increment,
+  `description` longtext,
+  `created_at` datetime default NULL,
+  `responses_count` bigint(11) default '0',
+  `settings` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `surveys`
+--
+
+LOCK TABLES `surveys` WRITE;
+/*!40000 ALTER TABLE `surveys` DISABLE KEYS */;
+/*!40000 ALTER TABLE `surveys` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `taggings`
+--
+
+DROP TABLE IF EXISTS `taggings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `taggings` (
+  `id` int(11) NOT NULL auto_increment,
+  `taggable_id` bigint(11) default NULL,
+  `tag_id` bigint(11) default NULL,
+  `taggable_type` varchar(255) default NULL,
+  `created_at` datetime default NULL,
+  `context` varchar(255) default NULL,
+  `tagger_id` bigint(11) default NULL,
+  `tagger_type` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `tag_id_index` (`tag_id`),
+  KEY `taggable_id_index` (`taggable_id`,`taggable_type`,`context`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `taggings`
+--
+
+LOCK TABLES `taggings` WRITE;
+/*!40000 ALTER TABLE `taggings` DISABLE KEYS */;
+INSERT INTO `taggings` VALUES (1,1,1,'Page','2012-08-20 15:33:18','tags',NULL,NULL),(2,2,1,'Page','2012-08-20 15:35:51','tags',NULL,NULL),(3,3,1,'Page','2012-08-20 15:36:03','tags',NULL,NULL),(4,4,2,'Page','2012-08-20 16:00:52','tags',NULL,NULL),(5,4,3,'Page','2012-08-20 16:00:52','tags',NULL,NULL),(6,6,4,'Page','2012-08-21 08:18:12','tags',NULL,NULL),(7,7,5,'Page','2012-08-21 08:33:35','tags',NULL,NULL);
+/*!40000 ALTER TABLE `taggings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `tags_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tags`
+--
+
+LOCK TABLES `tags` WRITE;
+/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+INSERT INTO `tags` VALUES (5,'Article'),(4,'Discussion'),(3,'Event'),(2,'Test'),(1,'test article');
+/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_lists`
+--
+
+DROP TABLE IF EXISTS `task_lists`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_lists` (
+  `id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_lists`
+--
+
+LOCK TABLES `task_lists` WRITE;
+/*!40000 ALTER TABLE `task_lists` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_lists` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `task_participations`
+--
+
+DROP TABLE IF EXISTS `task_participations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `task_participations` (
+  `id` int(11) NOT NULL auto_increment,
+  `watching` tinyint(1) default NULL,
+  `waiting` tinyint(1) default NULL,
+  `assigned` tinyint(1) default NULL,
+  `user_id` bigint(11) default NULL,
+  `task_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `task_participations`
+--
+
+LOCK TABLES `task_participations` WRITE;
+/*!40000 ALTER TABLE `task_participations` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_participations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tasks`
+--
+
+DROP TABLE IF EXISTS `tasks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tasks` (
+  `id` int(11) NOT NULL auto_increment,
+  `task_list_id` bigint(11) default NULL,
+  `name` varchar(255) default NULL,
+  `description` longtext,
+  `description_html` longtext,
+  `position` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `completed_at` datetime default NULL,
+  `due_at` datetime default NULL,
+  `created_by_id` bigint(11) default NULL,
+  `updated_by_id` bigint(11) default NULL,
+  `points` bigint(11) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_tasks_task_list_id` (`task_list_id`),
+  KEY `index_tasks_completed_positions` (`task_list_id`,`position`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tasks`
+--
+
+LOCK TABLES `tasks` WRITE;
+/*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tasks_users`
+--
+
+DROP TABLE IF EXISTS `tasks_users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tasks_users` (
+  `user_id` bigint(11) default NULL,
+  `task_id` bigint(11) default NULL,
+  KEY `index_tasks_users_ids` (`user_id`,`task_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tasks_users`
+--
+
+LOCK TABLES `tasks_users` WRITE;
+/*!40000 ALTER TABLE `tasks_users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tasks_users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `thumbnails`
+--
+
+DROP TABLE IF EXISTS `thumbnails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `thumbnails` (
+  `id` int(11) NOT NULL auto_increment,
+  `parent_id` bigint(11) default NULL,
+  `parent_type` varchar(255) default NULL,
+  `content_type` varchar(255) default NULL,
+  `filename` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `size` bigint(11) default NULL,
+  `width` bigint(11) default NULL,
+  `height` bigint(11) default NULL,
+  `failure` tinyint(1) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `thumbnails`
+--
+
+LOCK TABLES `thumbnails` WRITE;
+/*!40000 ALTER TABLE `thumbnails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `thumbnails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tokens`
+--
+
+DROP TABLE IF EXISTS `tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tokens` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` bigint(11) NOT NULL,
+  `action` varchar(255) default NULL,
+  `value` varchar(255) default NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tokens`
+--
+
+LOCK TABLES `tokens` WRITE;
+/*!40000 ALTER TABLE `tokens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trackings`
+--
+
+DROP TABLE IF EXISTS `trackings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trackings` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `current_user_id` bigint(11) default NULL,
+  `group_id` bigint(11) default NULL,
+  `tracked_at` datetime default NULL,
+  `views` tinyint(1) default NULL,
+  `edits` tinyint(1) default NULL,
+  `stars` tinyint(1) default NULL,
+  `user_id` bigint(11) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=160 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trackings`
+--
+
+LOCK TABLES `trackings` WRITE;
+/*!40000 ALTER TABLE `trackings` DISABLE KEYS */;
+INSERT INTO `trackings` VALUES (1,NULL,NULL,1,'2012-08-20 15:22:30',0,0,0,1),(2,NULL,NULL,2,'2012-08-20 15:22:57',0,0,0,1),(3,NULL,NULL,3,'2012-08-20 15:23:36',0,0,0,1),(4,NULL,NULL,4,'2012-08-20 15:24:24',0,0,0,1),(5,NULL,NULL,5,'2012-08-20 15:25:39',0,0,0,2),(6,NULL,NULL,6,'2012-08-20 15:26:00',0,0,0,2),(7,NULL,NULL,7,'2012-08-20 15:26:44',0,0,0,2),(8,NULL,NULL,4,'2012-08-20 15:26:58',0,0,0,2),(9,NULL,NULL,4,'2012-08-20 15:27:04',0,0,0,2),(10,NULL,NULL,4,'2012-08-20 15:27:08',0,0,0,2),(11,NULL,NULL,4,'2012-08-20 15:27:11',0,0,0,2),(12,NULL,NULL,4,'2012-08-20 15:27:33',0,0,0,2),(13,NULL,NULL,4,'2012-08-20 15:27:38',0,0,0,2),(14,NULL,NULL,4,'2012-08-20 15:28:57',0,0,0,1),(15,NULL,NULL,4,'2012-08-20 15:29:00',0,0,0,1),(16,1,1,NULL,'2012-08-20 15:33:19',0,1,0,NULL),(17,2,1,NULL,'2012-08-20 15:35:51',0,1,0,NULL),(18,3,1,NULL,'2012-08-20 15:36:03',0,1,0,NULL),(19,NULL,NULL,4,'2012-08-20 15:36:37',0,0,0,1),(20,NULL,NULL,4,'2012-08-20 15:36:45',0,0,0,1),(21,NULL,NULL,4,'2012-08-20 15:36:57',0,0,0,1),(22,NULL,NULL,4,'2012-08-20 15:36:59',0,0,0,1),(23,NULL,NULL,4,'2012-08-20 15:37:00',0,0,0,1),(24,NULL,NULL,4,'2012-08-20 15:46:00',0,0,0,1),(25,NULL,NULL,4,'2012-08-20 15:46:03',0,0,0,1),(26,NULL,NULL,4,'2012-08-20 15:46:34',0,0,0,2),(27,NULL,NULL,8,'2012-08-20 15:49:12',0,0,0,1),(28,NULL,NULL,3,'2012-08-20 15:55:18',0,0,0,1),(29,NULL,NULL,3,'2012-08-20 15:55:21',0,0,0,1),(30,NULL,NULL,8,'2012-08-20 15:55:50',0,0,0,1),(31,NULL,NULL,1,'2012-08-20 15:56:07',0,0,0,1),(32,NULL,NULL,3,'2012-08-20 15:56:12',0,0,0,1),(33,NULL,NULL,1,'2012-08-20 15:56:17',0,0,0,1),(34,NULL,NULL,3,'2012-08-20 15:56:19',0,0,0,1),(35,NULL,NULL,4,'2012-08-20 15:56:24',0,0,0,1),(36,NULL,NULL,4,'2012-08-20 15:56:38',0,0,0,1),(37,NULL,NULL,4,'2012-08-20 15:56:41',0,0,0,1),(38,NULL,NULL,4,'2012-08-20 15:56:54',0,0,0,1),(39,NULL,NULL,4,'2012-08-20 15:58:12',0,0,0,1),(40,NULL,NULL,4,'2012-08-20 15:58:34',0,0,0,1),(41,4,1,NULL,'2012-08-20 16:00:52',0,1,0,NULL),(42,4,1,NULL,'2012-08-20 16:00:52',1,0,0,NULL),(43,4,1,NULL,'2012-08-20 16:01:06',1,0,0,NULL),(44,NULL,NULL,7,'2012-08-20 16:01:50',0,0,0,2),(45,NULL,NULL,4,'2012-08-20 16:01:59',0,0,0,2),(46,NULL,NULL,4,'2012-08-20 16:02:17',0,0,0,2),(47,NULL,NULL,7,'2012-08-20 16:02:31',0,0,0,2),(48,NULL,NULL,3,'2012-08-20 16:02:41',0,0,0,2),(49,NULL,NULL,4,'2012-08-20 16:02:55',0,0,0,2),(50,NULL,NULL,4,'2012-08-20 16:02:57',0,0,0,2),(51,5,2,NULL,'2012-08-20 16:04:01',0,1,0,NULL),(52,5,2,NULL,'2012-08-20 16:04:01',1,0,0,NULL),(53,NULL,NULL,4,'2012-08-20 16:04:11',0,0,0,2),(54,NULL,NULL,4,'2012-08-20 16:04:14',0,0,0,2),(55,NULL,NULL,4,'2012-08-20 16:04:29',0,0,0,2),(56,NULL,NULL,4,'2012-08-20 16:04:41',0,0,0,2),(57,NULL,NULL,4,'2012-08-20 16:04:46',0,0,0,2),(58,NULL,NULL,4,'2012-08-20 16:04:49',0,0,0,2),(59,NULL,NULL,4,'2012-08-20 16:04:52',0,0,0,2),(60,NULL,NULL,4,'2012-08-20 16:05:27',0,0,0,1),(61,NULL,NULL,4,'2012-08-20 16:05:35',0,0,0,1),(62,NULL,NULL,4,'2012-08-20 16:05:38',0,0,0,1),(63,4,1,NULL,'2012-08-20 18:56:41',1,0,0,NULL),(64,NULL,NULL,3,'2012-08-20 18:57:28',0,0,0,1),(65,NULL,NULL,3,'2012-08-20 18:58:05',0,0,0,1),(66,NULL,NULL,3,'2012-08-20 18:58:17',0,0,0,1),(67,NULL,NULL,3,'2012-08-20 18:58:22',0,0,0,1),(68,NULL,NULL,3,'2012-08-20 18:58:30',0,0,0,1),(69,NULL,NULL,3,'2012-08-20 18:58:36',0,0,0,1),(70,NULL,NULL,4,'2012-08-20 18:58:44',0,0,0,1),(71,NULL,NULL,4,'2012-08-20 18:58:49',0,0,0,1),(72,NULL,NULL,4,'2012-08-20 18:58:54',0,0,0,1),(73,NULL,NULL,4,'2012-08-20 18:58:59',0,0,0,1),(74,NULL,NULL,4,'2012-08-20 19:05:55',0,0,0,NULL),(75,NULL,NULL,4,'2012-08-20 19:06:16',0,0,0,NULL),(76,NULL,NULL,4,'2012-08-20 19:06:19',0,0,0,NULL),(77,NULL,NULL,4,'2012-08-20 19:06:31',0,0,0,1),(78,NULL,NULL,4,'2012-08-20 19:06:38',0,0,0,1),(79,NULL,NULL,4,'2012-08-20 19:06:45',0,0,0,1),(80,NULL,NULL,4,'2012-08-20 19:06:48',0,0,0,1),(81,NULL,NULL,4,'2012-08-20 19:07:14',0,0,0,1),(82,NULL,NULL,4,'2012-08-20 19:07:25',0,0,0,1),(83,NULL,NULL,4,'2012-08-20 19:07:35',0,0,0,1),(84,NULL,NULL,4,'2012-08-20 19:07:42',0,0,0,1),(85,NULL,NULL,4,'2012-08-20 19:07:50',0,0,0,1),(86,NULL,NULL,4,'2012-08-20 19:08:49',0,0,0,NULL),(87,NULL,NULL,3,'2012-08-20 19:09:04',0,0,0,NULL),(88,NULL,NULL,3,'2012-08-20 19:09:07',0,0,0,NULL),(89,NULL,NULL,4,'2012-08-20 19:09:39',0,0,0,1),(90,NULL,NULL,3,'2012-08-20 19:10:29',0,0,0,1),(91,NULL,NULL,3,'2012-08-20 19:10:33',0,0,0,1),(92,NULL,NULL,3,'2012-08-20 19:11:13',0,0,0,1),(93,NULL,NULL,3,'2012-08-20 19:11:16',0,0,0,1),(94,NULL,NULL,3,'2012-08-20 19:11:19',0,0,0,1),(95,NULL,NULL,3,'2012-08-20 19:11:23',0,0,0,1),(96,NULL,NULL,3,'2012-08-20 19:11:30',0,0,0,1),(97,NULL,NULL,1,'2012-08-20 19:11:40',0,0,0,1),(98,NULL,NULL,1,'2012-08-20 19:11:43',0,0,0,1),(99,NULL,NULL,1,'2012-08-20 19:11:46',0,0,0,1),(100,NULL,NULL,4,'2012-08-20 19:11:55',0,0,0,1),(101,5,1,NULL,'2012-08-20 19:11:58',1,0,0,NULL),(102,5,1,NULL,'2012-08-20 19:12:08',1,0,0,NULL),(103,NULL,NULL,4,'2012-08-20 19:12:12',0,0,0,1),(104,NULL,NULL,4,'2012-08-20 19:12:15',0,0,0,1),(105,NULL,NULL,4,'2012-08-20 19:12:21',0,0,0,1),(106,NULL,NULL,4,'2012-08-20 19:12:31',0,0,0,1),(107,NULL,NULL,4,'2012-08-20 19:12:47',0,0,0,1),(108,NULL,NULL,7,'2012-08-20 19:14:53',0,0,0,2),(109,NULL,NULL,7,'2012-08-20 19:14:56',0,0,0,2),(110,NULL,NULL,1,'2012-08-20 19:16:30',0,0,0,1),(111,NULL,NULL,1,'2012-08-20 19:16:32',0,0,0,1),(112,NULL,NULL,1,'2012-08-20 19:16:45',0,0,0,1),(113,NULL,NULL,2,'2012-08-20 19:16:59',0,0,0,1),(114,NULL,NULL,2,'2012-08-20 19:17:08',0,0,0,1),(115,NULL,NULL,8,'2012-08-20 19:17:50',0,0,0,1),(116,NULL,NULL,8,'2012-08-20 19:17:54',0,0,0,1),(117,NULL,NULL,8,'2012-08-20 19:18:10',0,0,0,1),(118,NULL,NULL,3,'2012-08-20 19:18:22',0,0,0,1),(119,NULL,NULL,3,'2012-08-20 19:24:14',0,0,0,1),(120,NULL,NULL,3,'2012-08-20 19:24:18',0,0,0,1),(121,NULL,NULL,3,'2012-08-20 19:24:23',0,0,0,1),(122,NULL,NULL,3,'2012-08-20 19:24:29',0,0,0,1),(123,NULL,NULL,3,'2012-08-20 19:24:36',0,0,0,1),(124,NULL,NULL,3,'2012-08-20 19:42:25',0,0,0,1),(125,NULL,NULL,3,'2012-08-20 19:42:32',0,0,0,1),(126,NULL,NULL,3,'2012-08-20 19:42:46',0,0,0,1),(127,NULL,NULL,3,'2012-08-20 19:42:53',0,0,0,1),(128,NULL,NULL,3,'2012-08-20 19:42:58',0,0,0,1),(129,NULL,NULL,3,'2012-08-20 19:43:09',0,0,0,1),(130,NULL,NULL,3,'2012-08-20 19:43:13',0,0,0,1),(131,NULL,NULL,3,'2012-08-20 19:43:32',0,0,0,1),(132,NULL,NULL,3,'2012-08-20 19:43:35',0,0,0,1),(133,NULL,NULL,3,'2012-08-20 19:43:41',0,0,0,1),(134,NULL,NULL,1,'2012-08-20 19:45:48',0,0,0,1),(135,NULL,NULL,3,'2012-08-20 19:45:52',0,0,0,1),(136,NULL,NULL,3,'2012-08-20 20:17:20',0,0,0,1),(137,4,1,NULL,'2012-08-20 20:17:26',1,0,0,NULL),(138,NULL,NULL,3,'2012-08-20 20:22:58',0,0,0,1),(139,NULL,NULL,3,'2012-08-20 20:23:05',0,0,0,1),(140,NULL,NULL,4,'2012-08-20 20:23:14',0,0,0,1),(141,5,1,NULL,'2012-08-20 20:25:12',1,0,0,NULL),(142,NULL,NULL,3,'2012-08-20 23:38:04',0,0,0,1),(143,NULL,NULL,3,'2012-08-20 23:38:11',0,0,0,1),(144,NULL,NULL,3,'2012-08-21 07:06:54',0,0,0,1),(145,6,1,NULL,'2012-08-21 08:18:12',0,1,0,NULL),(146,6,1,NULL,'2012-08-21 08:21:37',1,0,0,NULL),(147,4,1,NULL,'2012-08-21 08:21:48',1,0,0,NULL),(148,6,1,NULL,'2012-08-21 08:21:57',1,0,0,NULL),(149,NULL,NULL,3,'2012-08-21 08:22:31',0,0,0,1),(150,NULL,NULL,3,'2012-08-21 08:22:35',0,0,0,1),(151,NULL,NULL,4,'2012-08-21 08:22:56',0,0,0,1),(152,3,1,NULL,'2012-08-21 08:22:59',1,0,0,NULL),(153,NULL,NULL,4,'2012-08-21 08:23:06',0,0,0,1),(154,NULL,NULL,4,'2012-08-21 08:23:21',0,0,0,1),(155,NULL,NULL,4,'2012-08-21 08:23:23',0,0,0,1),(156,NULL,NULL,4,'2012-08-21 08:23:26',0,0,0,1),(157,7,1,NULL,'2012-08-21 08:33:35',0,1,0,NULL),(158,7,1,NULL,'2012-08-21 08:33:35',1,0,0,NULL),(159,7,1,NULL,'2012-08-21 08:33:44',1,0,0,NULL);
+/*!40000 ALTER TABLE `trackings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_participations`
+--
+
+DROP TABLE IF EXISTS `user_participations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_participations` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `folder_id` bigint(11) default NULL,
+  `access` bigint(11) default NULL,
+  `viewed_at` datetime default NULL,
+  `changed_at` datetime default NULL,
+  `watch` tinyint(1) default '0',
+  `star` tinyint(1) default NULL,
+  `resolved` tinyint(1) default '1',
+  `viewed` tinyint(1) default NULL,
+  `message_count` bigint(11) default '0',
+  `attend` tinyint(1) default '0',
+  `notice` longtext,
+  `inbox` tinyint(1) default '0',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `page_and_user` (`page_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_participations`
+--
+
+LOCK TABLES `user_participations` WRITE;
+/*!40000 ALTER TABLE `user_participations` DISABLE KEYS */;
+INSERT INTO `user_participations` VALUES (1,4,1,NULL,1,'2012-08-21 08:21:48',NULL,0,NULL,1,1,0,0,NULL,0),(2,5,2,NULL,NULL,NULL,NULL,0,NULL,1,NULL,0,0,NULL,0),(3,5,1,NULL,NULL,'2012-08-20 20:25:12',NULL,0,NULL,1,1,0,1,NULL,0),(4,6,1,NULL,1,'2012-08-21 08:21:57',NULL,0,NULL,1,1,0,0,NULL,0),(5,7,1,NULL,1,'2012-08-21 08:33:44',NULL,0,NULL,1,1,0,0,NULL,0);
+/*!40000 ALTER TABLE `user_participations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_settings`
+--
+
+DROP TABLE IF EXISTS `user_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_settings` (
+  `id` int(11) NOT NULL auto_increment,
+  `user_id` bigint(11) default NULL,
+  `email_address` varchar(255) default NULL,
+  `sms_number` varchar(255) default NULL,
+  `sms_carrier` varchar(255) default NULL,
+  `im_address` varchar(255) default NULL,
+  `im_type` varchar(255) default NULL,
+  `allow_insecure_email` tinyint(1) default '0',
+  `allow_insecure_im` tinyint(1) default '0',
+  `allow_insecure_sms` tinyint(1) default '0',
+  `email_crypt_key_id` bigint(11) default NULL,
+  `sms_crypt_key_id` bigint(11) default NULL,
+  `email_allowed` tinyint(1) default '1',
+  `sms_allowed` tinyint(1) default '0',
+  `im_allowed` tinyint(1) default '0',
+  `receive_digest` tinyint(1) default '1',
+  `digest_frequency` bigint(11) default '2',
+  `digest_day` bigint(11) default NULL,
+  `preferred_reception_method` bigint(11) default '1',
+  `languages_spoken` varchar(255) default NULL,
+  `level_of_expertise` bigint(11) default NULL,
+  `show_welcome` tinyint(1) default '1',
+  `login_landing` bigint(11) default '0',
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `preferred_editor` int(4) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_user_settings_on_user_id` (`user_id`),
+  KEY `digest` (`receive_digest`,`digest_frequency`,`digest_day`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_settings`
+--
+
+LOCK TABLES `user_settings` WRITE;
+/*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `login` varchar(255) default NULL,
+  `email` varchar(255) default NULL,
+  `crypted_password` varchar(40) default NULL,
+  `salt` varchar(40) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `remember_token` varchar(255) default NULL,
+  `remember_token_expires_at` datetime default NULL,
+  `display_name` varchar(255) default NULL,
+  `time_zone` varchar(255) default NULL,
+  `avatar_id` bigint(11) default NULL,
+  `last_seen_at` datetime default NULL,
+  `version` bigint(11) default '0',
+  `direct_group_id_cache` blob,
+  `all_group_id_cache` blob,
+  `friend_id_cache` blob,
+  `foe_id_cache` blob,
+  `peer_id_cache` blob,
+  `tag_id_cache` blob,
+  `language` varchar(5) default NULL,
+  `admin_for_group_id_cache` blob,
+  `unverified` tinyint(1) default '0',
+  `receive_notifications` varchar(255) default NULL,
+  `encrypt_emails` tinyint(1) default '0',
+  PRIMARY KEY  (`id`),
+  KEY `index_users_on_login` (`login`),
+  KEY `index_users_on_last_seen_at` (`last_seen_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'cosch','crabgrass@torfbruecke.net','a04537373ffd489a8c5b414b56e9a85f892c1a4c','83ca931dd379a5b772e73ceffefbba23b4c81c96','2012-08-20 15:18:05','2012-08-21 09:39:36',NULL,NULL,NULL,NULL,1,'2012-08-21 09:39:36',12,'','','','','',NULL,NULL,'',0,NULL,0),(2,'coschhh',NULL,'3af5fb41dbb2dacc7f92ee90584a8bb950e11865','23f83078d31cb290c8211d445f7d8bfa5631b4a7','2012-08-20 15:25:13','2012-08-20 19:15:08',NULL,NULL,NULL,NULL,6,'2012-08-20 19:14:46',9,'','','','','',NULL,NULL,'',0,NULL,0);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `votes`
+--
+
+DROP TABLE IF EXISTS `votes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `votes` (
+  `id` int(11) NOT NULL auto_increment,
+  `possible_id` bigint(11) default NULL,
+  `user_id` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `value` bigint(11) default NULL,
+  `comment` varchar(255) default NULL,
+  `type` varchar(255) default NULL,
+  `votable_id` bigint(11) default NULL,
+  `votable_type` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
+  KEY `index_votes_possible` (`possible_id`),
+  KEY `index_votes_possible_and_user` (`possible_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `votes`
+--
+
+LOCK TABLES `votes` WRITE;
+/*!40000 ALTER TABLE `votes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `votes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `websites`
+--
+
+DROP TABLE IF EXISTS `websites`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `websites` (
+  `id` int(11) NOT NULL auto_increment,
+  `profile_id` bigint(11) default NULL,
+  `preferred` tinyint(1) default '0',
+  `site_title` varchar(255) default '',
+  `site_url` varchar(255) default '',
+  PRIMARY KEY  (`id`),
+  KEY `websites_profile_id_index` (`profile_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `websites`
+--
+
+LOCK TABLES `websites` WRITE;
+/*!40000 ALTER TABLE `websites` DISABLE KEYS */;
+/*!40000 ALTER TABLE `websites` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `widgets`
+--
+
+DROP TABLE IF EXISTS `widgets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `widgets` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `profile_id` bigint(11) default NULL,
+  `position` bigint(11) default NULL,
+  `section` bigint(11) default NULL,
+  `created_at` datetime default NULL,
+  `updated_at` datetime default NULL,
+  `options` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `widgets`
+--
+
+LOCK TABLES `widgets` WRITE;
+/*!40000 ALTER TABLE `widgets` DISABLE KEYS */;
+/*!40000 ALTER TABLE `widgets` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wiki_locks`
+--
+
+DROP TABLE IF EXISTS `wiki_locks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wiki_locks` (
+  `id` int(11) NOT NULL auto_increment,
+  `wiki_id` bigint(11) default NULL,
+  `locks` longtext,
+  `lock_version` bigint(11) default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wiki_locks`
+--
+
+LOCK TABLES `wiki_locks` WRITE;
+/*!40000 ALTER TABLE `wiki_locks` DISABLE KEYS */;
+INSERT INTO `wiki_locks` VALUES (1,9,'--- {}\n\n',1),(2,1,'--- {}\n\n',1);
+/*!40000 ALTER TABLE `wiki_locks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wiki_versions`
+--
+
+DROP TABLE IF EXISTS `wiki_versions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wiki_versions` (
+  `id` int(11) NOT NULL auto_increment,
+  `wiki_id` bigint(11) default NULL,
+  `version` bigint(11) default NULL,
+  `body` longtext,
+  `body_html` longtext,
+  `updated_at` datetime default NULL,
+  `user_id` bigint(11) default NULL,
+  `raw_structure` longtext,
+  PRIMARY KEY  (`id`),
+  KEY `index_wiki_versions` (`wiki_id`),
+  KEY `index_wiki_versions_with_updated_at` (`wiki_id`,`updated_at`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wiki_versions`
+--
+
+LOCK TABLES `wiki_versions` WRITE;
+/*!40000 ALTER TABLE `wiki_versions` DISABLE KEYS */;
+INSERT INTO `wiki_versions` VALUES (1,1,1,NULL,'','2012-08-20 15:26:58',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(2,2,1,'\n\n','','2012-08-20 15:33:18',1,'--- \n:end_index: 1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(3,3,1,'\n\n','','2012-08-20 15:35:51',1,'--- \n:end_index: 1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(4,4,1,'\n\nasdasd asd','<p>asdasd asd</p>','2012-08-20 15:36:03',1,'--- \n:end_index: 11\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(5,5,1,NULL,'','2012-08-20 15:55:18',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(6,6,1,NULL,'','2012-08-20 15:55:50',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(7,7,1,NULL,'','2012-08-20 15:56:07',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(8,8,1,NULL,'','2012-08-20 16:01:50',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(9,9,1,NULL,'','2012-08-20 16:02:08',2,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(10,10,1,NULL,'','2012-08-20 19:16:59',NULL,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(11,11,1,'\n\ntesf asd asd asd lorem s ','<p>tesf asd asd asd lorem s</p>','2012-08-21 08:33:35',1,'--- \n:end_index: 26\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n');
+/*!40000 ALTER TABLE `wiki_versions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wikis`
+--
+
+DROP TABLE IF EXISTS `wikis`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wikis` (
+  `id` int(11) NOT NULL auto_increment,
+  `body` longtext,
+  `body_html` longtext,
+  `updated_at` datetime default NULL,
+  `user_id` bigint(11) default NULL,
+  `version` bigint(11) default NULL,
+  `raw_structure` longtext,
+  PRIMARY KEY  (`id`),
+  KEY `index_wikis_user_id` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wikis`
+--
+
+LOCK TABLES `wikis` WRITE;
+/*!40000 ALTER TABLE `wikis` DISABLE KEYS */;
+INSERT INTO `wikis` VALUES (1,NULL,'','2012-08-20 15:26:58',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(2,'\n\n','','2012-08-20 15:33:18',1,1,'--- \n:end_index: 1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(3,'\n\n','','2012-08-20 15:35:51',1,1,'--- \n:end_index: 1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(4,'\n\nasdasd asd','<p>asdasd asd</p>','2012-08-20 15:36:03',1,1,'--- \n:end_index: 11\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(5,NULL,'','2012-08-20 15:55:18',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(6,NULL,'','2012-08-20 15:55:50',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(7,NULL,'','2012-08-20 15:56:07',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(8,NULL,'','2012-08-20 16:01:50',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(9,NULL,'','2012-08-20 16:02:07',2,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(10,NULL,'','2012-08-20 19:16:59',NULL,1,'--- \n:end_index: -1\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n'),(11,'\n\ntesf asd asd asd lorem s ','<p>tesf asd asd asd lorem s</p>','2012-08-21 08:33:35',1,1,'--- \n:end_index: 26\n:children: []\n\n:name: \n:start_index: 0\n:heading_level: 0\n');
+/*!40000 ALTER TABLE `wikis` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-08-21 11:45:20

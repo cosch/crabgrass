@@ -1,0 +1,10 @@
+<%- description=I18n.t(:trash_description,
+      :undelete => content_tag(:b, I18n.t(:undelete_from_trash)),
+      :destroy => content_tag(:b, I18n.t(:destroy_page_via_shred))) %>
+<%= render :partial => 'common/title_box', :locals => {:title => I18n.t(:trash)} %>
+
+<br/>
+
+<% form_tag({:controller => 'me/trash', :action => 'update', :path => params[:path]}, {:id => 'trash_form'}) do -%>
+  <%= render :partial => 'pages/list', :locals => {:full_width => true} %>
+<% end %>

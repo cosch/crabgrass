@@ -119,6 +119,7 @@ de:
   browse_groups: "{{groups_type}} durchstöbern"
   browse_groups_desc: "Hier ist eine alphabetisch sortierte Liste aller {{groups_type}}. Du kannst diese Liste nach dem Ort filtern, um {{groups_type}} in deiner Nähe zu finden."
   buttons_list_label: Aktion
+  calendar: "Kalender"
   cancel: Abbrechen
   cancel_button: Abbrechen
   cancel_link: Abbrechen

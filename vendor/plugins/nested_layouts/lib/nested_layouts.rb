@@ -9,7 +9,7 @@ module ActionView #:nodoc:
       # ('app/views/' by default).
       def inside_layout(layout, &block)
         layout = layout.include?('/') ? layout : "layouts/#{layout}"
-        @template.instance_variable_set('@content_for_layout', capture(&block))
+        @template.instance_variable_set('@content_for_layout', capture(&block)) if @content_for_layout!=nil
         concat(
           @template.render( :file => layout, :user_full_path => true ),
           block.binding

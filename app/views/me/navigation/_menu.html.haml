@@ -7,4 +7,5 @@
   = tab_li :tasks, :controller => 'me/tasks', :action => 'pending', :translate => :tasks, :current => tasks_current
   - requests_count = content_tag :span, "", :class => 'count', :id => 'requests_count'
   = tab_li :requests, :after => requests_count
+  = tab_li :calendar, :controller => 'me/pages/calendar', :action => 'list', :translate => :calendar
 = javascript_tag remote_function(:url => flag_counts_path)

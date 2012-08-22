@@ -297,6 +297,10 @@ de:
   error: Fehler
   error_saving_new_order: "Beim speichern der neuen Reihenfolge ist ein Fehler aufgetreten!"
   error_saving_new_order_message: "Fehler beim Speichern einer neuen Anforderung: {{error_message}}"
+  event_page_description: "Events mit Teilnahme und Datum"
+  event_page_display: "Events"
+  events_page_display: "Events"
+
   exception_back_link: Zurück
   exception_bug_report_description: "Bitte beschreibe wie du zu dieser Seite gelangt bist, und erwähne alle weiteren Informationen"
   exception_bug_report_link: "Bugreport abschicken"

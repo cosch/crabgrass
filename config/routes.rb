@@ -56,6 +56,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'me/pages/trash/:action/*path',     :controller => 'me/trash'
   map.connect 'me/pages/trash',                   :controller => 'me/trash'
 
+  map.connect 'me/calendar/:action/*path',     :controller => 'me/calendar'
+
 
   map.with_options(:namespace => 'me/', :path_prefix => 'me') do |me|
     # This should only be index. However ajax calls seem to post not get...

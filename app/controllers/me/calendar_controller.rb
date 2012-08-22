@@ -15,6 +15,7 @@ class Me::CalendarController < Me::BaseController
   end
 
   def list
+    logger.debug "CalendarController list in"
     @path.default_sort('updated_at')
     full_url = url_for(:controller => '/me/pages/calendar', :action => 'list', :path => @path)
 

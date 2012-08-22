@@ -14,7 +14,7 @@ class Me::CalendarController < Me::BaseController
     list
   end
 
-  def list
+  def list_orig
     logger.debug "CalendarController list in"
     @path.default_sort('updated_at')
     full_url = url_for(:controller => '/me/pages/calendar', :action => 'list', :path => @path)
@@ -26,6 +26,28 @@ class Me::CalendarController < Me::BaseController
 #      :title => 'Crabgrass Trash',
 #      :image => avatar_url(:id => @user.avatar_id||0, :size => 'huge')
 #    ) or render(:action => 'list')
+  end
+
+  def list
+    @field = 'updated'
+
+    @months = Page.month_counts(:current_user => (current_user if logged_in?), :field => @field, :event => true)
+    unless @months.empty?
+      @current_year = (Date.today).year
+      @start_year = @months[0]['year'] || @current_year.to_s
+      @current_month = (Date.today).month
+
+      # normalize path
+      unless @path.keyword?('date')
+        @path.merge!( :date => ("%s-%s" % [@months.last['year'], @months.last['month']]) )
+      end
+      @path.set_keyword(@field)
+
+      # find pages
+      @pages = Page.paginate_by_path( @path.merge(:type => 'EventPage'), pagination_params)
+    end
+#    @tags = Tag.for_group(:group => @group, :current_user => (current_user if logged_in?))
+#    search_template('archive')
   end
 
   # post required

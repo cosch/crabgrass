@@ -108,6 +108,7 @@ module PageExtension::Groups
       sql = "SELECT MONTH(pages.#{field}) AS month, YEAR(pages.#{field}) AS year, count(pages.id) as page_count "
       sql += "FROM pages JOIN page_terms ON pages.id = page_terms.page_id "
       sql += "WHERE MATCH(page_terms.access_ids,page_terms.tags) AGAINST ('%s' IN BOOLEAN MODE) AND page_terms.flow IS NULL " % access_filter(options)
+      sql += "AND pages.type = 'EventPage'" if (options[:event])
       sql += "GROUP BY year, month ORDER BY year, month"
       Page.connection.select_all(sql)
     end

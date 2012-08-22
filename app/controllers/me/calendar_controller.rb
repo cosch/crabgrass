@@ -44,7 +44,8 @@ class Me::CalendarController < Me::BaseController
       @path.set_keyword(@field)
 
       # find pages
-      @pages = Page.paginate_by_path( @path.merge(:type => 'EventPage'), pagination_params)
+      @pages = Page.paginate_by_path( @path.merge(:type => 'EventPage'), options_for_me.merge(pagination_params))
+#      add_user_participations(@pages) if logged_in?
     end
 #    @tags = Tag.for_group(:group => @group, :current_user => (current_user if logged_in?))
 #    search_template('archive')

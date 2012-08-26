@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  has_event_calendar :start_at_field  => 'starts_at', :end_at_field => 'ends_at'
 
   has_many :pages, :as => :data
   format_attribute :description
@@ -21,4 +22,7 @@ class Event < ActiveRecord::Base
     self.description
   end
 
+  def name
+    self.description
+  end
 end

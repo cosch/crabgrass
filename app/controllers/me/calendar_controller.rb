@@ -11,8 +11,14 @@ class Me::CalendarController < Me::BaseController
   end
 
   def index
-    list
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+
+    @shown_month = Date.civil(@year, @month)
+
+    @event_strips = Event.event_strips_for_month(@shown_month)
   end
+
 
   def list_orig
     logger.debug "CalendarController list in"
@@ -28,7 +34,7 @@ class Me::CalendarController < Me::BaseController
 #    ) or render(:action => 'list')
   end
 
-  def list
+  def list_new
     @field = 'updated'
 
     @months = Page.month_counts(:current_user => (current_user if logged_in?), :field => @field, :event => true)
@@ -50,6 +56,20 @@ class Me::CalendarController < Me::BaseController
 #    @tags = Tag.for_group(:group => @group, :current_user => (current_user if logged_in?))
 #    search_template('archive')
   end
+
+  def list
+    @month = (params[:month] || Time.zone.now.month).to_i
+    @year = (params[:year] || Time.zone.now.year).to_i
+
+    @shown_month = Date.civil(@year, @month)
+
+    @event_strips = Event.event_strips_for_month(@shown_month)
+
+    # To restrict what events are included in the result you can pass additional find options like this:
+    #
+    # @event_strips = Event.event_strips_for_month(@shown_month, :include => :some_relation, :conditions => 'some_relations.some_column = true')
+    #
+   end
 
   # post required
   def update

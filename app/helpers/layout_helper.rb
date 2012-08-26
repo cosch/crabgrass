@@ -71,6 +71,7 @@ module LayoutHelper
 
     lines << themed_stylesheet_link_tag('screen.css',css_prefix_path)
     lines << stylesheet_link_tag('icon_png')
+    lines << stylesheet_link_tag('event_calendar')
     lines << optional_stylesheet_tag(css_prefix_path)
     lines << '<style type="text/css">'
     #lines << context_styles
@@ -132,7 +133,7 @@ module LayoutHelper
   # However, autocomplete uses very little of the controls.js code, which in turn
   # should not need the effects.js at all. So, with a little effort, effects and
   # controls could be moved to extra.
-  MAIN_JS = {:main => ['prototype', 'application', 'modalbox', 'effects', 'controls', 'autocomplete']}
+  MAIN_JS = {:main => ['prototype', 'application', 'modalbox', 'effects', 'controls', 'autocomplete', 'event_calendar']}
 
   # extra js that we might sometimes need
   EXTRA_JS = {:extra => ['dragdrop', 'builder', 'slider']}

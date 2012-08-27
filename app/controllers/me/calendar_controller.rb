@@ -106,7 +106,7 @@ class Me::CalendarController < Me::BaseController
 
   def context
     super
-    add_context I18n.t(:me_trash_link), url_for(:controller => '/me/pages/trash', :action => 'search', :path => params[:path])
+    add_context I18n.t(:calendar), url_for(:controller => '/me/calendar/', :action => 'list', :path => params[:path])
   end
 
 end

@@ -22,7 +22,11 @@ class Event < ActiveRecord::Base
     self.description
   end
 
-  def name
-    self.description
+  def self.events_for_date_range(start_d, end_d, find_options)    
+    cond = [ "starts_at > ? and ends_at < ?", start_d.to_time.utc, end_d.to_time.utc ]
+    evts=  Event.find(:all, :conditions => cond)
+
+    evts.delete_if { | evt | !User.current.may?(:view, evt.page) }
   end
+
 end

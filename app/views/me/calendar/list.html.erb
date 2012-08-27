@@ -1,36 +1,3 @@
-<%= render :partial => 'common/title_box', :locals => {:title => I18n.t(:calendar)} %>
-
-<br/>
-
-<blockquote>
-<% unless @months.empty? -%>
-  <table class='archive_calendar'>
-    <tr>
-      <td>&nbsp;</td>
-      <%- '1'.upto('12') do |month| -%>
-        <td><b><%= month %></b></td>
-      <%- end -%>
-    </tr>
-    <%- @start_year.upto(@current_year.to_s) do |year| -%>
-    <tr>
-      <td><b><%= year %></b></td>
-      <%- '1'.upto('12') do |month| -%>
-        <td>
-          <%- if month_data = @months.detect {|a| a['year'] == year and a['month'] == month} -%>
-            <%- klass = @path.first_arg_for('date') == "#{year}-#{month}" ? 'invert' : '' -%>
-	    <%= link_to month_data["page_count"], group_search_url(:action => 'archive', :path => [@field, 'date', "#{year}-#{month}"]), :class => klass %>
-          <%- else -%>
-            &nbsp;
-          <%- end -%>
-        </td>
-      <%- end -%>
-    </tr>
-    <%- end -%>
-  </table>
-<% end -%>
-</blockquote>
-
-<br/>
 
  <%= event_calendar %> 
 

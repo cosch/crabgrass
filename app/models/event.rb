@@ -26,12 +26,16 @@ class Event < ActiveRecord::Base
     cond = [ "starts_at > ? and ends_at < ?", start_d.to_time.utc, end_d.to_time.utc ]
     evts=  Event.find(:all, :conditions => cond)
 
-    evts.delete_if { | evt | !User.current.may?(:view, evt.page) }
-    group = find_options[:group]
+    user = find_options[:user]
+    if (user) then
+      evts.delete_if { | evt | !user.may?(:view, evt.page) }
+    end
 
+    group = find_options[:group]
     if (group) then 
       evts.delete_if { | evt | !group.may?(:view,evt.page) } 
     end
+
     evts
   end
 

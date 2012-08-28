@@ -153,16 +153,16 @@ ActionController::Routing::Routes.draw do |map|
     group.resources :menu_items
   end
 
-  map.connect 'groups/:action/:id', :controller => 'groups', :action => /search|archive|discussions|tags|trash|pages/
-  map.connect 'groups/:action/:id/*path', :controller => 'groups', :action => /search|archive|discussions|tags|trash|pages/
+  map.connect 'groups/:action/:id', :controller => 'groups', :action => /search|archive|discussions|tags|trash|pages|calendar/
+  map.connect 'groups/:action/:id/*path', :controller => 'groups', :action => /search|archive|discussions|tags|trash|pages|calendar/
 
   map.resources :networks, :collection => {:autocomplete => :get} do |network|
     network.resources :pages, :only => :new
     network.resources :geo_locations, :only => :index
   end
 
-  map.connect 'networks/:action/:id', :controller => 'networks', :action => /search|archive|discussions|tags|trash/
-  map.connect 'networks/:action/:id/*path', :controller => 'networks', :action => /search|archive|discussions|tags|trash/
+  map.connect 'networks/:action/:id', :controller => 'networks', :action => /search|archive|discussions|tags|trash|calendar/
+  map.connect 'networks/:action/:id/*path', :controller => 'networks', :action => /search|archive|discussions|tags|trash|calendar/
 
   ## for maps
   map.resources :geo_locations

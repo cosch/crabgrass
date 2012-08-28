@@ -27,6 +27,12 @@ class Event < ActiveRecord::Base
     evts=  Event.find(:all, :conditions => cond)
 
     evts.delete_if { | evt | !User.current.may?(:view, evt.page) }
+    group = find_options[:group]
+
+    if (group) then 
+      evts.delete_if { | evt | !group.may?(:view,evt.page) } 
+    end
+    evts
   end
 
 end

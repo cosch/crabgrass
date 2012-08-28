@@ -17,6 +17,7 @@ module Groups::BasePermission
     may_list_memberships?(group)
   end
   alias_method :may_list_groups_group?, :may_people_group?
+  alias_method :may_calendar_group?, :may_people_group?
 
 
   def may_update_group?(group = @group)

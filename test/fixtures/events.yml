@@ -1,3 +1,7 @@
+<% now = Time.now.utc %>
+<% month = 3600*24*31 %>
+
+# 3 in this month
 <% 1.upto(3) do |n| %>
 <% event_name = "event#{n}" %>
 <%= event_name %>:
@@ -8,4 +12,20 @@
   is_cancelled: false
   is_tentative: false
   location: <%= event_name %> location
+  starts_at: <%= (now+3600).to_datetime %>
+  ends_at: <%= (now+7200).to_datetime %>
+<% end %>
+
+<% 4.upto(5) do |n| %>
+<% event_name = "event#{n}" %>
+<%= event_name %>:
+  id: <%= n %>
+  description: <%= event_name %> description
+  description_html: <p><%= event_name %> description</p>
+  is_all_day: false
+  is_cancelled: false
+  is_tentative: false
+  location: <%= event_name %> location	
+  starts_at: <%= (now+month+3600).to_datetime %>
+  ends_at: <%= (now+month+7200).to_datetime %>
 <% end %>

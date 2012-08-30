@@ -187,3 +187,9 @@ rate_many_<%= id+=1 %>:
   page_id: 217
   user_id: 8 # red
   access: 2
+
+event_<%= id+=1 %>:
+  id: <%= id %>
+  page_id: 204
+  user_id: 4 # blue
+  access: 1

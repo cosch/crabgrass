@@ -71,3 +71,9 @@ networkpage_<%=i%>:
   group_id: 300<%= rand(3)+1 %>
   access: 1
 <% end %>
+
+groupeventpage_1:
+  id: 60
+  page_id: 205 #event4 1st in next month
+  group_id: 3 #rainbow
+  access: 1

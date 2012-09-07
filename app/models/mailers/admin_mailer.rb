@@ -3,25 +3,10 @@ class AdminMailer < Mailer
     setup(options)
     setup_user(user)
 
-    if Conf.gpg_emails_only
+#    @subject += options[:subject]
+#    body :message => options[:body]
 
-	@subject = I18n.t(:gpg_subject)
-	encrypt = has_matching_keyring(user)
-        
-        if encrypt
-	   keyring = encrypt[:keyring]
-           fingerprint = encrypt[:fingerprint]
-	   body :message => keyring.encrypt_to(fingerprint, options[:body])
-        elsif
-           body :message => I18n.t(:gpg_missing_key)
-        end
-
-    else
-
-      @subject += options[:subject]
-      body :message => options[:body]
-
-    end
+    ensure_encryption user, options
   end
 
 

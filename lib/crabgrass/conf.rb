@@ -66,7 +66,7 @@ class Conf
   cattr_accessor :sites
   cattr_accessor :secret
   cattr_accessor :paranoid_emails
-  cattr_accessor :gpg_emails
+  cattr_accessor :gpg_emails_only
   cattr_accessor :ensure_page_owner
   cattr_accessor :default_page_access
   cattr_accessor :text_editor
@@ -91,7 +91,7 @@ class Conf
   def self.chat?; self.chat; end
   def self.limited?; self.limited; end
   def self.paranoid_emails?; self.paranoid_emails; end
-  def self.gpg_emails?; self.gpg_emails; end
+  def self.gpg_emails_only?; self.gpg_emails_only; end
   def self.tracking?; self.tracking; end
   def self.ensure_page_owner?; self.ensure_page_owner; end
   def self.social_activity_dropdown?; self.social_activity_dropdown; end

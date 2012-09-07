@@ -1845,3 +1845,7 @@ en:
       words_connector: ", "
       two_words_connector: " and "
       last_word_connector: ", and "
+
+  # gpg only string
+  gpg_subject: "Notice"
+  gpg_missing_key: "If you want to recieve email content please set up a public gpg key in your account. It needs to match your registration email."

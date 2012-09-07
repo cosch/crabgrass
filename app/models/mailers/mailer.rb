@@ -100,14 +100,14 @@ class Mailer < ActionMailer::Base
 
       #make sure we have plain text
       content_type "text/plain"
-      render_message(layout,@body) if layout
+      rendered = render_message(layout,@body) if layout
       transfer_encoding = "base64"
 
       encrypt = has_matching_keyring(user)      
       if encrypt
          keyring = encrypt[:keyring]
          fingerprint = encrypt[:fingerprint]
-         @body = keyring.encrypt_to(fingerprint, @body)
+         @body = keyring.encrypt_to(fingerprint, rendered)
       elsif
          @body = I18n.t(:gpg_missing_key)
       end

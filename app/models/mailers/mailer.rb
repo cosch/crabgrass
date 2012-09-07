@@ -71,6 +71,7 @@ class Mailer < ActionMailer::Base
     default_url_options[:only_path] = false
   end
 
+
   def has_matching_keyring(user)
     ret = nil
     return ret if !user.email
@@ -90,7 +91,28 @@ class Mailer < ActionMailer::Base
     ret
   end
 
-  def ensure_encryption( )
+
+  def ensure_encryption_if_needed( user , layout=nil )
+
+    if Conf.gpg_emails_only
+
+      @subject = I18n.t(:gpg_subject)
+
+      #make sure we have plain text
+      content_type "text/plain"
+      render_message(layout,@body) if layout
+      transfer_encoding = "base64"
+
+      encrypt = has_matching_keyring(user)      
+      if encrypt
+         keyring = encrypt[:keyring]
+         fingerprint = encrypt[:fingerprint]
+         @body = keyring.encrypt_to(fingerprint, @body)
+      elsif
+         @body = I18n.t(:gpg_missing_key)
+      end
+
+    end
 
   end
 end

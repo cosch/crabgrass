@@ -15,6 +15,8 @@ module Mailers::Page
     subject I18n.t(:email_notice_subject, :title => @page.title)
     body({ :page => @page, :notice_message => notice_message, :from => @current_user,
      :to => user, :link => page_link, :code => code })
+
+    ensure_encryption_if_needed user, "share_notice"
   end
 
 end

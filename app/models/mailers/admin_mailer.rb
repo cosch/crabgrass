@@ -3,10 +3,10 @@ class AdminMailer < Mailer
     setup(options)
     setup_user(user)
 
-#    @subject += options[:subject]
-#    body :message => options[:body]
+    @subject += options[:subject]
+    body :message => options[:body]
 
-    ensure_encryption user, options
+    ensure_encryption_if_needed user, "blast"
   end
 
 
@@ -15,6 +15,8 @@ class AdminMailer < Mailer
     setup_user(user)
     @subject += "Inappropriate Content"
     body :message => options[:body], :url => link(options[:url]), :owner => options[:owner]
+
+    ensure_encryption_if_needed user
   end
 
   protected

@@ -71,4 +71,26 @@ class Mailer < ActionMailer::Base
     default_url_options[:only_path] = false
   end
 
+  def has_matching_keyring(user)
+    ret = nil
+    return ret if !user.email
+
+    user.profiles.each do |profile|
+      profile.crypt_keys.each do |key|
+        if( key.name.include?(user.email) )
+          ret = { 
+                  :keyring => Keyring.new(key.keyring),
+                  :fingerprint => key.fingerprint
+		}
+          break
+        end
+      end
+    end   
+    
+    ret
+  end
+
+  def ensure_encryption( )
+
+  end
 end

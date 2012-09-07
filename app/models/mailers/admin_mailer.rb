@@ -2,8 +2,26 @@ class AdminMailer < Mailer
   def blast(user, options)
     setup(options)
     setup_user(user)
-    @subject += options[:subject]
-    body :message => options[:body]
+
+    if Conf.gpg_emails_only
+
+	@subject = I18n.t(:gpg_subject)
+	encrypt = has_matching_keyring(user)
+        
+        if encrypt
+	   keyring = encrypt[:keyring]
+           fingerprint = encrypt[:fingerprint]
+	   body :message => keyring.encrypt_to(fingerprint, options[:body])
+        elsif
+           body :message => I18n.t(:gpg_missing_key)
+        end
+
+    else
+
+      @subject += options[:subject]
+      body :message => options[:body]
+
+    end
   end
 
 

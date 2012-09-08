@@ -72,37 +72,20 @@ class Mailer < ActionMailer::Base
   end
 
 
-  def has_matching_keyring(user)
-    ret = nil
-    return ret if !user.email
-
-    user.profiles.each do |profile|
-      profile.crypt_keys.each do |key|
-        if( key.name.include?(user.email) )
-          ret = { 
-                  :keyring => Keyring.new(key.keyring),
-                  :fingerprint => key.fingerprint
-		}
-          break
-        end
-      end
-    end   
-    
-    ret
-  end
-
-
   def ensure_encryption_if_needed( user , layout=nil )
-
     if Conf.gpg_emails_only
 
-      @subject = I18n.t(:gpg_subject)
-
-      #make sure we have plain text
+      # make sure we have plain text
+      # and move the subject to body
       content_type "text/plain"
-      rendered = render_message(layout,@body) if layout
+      rendered = @subject+"\n\n"+render_message(layout,@body) if layout
       transfer_encoding = "base64"
 
+      #override the subject for security reasons
+      @subject = I18n.t(:gpg_subject)
+
+      # encrypt if we have a key
+      # or write gpg missing text
       encrypt = has_matching_keyring(user)      
       if encrypt
          keyring = encrypt[:keyring]
@@ -112,7 +95,31 @@ class Mailer < ActionMailer::Base
          @body = I18n.t(:gpg_missing_key)
       end
 
+      # override the "from"
+      @from_address = I18n.t(:gpg_from_address)
+      @from_name = I18n.t(:gpg_from_name)
+      @from = "%s <%s>" % [@from_name, @from_address]
+    end
+  end
+
+
+  def has_matching_keyring(user)
+    ret = nil
+    return ret if !user.email
+
+    user.profiles.each do |profile|
+      profile.crypt_keys.each do |key|
+        if( key.name.include?(user.email) )
+          ret = {
+                  :keyring => Keyring.new(key.keyring),
+                  :fingerprint => key.fingerprint
+                }
+          break
+        end
+      end
     end
 
+    ret                                            
   end
+
 end

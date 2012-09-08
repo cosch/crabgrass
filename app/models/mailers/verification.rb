@@ -10,6 +10,9 @@ module Mailers::Verification
     body({:site_title => @site.title,
             :link => account_verify_url(:token => token.value),
             :host => @host})
+
+    # we can not encrypt the signup mail verification yet 
+    # as we do not have a key here
   end
 
 end

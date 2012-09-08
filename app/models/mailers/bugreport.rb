@@ -12,7 +12,7 @@ module Mailers::Bugreport
     content_type "text/plain"
 
     # we try to map the dev email to an account
-    Ã# or stop sending it
+    # or stop sending it
     if Conf.gpg_emails_only
       user = User.find_by_email(options[:dev_email])
       if user

@@ -16,7 +16,7 @@ module Mailers::Bugreport
     if Conf.gpg_emails_only
       user = User.find_by_email(options[:dev_email])
       if user
-        ensure_encryption_if_needed user, "request_to_join_us.erb"
+        ensure_encryption_if_needed user, "send_bugreport.text.plain.erb"
       else
         raise Exception
       end

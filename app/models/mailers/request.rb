@@ -11,6 +11,19 @@ module Mailers::Request
     subject I18n.t(:group_invite_subject, :group => request.group.display_name)
     body({ :from => @current_user, :group => request.group, :link => accept_link,
        :group_home => group_home })
+    
+    # in gpg only mode we have a problem here
+    # this can be used to send emails to any address
+    # so we do not know the keys for
+    # we try to map the mail to a user or raise an exception
+    if Conf.gpg_emails_only
+      user = User.find_by_email(request.email)
+      if user
+        ensure_encryption_if_needed user, "request_to_join_us.erb" 
+      else
+        raise Exception
+      end
+    end
   end
 
   def request_to_destroy_our_group(request, user)
@@ -31,6 +44,8 @@ module Mailers::Request
 
     @body[:user] = @created_by
     @body[:group] = @group
+
+    ensure_encryption_if_needed user, "request_to_destroy_our_group.text.plain.erb"
   end
 
 end

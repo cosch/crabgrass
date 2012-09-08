@@ -78,7 +78,7 @@ class Mailer < ActionMailer::Base
       # make sure we have plain text
       # and move the subject to body
       content_type "text/plain"
-      rendered = "from:"+@from+"\n\nsubject:"+@subject+"\n\n"+render_message(layout,@body) if layout
+      rendered = "from: "+@from+"\n\nsubject: "+@subject+"\n\n"+render_message(layout,@body) if layout
       transfer_encoding = "base64"
 
       #override the subject for security reasons

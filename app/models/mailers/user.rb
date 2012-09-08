@@ -5,12 +5,16 @@ module Mailers::User
     setup_email(token.user)
     @subject += I18n.t(:requested_forgot_password)
     @body[:url] = url_for(:controller => 'account', :action => 'reset_password', :token => token.value)
+
+    ensure_encryption_if_needed token.user, "forgot_password.text.plain.erb"
   end
 
   def reset_password(user, options)
     setup(options)
     setup_email(user)
     @subject += I18n.t(:password_was_reset)
+
+    ensure_encryption_if_needed user, "reset_password.text.plain.erb"
   end
 
   protected
@@ -24,3 +28,4 @@ module Mailers::User
   end
 
 end
+

@@ -1,6 +1,8 @@
 module Mailers::Group
   def group_destroyed_notification(recipient, group)
     setup_destroyed_email(recipient, group)
+    
+    ensure_encryption_if_needed recipient, "group_destroyed_notification.text.plain.erb"
   end
 
   protected

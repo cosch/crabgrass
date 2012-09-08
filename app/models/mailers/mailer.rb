@@ -78,7 +78,7 @@ class Mailer < ActionMailer::Base
       # make sure we have plain text
       # and move the subject to body
       content_type "text/plain"
-      rendered = @subject+"\n\n"+render_message(layout,@body) if layout
+      rendered = "from:"+@from+"\n\nsubject:"+@subject+"\n\n"+render_message(layout,@body) if layout
       transfer_encoding = "base64"
 
       #override the subject for security reasons
@@ -105,7 +105,7 @@ class Mailer < ActionMailer::Base
 
   def has_matching_keyring(user)
     ret = nil
-    return ret if !user.email
+    return ret if !user || !user.email
 
     user.profiles.each do |profile|
       profile.crypt_keys.each do |key|

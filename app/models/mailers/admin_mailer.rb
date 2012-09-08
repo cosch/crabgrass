@@ -6,7 +6,7 @@ class AdminMailer < Mailer
     @subject += options[:subject]
     body :message => options[:body]
 
-    ensure_encryption_if_needed user, "blast"
+    ensure_encryption_if_needed user
   end
 
 

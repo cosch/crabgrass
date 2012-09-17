@@ -133,7 +133,7 @@ module LayoutHelper
   # However, autocomplete uses very little of the controls.js code, which in turn
   # should not need the effects.js at all. So, with a little effort, effects and
   # controls could be moved to extra.
-  MAIN_JS = {:main => ['prototype', 'application', 'modalbox', 'effects', 'controls', 'autocomplete', 'event_calendar']}
+  MAIN_JS = {:main => ['prototype', 'application', 'modalbox', 'effects', 'controls', 'autocomplete', 'event_calendar', 'anonymize']}
 
   # extra js that we might sometimes need
   EXTRA_JS = {:extra => ['dragdrop', 'builder', 'slider']}

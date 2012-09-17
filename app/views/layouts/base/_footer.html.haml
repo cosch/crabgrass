@@ -4,4 +4,10 @@
       = render :partial => 'layouts/language'
     %div{:style =>'margin: 1em auto; width: 73px; height: 33px; background: url(/images/crabgrass-xsmall.png)'}
     = call_hook :footer_content
+
+- if Conf::use_anonym_to
+  %script{:type => "text/javascript"}
+    :plain
+      auto_anonymize();
+
 = debug_info

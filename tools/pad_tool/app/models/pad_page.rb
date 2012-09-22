@@ -1,6 +1,5 @@
 
 class PadPage < Page
-#  attr_accessor :tag_list
   alias_method :pad, :data
   before_create :create_pad
 

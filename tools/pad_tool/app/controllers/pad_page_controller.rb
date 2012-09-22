@@ -5,6 +5,9 @@ class PadPageController < BasePageController
   before_filter :refresh_epl_session, :only => [:show, :print]
   before_filter :fetch_user_participation  
 
+  def show
+  end
+
   ##
   ## PROTECTED
   ##
@@ -36,11 +39,23 @@ class PadPageController < BasePageController
   end
 
   # :nodoc: load the correct page Class
-  def page_type
-    PadPage
-  end
+#  def page_type
+#    PadPage
+#  end
 
   def fetch_user_participation
     @upart = @page.participation_for_user(current_user) if @page and current_user
+  end
+
+  def build_page_data
+  #  unless params[:asset][:uploaded_data].any?
+  #    @page.errors.add_to_base I18n.t(:no_data_uploaded)
+  #    raise ActiveRecord::RecordInvalid.new(@page)
+  #  end
+
+  #  asset = Asset.build params[:asset]
+  #  @page[:title] = asset.basename unless @page[:title].any?
+  #  asset
+    @pad
   end
 end

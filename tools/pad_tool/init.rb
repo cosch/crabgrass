@@ -12,3 +12,5 @@ PageClassRegistrar.add(
   :order => 1
 )
 
+self.load_once = false
+

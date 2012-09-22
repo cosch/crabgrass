@@ -943,4 +943,16 @@ ActiveRecord::Schema.define(:version => 20110426233945) do
 
   add_index "wikis", ["user_id"], :name => "index_wikis_user_id"
 
+  create_table "pads", :force => true do |t|
+    t.string "name"
+    t.string "url"
+    t.text "text"
+    t.integer "revision", :default => 0
+    t.integer "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pads", ["page_id"], :name => "index_pads_on_page_id", :unique => true
+
 end

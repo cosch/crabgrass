@@ -17,8 +17,8 @@ class PadPageController < BasePageController
   protected
 
   def refresh_epl_session
-    debugger
     @pad = @page.pad
+    @pad.sync! 
     session[:ep_sessions] ||= {}
     sess = @pad.update_session(session[:ep_sessions])
     session[:ep_sessions][@pad.name] = sess.id 
@@ -51,14 +51,6 @@ class PadPageController < BasePageController
   end
 
   def build_page_data
-  #  unless params[:asset][:uploaded_data].any?
-  #    @page.errors.add_to_base I18n.t(:no_data_uploaded)
-  #    raise ActiveRecord::RecordInvalid.new(@page)
-  #  end
-
-  #  asset = Asset.build params[:asset]
-  #  @page[:title] = asset.basename unless @page[:title].any?
-  #  asset
     @pad
   end
 end

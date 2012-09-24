@@ -85,13 +85,19 @@ class EPL
   # Prolong Etherpad-Lite session for current_user
   # @return (Object) the existing, or renewed session object
   def keep_session_alive!(ep_session)
-    ep_session.delete if ep_session.expired?
-    ep_session ||= group.create_session(author, ETHERPAD_SESSION_DURATION)
+    begin 
+      ep_session.delete if ep_session.expired?
+      ep_session ||= group.create_session(author, ETHERPAD_SESSION_DURATION)
+    rescue ArgumentError => boom
+      ep_session = group.create_session(author, ETHERPAD_SESSION_DURATION)
+    end 
   end
 
   # Create a new pad and return it
   def create_pad!
     @pad = group.pad(@container.pad_id)
+    @pad.sync! #if pad_revised?
+    @pad
   end
 
   # Get page's group mapping from EPL DB

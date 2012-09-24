@@ -4,4 +4,5 @@
 
 <%= render :partial => 'pad_page/tabs' %>
 
-
+<%= @pad.text[0,3000] %>
+<%= "..." if @pad.text.length>3000 %>

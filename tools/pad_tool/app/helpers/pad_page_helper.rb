@@ -15,9 +15,9 @@ module PadPageHelper
   #
   # @param (Object) page the PadPage instance
   # @return (String) the iframe HTML tag for that pad
-  def etherpad_iframe(page = @page, w = "100%", h = 400)
+  def etherpad_iframe(page = @page, w = "100%", h = 800)
     if flash[:messages].empty?
-      "<iframe src=\"#{pad_url(page)}\" width=\"#{w}\" height=\"#{h}\"></iframe>\n"
+      "<iframe src=\"#{pad_url(page)}\" float:left width=\"#{w}\" height=\"#{h}\"></iframe>\n"
     else
       content_tag(:div, "<h3>Etherpad Service Down</h3><p>The collaborative editor is not available (#{Time.now.to_s(:db)}). Please try again later.</p>", :class => "fieldWithErrors")
     end

@@ -8,6 +8,9 @@ class PadPageController < BasePageController
   def show
   end
 
+  def edit
+  end
+
   ##
   ## PROTECTED
   ##

@@ -96,8 +96,6 @@ class EPL
   # Create a new pad and return it
   def create_pad!
     @pad = group.pad(@container.pad_id)
-    @pad.sync! #if pad_revised?
-    @pad
   end
 
   # Get page's group mapping from EPL DB

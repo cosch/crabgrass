@@ -4,8 +4,12 @@ module PadPageHelper
   # @param (Object) page the PadPage instance
   # @return (String) URL of the pad for iframe
   def pad_url(page = @page, query = true)
-    u = URI.parse(request.url)
-    u.port  = 9001
+    if Conf.pad_url
+      u = URI.parse(Conf.pad_url)
+    else
+      u = URI.parse(request.url)
+      u.port  = 9001
+    end
     u.path  = "/p/#{page.ep_full_pad_name}"
     u.query = "showChat=false&userName=#{URI.escape(current_user.name)}" if query
     u.to_s

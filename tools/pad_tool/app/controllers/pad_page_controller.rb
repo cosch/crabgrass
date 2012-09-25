@@ -33,12 +33,18 @@ class PadPageController < BasePageController
   # Set the EtherpadLite session cookie.
   # This will automatically be picked up by the jQuery plugin's iframe.
   def save_ep_session_cookie(sess_id)
+    if Conf.pad_url
+      custom_url = true
+      uri = URI.parse(Conf.pad_url)
+      ssl = (uri.scheme=='https')
+      host = uri.host
+    end
     cookies['sessionID'] = {
       :value    => sess_id,
-      :domain   => request.host,
+      :domain   => (custom_url ? host : request.host),
       :path     => '/',
       :expires  => Time.now + 60 * EPL::ETHERPAD_SESSION_DURATION,
-      :secure   => request.ssl?
+      :secure   => (custom_url ? ssl : request.ssl?)
     }
   end
 

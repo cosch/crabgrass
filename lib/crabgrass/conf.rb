@@ -72,6 +72,7 @@ class Conf
   cattr_accessor :text_editor
   cattr_accessor :use_full_geonames_data
   cattr_accessor :use_anonym_to
+  cattr_accessor :pad_url
 
   # set automatically from site.admin_group
   cattr_accessor :super_admin_group_id

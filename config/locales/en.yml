@@ -1851,3 +1851,7 @@ en:
   gpg_missing_key: "If you want to recieve email content please set up a public gpg key in your account. It needs to match your registration email."
   gpg_from_address: "do.not@reply.net"
   gpg_from_name: "Do not Reply"
+
+  pad_page_description: "Create a collaborative editor for a group."
+  pad_page_display: "Pad"
+

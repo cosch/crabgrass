@@ -9,7 +9,7 @@ PageClassRegistrar.add(
   :class_display_name => 'pad',
   :class_description => :pad_class_description,
   :class_group => 'text',
-  :order => 1
+  :order => 5
 )
 
 self.load_once = false

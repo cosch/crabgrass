@@ -37,7 +37,12 @@ class PadPageController < BasePageController
       custom_url = true
       uri = URI.parse(Conf.pad_url)
       ssl = (uri.scheme=='https')
-      host = uri.host
+
+      # filter all subdomains from host to be able to set a cookie for whole domain
+      # "www.somedomain.com" -> ".somedomain.com"
+      # which would fit a cookie for a pad at "pad.somedomain.com"
+      re = /^(?:(?>[a-z0-9-]*\.)+?|)([a-z0-9-]+\.(?>[a-z]*(?>\.[a-z]{2})?))$/i
+      host = "."+uri.host.gsub(re, '\1').strip      
     end
     cookies['sessionID'] = {
       :value    => sess_id,

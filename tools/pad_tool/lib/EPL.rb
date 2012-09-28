@@ -111,7 +111,7 @@ class EPL
   # Connect to local Etherpad-Lite service
   # @return (Object) EtherpadLite.instance
   def connect!
-    host = Conf.pad_url ? Conf.pad_url : :local
+    host = :local #Conf.pad_url ? Conf.pad_url : :local
     EtherpadLite.connect(host, ETHERPAD_API_KEY.chomp)
   end
 

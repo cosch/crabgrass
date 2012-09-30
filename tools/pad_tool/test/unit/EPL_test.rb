@@ -3,10 +3,11 @@ require 'test/unit'
 require 'mocha'
 require File.dirname(__FILE__) + '/../../lib/EPL'
 
-ETHERPAD_API_KEY = "the api key"
+ETHERPAD_API_KEY = IO.read(File.expand_path('../../../../../config/etherpad-api-key.txt', __FILE__))
+
 # We mock the etherpad lib...
-class EtherpadLite
-end
+#class EtherpadLite
+#end
 
 class EplTest < Test::Unit::TestCase
 
@@ -22,12 +23,25 @@ class EplTest < Test::Unit::TestCase
   def test_initialization
     container = stub :group_mapping => "a-fine-group", :pad_id => "pad_id_yeah", :new_record? => true
     user = stub :id => 123, :name => "user-name"
+    
     EtherpadLite.expects(:connect).with(:local, ETHERPAD_API_KEY).returns(ep_instance = stub)
+    #ep_instance = EtherpadLite.connect(:local, ETHERPAD_API_KEY)
+    #assert_not_equal nil, ep_instance, "epl instance should be not null"
+
     ep_instance.expects(:author).with(user.id, {:name => user.name}).returns(ep_author = stub)
+    #ep_author=ep_instance.author(user.id,{:name => user.name})
+    #assert_equal ep_author.name, user.name, "author should have user.name"
+
     ep_instance.expects(:group).with(container.group_mapping).returns(ep_group = stub)
+    #ep_group=ep_instance.group(container.group_mapping)
+    #assert_equal ep_group.mapper, container.group_mapping, "group mapping should match" 
+
     ep_group.expects(:pad).returns(ep_pad = stub(:id => "pad id"))
-    ep = EPL.new(container, user)
-    assert_equal ep_pad, ep.pad
+    #ep_pad=ep_group.pad( "pad id" )
+    #assert_equal ep_pad.name, "pad id", "name should match"
+
+#    ep = EPL.new(container, user)
+#    assert_equal ep_pad, ep.pad
   end
 
   def test_no_session_for_a_new_record

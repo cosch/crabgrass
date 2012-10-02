@@ -2,6 +2,11 @@
   <% profile = user.profiles.visible_by(current_user) %>
     <tr>
       <td>
+        <% if user.online? %> 
+          <div class='small_icon status_online_16'> 
+        <% else %>
+          <div class='small_icon status_offline_16'>
+        <% end %> 
         <div <% if user.online? %>class="online"<% end %> style='text-align: center;'>
         <%=  
           link_to "#{avatar_for user, 'small'}",

@@ -62,8 +62,7 @@
   <% unless profile.crypt_keys.empty? -%>
     <% profile.crypt_keys.each do |key| -%>
       <div class='small_icon gpg_16'>
-        <em>GPG:</em>
-        <%=h key.key[0..23] %>
+        <%= link_to(h(key.name), {:controller => 'profile', :action => 'download_gpg_key', :profile => profile.id, :key => key.id}) %>
       </div> 
     <% end -%>
   <% end -%>

@@ -84,6 +84,17 @@ class ProfileController < ApplicationController
     end
   end
 
+  def download_gpg_key 
+    profile = Profile.find params[:profile]
+    key = nil
+
+    profile.crypt_keys.each do |k| 
+       key = k if k.id.to_s==params[:key]
+    end
+   
+    send_data( key.key, :type => 'text/ascii', :filename => "#{key.name}.asc" )
+  end
+
   protected
 
   def fetch_profile
@@ -129,6 +140,8 @@ class ProfileController < ApplicationController
   def authorized?
     if params[:action] =~ /^add_/
       true
+    elsif params[:action] == "download_gpg_key"
+       true
     else
       may_action?(params[:action], @entity)
     end

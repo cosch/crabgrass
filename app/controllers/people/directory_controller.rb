@@ -20,7 +20,7 @@ class People::DirectoryController < People::BaseController
   end
 
   def show
-    if id?(:friends, :peers, :browse, :recent)
+    if id?(:friends, :peers, :browse, :recent, :online)
       self.send(params[:id])
     else
       render_permission_denied
@@ -63,8 +63,16 @@ class People::DirectoryController < People::BaseController
     render :action => 'recent'
   end
 
-  protected
+  def online
+    @users = User.on(current_site).online.alphabetized(@letter_page).paginate(pagination_params)
+    # what letters can be used for pagination
+    @pagination_letters = (User.on(current_site).online.logins_only).collect{|u| u.login.first.upcase}.uniq
+    @second_nav = 'all'
+    @third_nav = 'online'
+  end
 
+  protected
+  
   def authorized?
     true
   end

@@ -68,6 +68,15 @@ class User < ActiveRecord::Base
     opts
   }
 
+  named_scope :online, lambda {
+    opts = {
+      :order => 'login ASC'
+    }    
+    opts[:conditions] = ['last_seen_at > ?', 10.minutes.ago]
+
+    opts
+  }
+
   named_scope :named_like, lambda {|filter|
     { :conditions => ["users.login LIKE ? OR users.display_name LIKE ?",
       filter, filter] }

@@ -5,7 +5,13 @@
 # file for security reasons and to make it easy to enable/disable sites.
 #
 
-if Site.count == 0
+begin
+  count = Site.count
+rescue
+  count = 0
+end
+
+if count == 0
   puts 'Skipping site configuration: database has no sites.'
 else
   ids = Site.load_all_from_config(Conf.sites)

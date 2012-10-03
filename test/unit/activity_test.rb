@@ -11,8 +11,8 @@ class ActivityTest < ActiveSupport::TestCase
 
     act = FriendActivity.social_activities_for_groups_and_friends(u1).find(:first)
     assert act, 'there should be a friend activity created'
-    assert_equal u1, act.user
-    assert_equal u2, act.other_user
+    assert_equal u2, act.user
+    assert_equal u1, act.other_user
   end
 
   def test_user_destroyed
@@ -127,9 +127,11 @@ class ActivityTest < ActiveSupport::TestCase
     u2.destroy
 
     assert act, 'there should be a friend activity created'
-    assert_equal nil, act.other_user
-    assert_equal 'iguana', act.other_user_name
-    assert_equal '<span class="user">iguana</span>', act.user_span(:other_user)
+    assert_equal nil, act.user
+    assert_equal 'iguana', act.user_name
+    assert_equal '<span class="user">iguana</span>', act.user_span(:user)
+    assert_equal 'kangaroo', act.other_user_name
+    assert_equal '<span class="user">kangaroo</span>', act.user_span(:other_user)
   end
 
   def test_avatar

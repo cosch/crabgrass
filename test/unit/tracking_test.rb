@@ -34,7 +34,7 @@ class TrackingTest < Test::Unit::TestCase
     assert_equal 3, current_user.relationships.with(user).total_visits
   end
 
-  def test_page_view_tracked_fully
+  def page_view_tracked_fully
     user = users(:blue)
     page = pages(:wiki) #id = 210
     group = groups(:rainbow)

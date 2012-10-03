@@ -550,13 +550,13 @@ ActiveRecord::Schema.define(:version => 20110426233945) do
     t.integer  "photo_id",               :limit => 11
     t.integer  "layout_id",              :limit => 11
     t.boolean  "may_see",                                      :default => true
-    t.boolean  "may_see_committees"
-    t.boolean  "may_see_networks"
+    t.boolean  "may_see_committees"			       :default => true
+    t.boolean  "may_see_networks"			       :default => true
     t.boolean  "may_see_members"
     t.boolean  "may_request_membership"
     t.integer  "membership_policy",      :limit => 11,         :default => 0
-    t.boolean  "may_see_groups"
-    t.boolean  "may_see_contacts"
+    t.boolean  "may_see_groups"				       :default => true
+    t.boolean  "may_see_contacts"                              :default => true
     t.boolean  "may_request_contact",                          :default => true
     t.boolean  "may_pester",                                   :default => true
     t.boolean  "may_burden"

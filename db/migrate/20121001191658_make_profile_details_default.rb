@@ -5,6 +5,7 @@ class MakeProfileDetailsDefault < ActiveRecord::Migration
       t.change_default(:may_see_networks, true)
       t.change_default(:may_see_groups, true)
       t.change_default(:may_see_contacts, true)
+      t.change_default(:may_pester,true)
     end
   end
 
@@ -14,6 +15,7 @@ class MakeProfileDetailsDefault < ActiveRecord::Migration
       t.change_default(:may_see_networks, false)
       t.change_default(:may_see_groups, false)
       t.change_default(:may_see_contacts, false)
+      t.change_default(:may_pester,false)
     end
   end
 end

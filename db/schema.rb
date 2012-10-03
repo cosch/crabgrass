@@ -550,15 +550,15 @@ ActiveRecord::Schema.define(:version => 20110426233945) do
     t.integer  "photo_id",               :limit => 11
     t.integer  "layout_id",              :limit => 11
     t.boolean  "may_see",                                      :default => true
-    t.boolean  "may_see_committees"			       :default => true
-    t.boolean  "may_see_networks"			       :default => true
+    t.boolean  "may_see_committees",			       :default => true
+    t.boolean  "may_see_networks",			       :default => true
     t.boolean  "may_see_members"
     t.boolean  "may_request_membership"
     t.integer  "membership_policy",      :limit => 11,         :default => 0
-    t.boolean  "may_see_groups"				       :default => true
-    t.boolean  "may_see_contacts"                              :default => true
+    t.boolean  "may_see_groups",			       :default => true
+    t.boolean  "may_see_contacts",                             :default => true
     t.boolean  "may_request_contact",                          :default => true
-    t.boolean  "may_pester",                                   :default => true
+    t.boolean  "may_pester"                                   
     t.boolean  "may_burden"
     t.boolean  "may_spy"
     t.string   "language",               :limit => 5
@@ -942,17 +942,5 @@ ActiveRecord::Schema.define(:version => 20110426233945) do
   end
 
   add_index "wikis", ["user_id"], :name => "index_wikis_user_id"
-
-  create_table "pads", :force => true do |t|
-    t.string "name"
-    t.string "url"
-    t.text "text"
-    t.integer "revision", :default => 0
-    t.integer "page_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "pads", ["page_id"], :name => "index_pads_on_page_id", :unique => true
 
 end

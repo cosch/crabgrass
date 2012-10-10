@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+RAILS_HOME = File.expand_path(File.join(File.dirname(__FILE__),".."))
+
+require 'rubygems'
+require 'whenever'
+
+case ARGV[0]
+when 'start'
+  exec "whenever --update-crontab #{RAILS_HOME}/config/schedule.rb"
+when 'stop'
+  exec "whenever --clear-crontab #{RAILS_HOME}/config/schedule.rb"
+when 'status'
+  exec "crontab -l"
+else
+  puts "make sure you run this as the deployment user"
+  puts " start -> adds our jobs to crontab"
+  puts " stop -> removes out jobs from crontab"
+end
+

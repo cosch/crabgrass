@@ -65,7 +65,7 @@ module Groups::BasePermission
   end
 
   def may_show_public_profile?(group = @group)
-    group.profiles.public.may_see?
+    logged_in? and group.profiles.public.may_see?
   end
 
   def may_update_profile?(group = @group)

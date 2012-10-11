@@ -108,7 +108,7 @@ class PersonController < ApplicationController
     if logged_in?
       # if the user is viewing their own profile, let them choose which one.
       if current_user == @user
-        params[:profile] ||= 'public'
+        params[:profile] ||= 'private'
         if params[:profile] == 'private'
           @profile = @user.profiles.private
         elsif params[:profile] == 'public'

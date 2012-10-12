@@ -4,8 +4,8 @@ class GalleryTest < ActionController::IntegrationTest
   def test_create_gallery_with_images
     login 'purple'
 
-    visit '/me/pages'
-    click_link I18n.t(:contribute_content_link) 
+    visit '/me/dashboard'
+    click_link 'Create Page'
     click_link 'Gallery'
 
     # within is not necessary (since the fields names are unique)

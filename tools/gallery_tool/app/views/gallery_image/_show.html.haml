@@ -1,8 +1,0 @@
-= render :partial => 'gallery_navigation'
-
-%h2=h @showing.image.caption
-.gallery-item
-  = render :partial => 'show_image'
-  = call_hooks :show_gallery_image_content
-
-%span= gallery_display_image_position

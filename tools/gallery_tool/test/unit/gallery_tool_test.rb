@@ -2,7 +2,7 @@ require 'test/unit'
 require File.dirname(__FILE__) + '/../../../../test/test_helper'
 
 class GalleryToolTest < Test::Unit::TestCase
-  fixtures :users, :pages, :assets, :groups, :group_participations, :memberships
+  fixtures :users, :pages, :assets
 
   def test_add_and_remove
     user = User.find 4 # we need a user so we can check permissions.
@@ -35,7 +35,7 @@ class GalleryToolTest < Test::Unit::TestCase
   def test_adding_attachment
     user = users(:blue)
     gal = Gallery.create! :title => 'kites', :user => user
-    asset = Asset.create_from_params(:uploaded_data => upload_data('image.png'))
+    asset = Asset.make(:uploaded_data => upload_data('image.png'))
 
     assert_nothing_raised do
       gal.add_image!(asset, user)

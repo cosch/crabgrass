@@ -12,4 +12,10 @@
   = render :partial => 'gallery_image/edit'
 = call_hooks :edit_gallery_image_content
 
-= render :partial => 'close_and_reload_button'
+%div{:align => 'right'}
+  = spinner('close_button')
+  #close_button
+    = button_to_function(I18n.t(:close_button), "$('close_button').hide(); $('close_button_spinner').show(); window.location='"+page_url(@page,:action => 'edit')+"';")
+
+
+

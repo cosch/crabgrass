@@ -1232,3 +1232,7 @@ de:
 
 #    formats:
 #      calendar_header: '%B %Y'
+
+  archive: "Archiv"
+  archive_wiki_description: "Eine Wiki Seite als Archiv - linkt eure wichtigen Sachen hier!"
+

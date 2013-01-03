@@ -1,0 +1,12 @@
+<%
+  #form.heading I18n.t(:create_page_information, :page_class => I18n.t(:page))
+  form.row do |r|
+    r.label I18n.t(:title)
+    r.input text_field('page', 'title', :size => 40)
+  end
+  form.row do |r|
+    r.input text_field('page', 'name', :size => 10, :hidden => 'true')
+    r.info I18n.t(:archive_wiki_description)
+  end
+%>
+

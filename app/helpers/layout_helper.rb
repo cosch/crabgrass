@@ -72,6 +72,7 @@ module LayoutHelper
     lines << themed_stylesheet_link_tag('screen.css',css_prefix_path)
     lines << stylesheet_link_tag('icon_png')
     lines << stylesheet_link_tag('event_calendar')
+    lines << stylesheet_link_tag('timeline')
     lines << optional_stylesheet_tag(css_prefix_path)
     lines << '<style type="text/css">'
     #lines << context_styles

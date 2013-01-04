@@ -1,0 +1,130 @@
+<% # check http://almende.github.com/chap-links-library/js/timeline/doc/#Data_Format %>
+
+<%= javascript_include_tag "timeline" %>
+
+<style type="text/css">
+        /* Styles for the page */
+    html, body {
+        font: 10pt arial;
+    }
+
+    #mytimeline {
+    }
+
+    #new {
+        position: absolute;
+        left: 25px;
+        top: 8px;
+
+        text-transform: uppercase;
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+        text-decoration: none;
+    }
+
+        /* Custom styles for the Timeline */
+    div.timeline-frame {
+        border-color: #5D99C3;
+
+        border-radius: 5px;
+        -moz-border-radius: 5px; /* For Firefox 3.6 and older */
+    }
+    div.timeline-axis {
+        border-color: #5D99C3;
+
+        background-color: #5D99C3;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5D99C3', endColorstr='#3A6DA0'); /* for IE */
+        background: -webkit-gradient(linear, left top, left bottom, from(#5D99C3), to(#3A6DA0)); /* for webkit browsers */
+        background: -moz-linear-gradient(top,  #5D99C3,  #3A6DA0); /* for firefox 3.6+ */
+    }
+    div.timeline-axis-grid {
+    }
+    div.timeline-groups-axis {
+        border-color: #5D99C3;
+    }
+    div.timeline-axis-text {
+        color: white;
+    }
+    div.timeline-groups-text {
+        color: #4D4D4D;
+    }
+    div.timeline-event {
+        color: white;
+        border-radius: 5px;
+    }
+    div.timeline-event-content {
+        padding: 5px;
+    }
+
+    div.blue {
+	background-color: #5D99C3; 
+        border-color: #3A6DA0;     
+	overflow: hidden; 
+    }
+</style>
+
+<script>
+var timeline;
+var data;
+
+// Called when the Visualization API is loaded.
+function drawVisualization() {
+
+   // specify options
+   var options = {
+                'width':  '100%',
+		'minHeight': 300,
+                'height': 'auto',
+                'editable': false, 
+                'selectable': true,
+		'enableKeys': true,
+                'start': new Date(<%=@year%>,1,1),
+                'end': new Date(<%=@year%>,12,31),
+                'showNavigation' : false,
+		'axisOnTop': true,
+                'eventMargin': 10,  // minimal margin between events
+                'eventMarginAxis': 0, // minimal margin beteen events and the axis
+//                 groupsHeight : "200px",
+                 groupsChangeable : true,
+                 groupsOnRight: false,
+		'style': 'dot'
+   };
+   
+   // Instantiate our timeline object.
+   timeline = new links.Timeline(document.getElementById('mytimeline'));
+                    
+   // Draw our timeline with the created data and options
+   timeline.draw(data, options);
+   }
+
+
+ data = [
+ <% @event_strips.each do |e| %>
+     {
+      'start': new Date(<%= e.starts_at.year%>, <%= e.starts_at.month-1%>, <%= e.starts_at.day%>, <%= e.starts_at.hour%>, <%= e.starts_at.min%>),
+    <% #  'end': new Date(<%= e.ends_at.year%>, <%= e.ends_at.month-1%>, <%= e.ends_at.day%>, <%= e.ends_at.hour%>, <%= e.ends_at.min%>), %>
+    <% #  'content' : '<a "<%=page_url(e.page)%>"><%=e.page.title%></a><p><%=e.page.summary%></p>', %>
+      'content' : '<p><%=e.page.title%></p>',
+      <% if e.page.group %>
+      'groupa' : '<%= e.page.group.name %>',
+      <% else %> 
+      'groupa' : '<%= e.page.owner.login %>',
+      <% end %>
+      'className' : 'blueaa' 
+     },	
+ <%
+    end
+ %>
+ ];
+</script>
+
+<div id="mytimeline" style="background-color: #FAFAFA;"></div>
+
+<%= update_page_tag do |page|
+ page << "drawVisualization();"
+end %>
+
+<br/>
+
+<%= render :partial => 'pages/list', :locals => {:full_width => true} %>

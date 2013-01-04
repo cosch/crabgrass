@@ -32,6 +32,19 @@ class Me::CalendarController < Me::BaseController
     #
   end
 
+  def timeline
+    @year = (params[:year] || Time.zone.now.year).to_i
+
+    startd = Date.new(@year,1,1)
+    endd= Date.new(@year,12,31)
+
+    cond = { :user => User.current }
+
+    @event_strips = Event.events_for_date_range( startd, endd ,cond)
+
+    @second_nav = 'timeline'
+  end
+
   protected
 
   def context

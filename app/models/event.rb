@@ -39,4 +39,11 @@ class Event < ActiveRecord::Base
     evts
   end
 
+  def to_json(*a)
+    {
+      'start' => starts_at.strftime("%a, %d %b %Y %H:%M:%S %Z") ,
+      'end' => ends_at.strftime("%a, %d %b %Y %H:%M:%S %Z"),
+      'content' => "Test ahll"
+    }.to_json(*a)
+  end
 end

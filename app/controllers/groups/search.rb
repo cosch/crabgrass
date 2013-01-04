@@ -124,6 +124,21 @@ module Groups::Search
     search_template('calendar')
   end
 
+  def timeline
+    @second_nav = 'timeline'
+    #@third_nav = 'all_pages'
+      
+    @year = (params[:year] || Time.zone.now.year).to_i
+    startd = Date.new(@year,1,1)
+    endd= Date.new(@year,12,31)
+   
+    cond = { :group => @group }
+    @event_strips = Event.events_for_date_range( startd, endd ,cond)
+    
+    search_template('timeline')
+  end 
+
+
   private
 
 # this is not being used right now

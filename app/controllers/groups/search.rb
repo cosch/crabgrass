@@ -111,7 +111,7 @@ module Groups::Search
   def calendar
     #@pages = Page.paginate_by_path(search_path, options_for_group(@group).merge(pagination_params))
     #@tags  = Tag.for_group(:group => @group, :current_user => (current_user if logged_in?))
-    #@second_nav = 'calendar'
+    @second_nav = 'calendar'
     #@third_nav = 'all_pages'
 
     @month = (params[:month] || Time.zone.now.month).to_i

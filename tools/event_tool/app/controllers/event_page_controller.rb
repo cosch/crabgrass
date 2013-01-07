@@ -14,9 +14,9 @@ class EventPageController < BasePageController
     @attendies =  UserParticipation.find(:all, :conditions => {:page_id => @page.id, :attend => TRUE})
   end
 
-#  def edit
+  def edit
 
-#  end
+  end
 
 #  def update
 #    @page.attributes = params[:page]
@@ -29,9 +29,9 @@ class EventPageController < BasePageController
 #  end
 
   def build_page_data
-    if params[:event][:is_all_day]
-      params[:hour_start] = "09:00"
-      params[:hour_end] = "17:00"
+    if params[:event][:is_all_day]==true
+      params[:hour_start] = "0:01"
+      params[:hour_end] = "23:59"
       params[:date_end] = params[:date_start]
     end
 

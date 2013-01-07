@@ -8,5 +8,5 @@
   - requests_count = content_tag :span, "", :class => 'count', :id => 'requests_count'
   = tab_li :requests, :after => requests_count
   = tab_li :calendar, :controller => 'me/calendar', :action => 'list', :translate => :calendar
-  = tab_li :timeline, :controller => 'me/calendar', :action => 'timeline', :translate => :timeline
+  = tab_li :timeline, :controller => 'me/timeline', :action => 'timeline', :translate => :timeline
 = javascript_tag remote_function(:url => flag_counts_path)

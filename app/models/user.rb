@@ -230,6 +230,27 @@ class User < ActiveRecord::Base
     rating_for(rateable) ? true : false
   end
 
+  # send mail if unread messages are waiting 
+  # used on background jobs (lib/crons)
+  def send_unread_msg_mail
+    return if !wants_notification_email?    
+
+    self.unread_mail_send_with = 0 if self.unread_mail_send_with==nil
+
+    if self.discussions.unread.count>self.unread_mail_send_with
+      puts "send for user:" +login+":#{self.unread_mail_send_with} last send"
+      Mailer.deliver_unread_messages(self)
+      self.update_unread_send
+    end
+
+  end
+
+  # update unread message count, for which mail was send
+  # updated on sending and on message reading so new mail gets send if new msg come in
+  def update_unread_send
+    self.unread_mail_send_with = self.discussions.unread.count
+    self.save!
+  end
 
   ##
   ## PERMISSIONS

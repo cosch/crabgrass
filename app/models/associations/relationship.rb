@@ -20,6 +20,7 @@ class Relationship < ActiveRecord::Base
     end
 
     self.update_attribute(:unread_count, new_unread_count) if new_unread_count
+    self.user.update_unread_send if new_unread_count==0
   end
 
   def get_or_create_discussion

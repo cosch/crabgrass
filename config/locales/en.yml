@@ -1823,3 +1823,6 @@ en:
   archive_wiki_description: "A Wiki Page to act as Group Archive - link your important stuff here!"
   
   timeline: "Timeline"
+
+  unread_msg_waiting: "Unread Message(s) waiting"
+  unread_msg_text: "{{user}} has {{count}} unread messages waiting."

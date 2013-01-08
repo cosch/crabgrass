@@ -1236,3 +1236,8 @@ de:
   archive: "Archiv"
   archive_wiki_description: "Eine Wiki Seite als Archiv - linkt eure wichtigen Sachen hier!"
 
+  timeline: "Zeitleiste"
+
+  unread_msg_waiting: "Ungelesene Nachricht(en) warte(t/n)"
+  unread_msg_text: "{{user}} hat {{count}} ungelesene Nachricht(en)."
+

@@ -17,6 +17,16 @@ module Mailers::User
     ensure_encryption_if_needed user, "reset_password.text.plain.erb"
   end
 
+  def unread_messages(user)
+    @recipients = "#{user.email}"
+    @from = "system"
+    @sent_on = Time.now
+    @body[:user] = user
+    @subject = I18n.t(:unread_msg_waiting)
+
+    ensure_encryption_if_needed user, "deliver_unread_messages.text.plain.erb"
+  end
+
   protected
 
   def setup_email(user)

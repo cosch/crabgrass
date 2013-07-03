@@ -1232,7 +1232,18 @@ de:
 
 #    formats:
 #      calendar_header: '%B %Y'
+  # gpg only string
+  gpg_subject: "Notiz"
+  gpg_missing_key: "Wenn du wirklich mails empfangen willst, füge deinem account einen pgp public key hinzu. Dieser muss zu deiner Regristrations Email passen."
+  gpg_from_address: "do.not@reply.net"
+  gpg_from_name: "Do not Reply"
 
+  pad_page_description: "Ein kollaborativer Editor"
+  pad_page_display: "Pad"
+
+  Home: "Home"
+  online: "Online"
+  
   archive: "Archiv"
   archive_wiki_description: "Eine Wiki Seite als Archiv - linkt eure wichtigen Sachen hier!"
 

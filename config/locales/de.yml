@@ -398,7 +398,7 @@ de:
   group_successfully_updated: "Die Gruppe wurde aktualisiert."
   group_summary: "Kurzinformation zu dieser {{group}}."
   group_wiki: "Wiki der Gruppe"
-  groups: Gruppen
+  groups: (Orts)Gruppen
   have_your_say: "Sag auch was!"
   height: Höhe
   hide_tips: "Verstecke Tipps"
@@ -508,14 +508,14 @@ de:
   membership_leave_message: "Du wurdest von {{group}} entfernt"
   menu_admin: Admin
   menu_chat: Chat
-  menu_groups: Gruppen
+  menu_groups: (Orts)Gruppen
   menu_home: Start
   menu_items: Navigation
   menu_link_account: Konto
   menu_link_logout: Abmelden
   menu_me: Ich
   menu_moderation: Moderation
-  menu_networks: Netzwerke
+  menu_networks: Gesamt Organisation
   menu_people: Personen
   message: Nachricht
   message_cant_perster_error: "Nur Freund_Innen können {{user}} Nachrichten senden"

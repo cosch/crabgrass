@@ -19,7 +19,9 @@ end
 def unread_messages
   puts "unread_messages"
   User.all.each do |u| 
-    u.send_unread_msg_mail
+    #if (u.discussions.unread>0)
+      u.send_unread_msg_mail
+    #end
   end  
 end  
 

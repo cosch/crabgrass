@@ -1826,3 +1826,5 @@ en:
 
   unread_msg_waiting: "Unread Message(s) waiting"
   unread_msg_text: "{{user}} has {{count}} unread messages waiting."
+
+  help: "Help"

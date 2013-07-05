@@ -144,7 +144,11 @@ module MenuHelper
   end
 
   def admin_option
-    top_menu I18n.t(:menu_admin), '/admin', :active => @active_tab == :admin, :id => 'menu_admin'
+    menu I18n.t(:menu_admin), '/admin', :active => @active_tab == :admin, :id => 'menu_admin'
+  end
+
+  def help_option
+    menu I18n.t(:help), "/"+Conf.user_help_group, :active => @active_tab == nil, :id => nil
   end
 
   def split_entities_into_columns(entities)

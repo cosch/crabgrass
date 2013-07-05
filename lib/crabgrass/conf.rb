@@ -73,6 +73,7 @@ class Conf
   cattr_accessor :use_full_geonames_data
   cattr_accessor :use_anonym_to
   cattr_accessor :pad_url
+  cattr_accessor :user_help_group
 
   # set automatically from site.admin_group
   cattr_accessor :super_admin_group_id
@@ -94,6 +95,7 @@ class Conf
   def self.limited?; self.limited; end
   def self.paranoid_emails?; self.paranoid_emails; end
   def self.gpg_emails_only?; self.gpg_emails_only; end
+  def self.user_help_group?; self.user_help_group!=nil; end
   def self.tracking?; self.tracking; end
   def self.ensure_page_owner?; self.ensure_page_owner; end
   def self.social_activity_dropdown?; self.social_activity_dropdown; end

@@ -6,7 +6,7 @@
   - # the controllers currently bomb out in bad ways if you are not logged in.
   - if logged_in?
     - if current_site.network
-      = home_option
+      = home_option     
     = me_option
     = people_option
     = groups_option
@@ -16,7 +16,8 @@
       = chat_option
     - if may_admin_site?
       = admin_option
+    - if Conf.user_help_group?
+      = help_option       
   - else
-    = home_option
   = call_hook :top_menu
 

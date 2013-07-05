@@ -193,6 +193,9 @@ class User < ActiveRecord::Base
     self.email.any?
   end
 
+  def should_see_help?
+    false
+  end
   ##
   ## ASSOCIATED DATA
   ##

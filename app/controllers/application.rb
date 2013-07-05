@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_timezone
   before_filter :header_hack_for_ie6
   before_filter :redirect_unverified_user
+  before_filter :redirect_new_user
   before_render :context_if_appropriate
 
   session :session_secure => Conf.enforce_ssl
@@ -77,6 +78,13 @@ class ApplicationController < ActionController::Base
   def redirect_unverified_user
     if logged_in? and current_user.unverified?
       redirect_to account_url(:action => 'unverified')
+    end
+  end
+
+  def redirect_new_user
+    if Conf.user_help_group? and current_user.should_see_help?
+      name, path = name_and_url_for_group(Conf.user_help_group)
+    #  redirect_to path
     end
   end
 

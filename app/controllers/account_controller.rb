@@ -183,6 +183,9 @@ class AccountController < ApplicationController
     params[:redirect] = nil unless params[:redirect].any?
     if current_user.unverified?
       redirect_to :action => 'unverified'
+    elsif Conf.user_help_group? and current_user.should_see_help?
+      name, path = name_and_url_for_group(Conf.user_help_group)
+      redirect_to path
     else
       redirect_to(params[:redirect] || current_site.login_redirect(current_user))
     end

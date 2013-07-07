@@ -140,15 +140,15 @@ module MenuHelper
   end
 
   def chat_option
-    top_menu I18n.t(:menu_chat), '/chat', :active => @active_tab == :chat, :id => 'menu_chat'
+    menu I18n.t(:menu_chat), '/chat', :active => @active_tab == :chat, :id => 'menu_chat'
   end
 
   def admin_option
-    top_menu I18n.t(:menu_admin), '/admin', :active => @active_tab == :admin, :id => 'menu_admin'
+    menu I18n.t(:menu_admin), '/admin', :active => @active_tab == :admin, :id => 'menu_admin'
   end
 
   def help_option
-    top_menu I18n.t(:help), "/"+Conf.user_help_group, :active => @active_tab == nil, :id => nil
+    menu I18n.t(:help), "/"+Conf.user_help_group, :active => @active_tab == nil, :id => nil
   end
 
   def split_entities_into_columns(entities)

@@ -11,7 +11,7 @@ module PadPageHelper
       u.port  = 9001
     end
     u.path  = "/p/#{page.ep_full_pad_name}"
-    u.query = "showChat=false&userName=#{URI.escape(current_user.name)}" if query
+    u.query = "showChat=true&userName=#{URI.escape(current_user.name)}" if query
     u.to_s
   end
 

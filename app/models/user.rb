@@ -194,14 +194,19 @@ class User < ActiveRecord::Base
   end
 
   def should_see_help?
-    should = false
+    if !last_seen_at
+      return true
+    end  
+
     if created_at > 30.days.ago
       if last_seen_at < 3.days.ago
-        should = true
+        return true
       end
-    end
-    should
+    end  
+
+    false 
   end
+
   ##
   ## ASSOCIATED DATA
   ##

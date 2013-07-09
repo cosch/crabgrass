@@ -74,6 +74,7 @@ class Conf
   cattr_accessor :use_anonym_to
   cattr_accessor :pad_url
   cattr_accessor :user_help_group
+  cattr_accessor :cg_prod_log_level
 
   # set automatically from site.admin_group
   cattr_accessor :super_admin_group_id
@@ -169,6 +170,8 @@ class Conf
     ['default_page_access'].each do |conf_var|
       self.send(conf_var+'=', self.send(conf_var).to_sym)
     end
+  
+    self.set_cg_prod_log_level 0 if !self.cg_prod_log_level
 
     return true
   end

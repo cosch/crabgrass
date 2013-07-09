@@ -44,14 +44,14 @@ begin
 rescue LoadError => exc
   # i guess there is no syslog_logger
   config.logger = ActiveSupport::BufferedLogger.new(config.log_path)
-  config.logger.level = Logger::INFO
+  config.logger.level = Conf.cg_prod_log_level
 end
 
 # the default log level for production should be to only log warnings.
 config.log_level = :warn
 if defined? Engines
   Engines.logger = ActiveSupport::BufferedLogger.new(config.log_path)
-  Engines.logger.level = Logger::WARN
+  Engines.logger.level = Conf.cg_prod_log_level
 end
 
 #ANALYZABLE_PRODUCTION_LOG = "#{RAILS_ROOT}/log/production.log"

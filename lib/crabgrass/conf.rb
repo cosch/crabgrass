@@ -67,6 +67,7 @@ class Conf
   cattr_accessor :secret
   cattr_accessor :paranoid_emails
   cattr_accessor :gpg_emails_only
+  cattr_accessor :gpg_from_address
   cattr_accessor :ensure_page_owner
   cattr_accessor :default_page_access
   cattr_accessor :text_editor

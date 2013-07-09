@@ -96,7 +96,7 @@ class Mailer < ActionMailer::Base
       end
 
       # override the "from"
-      @from_address = I18n.t(:gpg_from_address)
+      @from_address = Conf.gpg_from_address
       @from_name = I18n.t(:gpg_from_name)
       @from = "%s <%s>" % [@from_name, @from_address]
     end

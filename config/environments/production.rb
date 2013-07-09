@@ -43,6 +43,8 @@ begin
   config.logger = SyslogLogger.new
 rescue LoadError => exc
   # i guess there is no syslog_logger
+  config.logger = ActiveSupport::BufferedLogger.new(config.log_path)
+  config.logger.level = Logger::INFO
 end
 
 # the default log level for production should be to only log warnings.

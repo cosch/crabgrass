@@ -19,7 +19,7 @@ module PadPageHelper
   #
   # @param (Object) page the PadPage instance
   # @return (String) the iframe HTML tag for that pad
-  def etherpad_iframe(page = @page, w = "100%", h = 800)
+  def etherpad_iframe(page = @page, w = "100%", h = 600)
     if flash[:messages].empty?
       "<iframe src=\"#{pad_url(page)}\" float:left width=\"#{w}\" height=\"#{h}\"></iframe>\n"
     else

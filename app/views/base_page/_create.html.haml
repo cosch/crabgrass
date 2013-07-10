@@ -14,7 +14,7 @@
     = hidden_field_tag 'page_class', @page_class
     = hidden_field_tag('group', params[:group]) if params[:group]
     = Formy.form do |form|
-      - if params[:page][:title]=='archive'
+      - if params[:page][:title]==params[:group]+'archive'
         = render :partial => 'base_page/create/static_information', :locals => {:form => form}
       - else
         = render :partial => 'base_page/create/information', :locals => {:form => form}

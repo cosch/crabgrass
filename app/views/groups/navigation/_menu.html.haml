@@ -7,4 +7,4 @@
   - if may_update_group?
     = menu((I18n.t(:administration)), group_search_url(:action => 'edit'), active_tab_for_nav(@second_nav, 'administration'))
 %div{:align=>'right'}
-  = menu((I18n.t(:archive)).capitalize, url_for_group(@group)+"/archive", active_tab_for_nav(@second_nav, 'archive'))
+  = menu((I18n.t(:archive)).capitalize, url_for_group(@group)+"/#{@group.name}archive", active_tab_for_nav(@second_nav, 'archive'))

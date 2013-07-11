@@ -11,5 +11,6 @@ if @to_me_count > 0
 end
 
 if @messages_count > 0
+  page.replace_html 'menu_messages_count', "("+@messages_count.to_s+")"
   page.replace_html 'messages_count', @messages_count
 end

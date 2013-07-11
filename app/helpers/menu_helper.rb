@@ -80,6 +80,19 @@ module MenuHelper
   end
 
   def me_option
+    id = 'menu_me'
+    menu_heading = content_tag(:span,
+      link_to_active(I18n.t(:menu_me).upcase+msg_option, "/pages/my_work", @active_tab == :me),
+      :class => 'topnav'
+    ) 
+    content_tag(:li,
+      [menu_heading, menu_items('me')].combine("\n"),
+      :class => ['menu', (@active_tab == :me && 'current')].combine,
+      :id => id
+    )
+  end
+
+  def me_option_old
     top_menu(
       I18n.t(:menu_me),
       "/pages/my_work",
@@ -88,6 +101,10 @@ module MenuHelper
       :id => 'menu_me'
     )
   end
+
+  def msg_option
+    content_tag :span, "(0)", :class => 'count', :id => 'menu_messages_count'
+  end 
 
   def people_option
     if logged_in? and current_user and !current_user.friends.empty?

@@ -1,5 +1,9 @@
 class Chat::FlagCountsController < ApplicationController
 
+  def index
+    create
+  end
+
   def create
     return false unless request.xhr?
     @channel_users = channel_users_cnt

@@ -83,7 +83,7 @@ module UserExtension::Users
 #        :uniq => true} do
 #          def online
 #            find( :all,
-#              :conditions => ['users.last_seen_at > ?',3.minutes.ago],
+#              :conditions => ['users.last_seen_at > ?',10.minutes.ago],
 #              :order => 'users.last_seen_at DESC' )
 #          end
 #          def logins_only

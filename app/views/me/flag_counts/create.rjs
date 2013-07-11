@@ -10,6 +10,10 @@ if @to_me_count > 0
   page.replace_html 'requests_count', @to_me_count
 end
 
+if @online_users > 0
+  page.replace_html 'menu_onlineusers_count', "("+@online_users.to_s+")"
+end
+
 if @channel_users > 0
   page.replace_html 'menu_chatusers_count', "("+@channel_users.to_s+")"  
 end

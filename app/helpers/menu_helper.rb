@@ -107,8 +107,11 @@ module MenuHelper
     else
       menu_items_people = nil
     end
-    top_menu(
+    top_menu_cnt( 
       I18n.t(:menu_people),
+      begin
+        content_tag :span, "(0)", :class => 'count', :id => 'menu_onlineusers_count'
+      end,
       '/people/directory',
       :active => @active_tab == :people,
       :menu_items => menu_items_people,

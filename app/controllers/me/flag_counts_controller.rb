@@ -7,6 +7,7 @@ class Me::FlagCountsController < Me::BaseController
     @unread_count  = Page.count_by_path('unread',  options_for_inbox(:do => { :what => { :we =>  :want}}))
     discussions = current_user.discussions.with_some_posts.unread
     @messages_count = discussions.count
+    @online_users = User.on(current_site).online.count
     @channel_users = channel_users_cnt
     render :layout => false
   end

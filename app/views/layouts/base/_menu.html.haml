@@ -21,5 +21,4 @@
   - else
   = call_hook :top_menu
 = javascript_tag remote_function(:url => flag_counts_path)
-= javascript_tag remote_function(:url => '/chat/flagcounts')
 = periodically_call_remote(:url => flag_counts_path, :frequency => '60')

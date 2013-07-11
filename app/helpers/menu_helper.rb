@@ -87,7 +87,7 @@ module MenuHelper
     top_menu_cnt(
       I18n.t(:menu_me),
       begin 
-	content_tag :span, "(0)", :class => 'count', :id => 'menu_messages_count'
+        content_tag :span, "(0)", :class => 'count', :id => 'menu_messages_count'
       end,
       "/pages/my_work",
       :active => @active_tab == :me,
@@ -147,7 +147,15 @@ module MenuHelper
   end
 
   def chat_option
-    top_menu I18n.t(:menu_chat), '/chat', :active => @active_tab == :chat, :id => 'menu_chat'
+    top_menu_cnt(
+      I18n.t(:menu_chat), 
+      begin 
+        content_tag :span, "(0)", :class => 'count', :id => 'menu_chatusers_count'
+      end,
+      '/chat', 
+      :active => @active_tab == :chat, 
+      :id => 'menu_chat'
+      )
   end
 
   def admin_option

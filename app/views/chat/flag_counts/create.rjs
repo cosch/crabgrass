@@ -1,4 +1,0 @@
-
-if @channel_users > 0
-  page.replace_html 'menu_chatusers_count', "("+@messages_count.to_s+")"  
-end

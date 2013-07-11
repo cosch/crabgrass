@@ -7,7 +7,7 @@
   - if logged_in?
     - if current_site.network
       = home_option     
-    = me_option
+    = me_option_old
     = people_option
     = groups_option
     - if current_site.has_networks?
@@ -21,4 +21,5 @@
   - else
   = call_hook :top_menu
 = javascript_tag remote_function(:url => flag_counts_path)
+= javascript_tag remote_function(:url => "chat/flag_counts")
 = periodically_call_remote(:url => flag_counts_path, :frequency => '60')

@@ -4,11 +4,16 @@
 # Available to all views
 #
 module MenuHelper
+  
+  def top_menu_cnt(label, url, options={})
+    cnt=""
+    top_menu( label, cnt, url, options)
+  end
 
-  def top_menu(label, url, options={})
+  def top_menu(label, cnt, url, options={})
     id = options.delete(:id)
     menu_heading = content_tag(:span,
-      link_to_active(label.upcase, url, options[:active]),
+      link_to_active(label.upcase+cnt, url, options[:active]),
       :class => 'topnav'
     )
     content_tag(:li,
@@ -93,8 +98,9 @@ module MenuHelper
   end
 
   def me_option_old
-    top_menu(
+    top_menu_cnt(
       I18n.t(:menu_me),
+      msg_option,
       "/pages/my_work",
       :active => @active_tab == :me,
       :menu_items => menu_items('me'),

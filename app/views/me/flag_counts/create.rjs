@@ -10,6 +10,10 @@ if @to_me_count > 0
   page.replace_html 'requests_count', @to_me_count
 end
 
+if @channel_users > 0
+  page.replace_html 'menu_chatusers_count', "("+@channel_users.to_s+")"  
+end
+
 if @messages_count > 0
   page.replace_html 'menu_messages_count', "("+@messages_count.to_s+")"
   page.replace_html 'messages_count', @messages_count

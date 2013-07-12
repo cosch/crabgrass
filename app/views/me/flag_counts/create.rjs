@@ -5,7 +5,7 @@
 #   tab_li(:pages, :target => my_work_me_pages_path, :current => (@second_nav == 'pages'),
 #     :after => suffix)
 #end
-
+if logged_in?
 if @to_me_count > 0
   page.replace_html 'requests_count', @to_me_count
 end
@@ -21,4 +21,5 @@ end
 if @messages_count > 0
   page.replace_html 'menu_messages_count', "("+@messages_count.to_s+")"
   page.replace_html 'messages_count', @messages_count
+end
 end

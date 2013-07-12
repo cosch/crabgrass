@@ -20,5 +20,6 @@
       = help_option       
   - else
   = call_hook :top_menu
-= javascript_tag remote_function(:url => flag_counts_path)
-= periodically_call_remote(:url => flag_counts_path, :frequency => '60')
+- if logged_in?
+  = javascript_tag remote_function(:url => flag_counts_path)
+  = periodically_call_remote(:url => flag_counts_path, :frequency => '180')

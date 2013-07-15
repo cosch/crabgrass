@@ -662,7 +662,7 @@ pl:
   save_or_cancel_edit_lock_wiki_error: "To wiki zostało pzrez Ciebie zablokowane. Inni użytkownicy i użytkowniczki nie będę mogły edytować dopóki nie klikniesz na {{save_button}} lub {{cancel_button}} ,by zakończyć edytowanie."
   saved_new_order: "Zapisz nowy porządek!"
   saving_your_changes: "Zapisuję Twoje zmiany..."
-  say_message_button: Powiedz
+  say_message_button: "Say public to all"
   school: Szkoła
   search: Szukaj
   search_headline: Szukaj

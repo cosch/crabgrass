@@ -3,6 +3,6 @@
 %div#say
   - form_tag do
     = hidden_field_tag('id', @user.login, :id => 'recipient_name')
-    = text_area_tag 'post[body]', text, :label =>"toll", :id => 'say_msg', :class => 'textarea', :rows => '5', :onfocus => 'setRows($("say_msg"), 15)', :onblur => 'setRows($("say_msg"), 5)', :style => 'width: 97%'
+    = text_area_tag 'post[body]', :id => 'say_msg', :class => 'textarea', :rows => '5', :onfocus => 'setRows($("say_msg"), 15)', :onblur => 'setRows($("say_msg"), 5)', :style => 'width: 97%'
     = button_to_function I18n.t(:send_button_priv_msg), send_message_function(@user.login), :class => 'say-submit'
 

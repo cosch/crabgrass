@@ -204,6 +204,7 @@ en:
 
   back_button: "Back"
   send_button: "Send"
+  send_button_priv_msg: "Send private Message"
   approve_button: "Approve"
   reject_button: "Reject"
   close_button: "Close"

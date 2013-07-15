@@ -933,6 +933,7 @@ de:
   select_unread: Ungelesen
   select_visible_group_widgets: "Wähle die Widgets, die auf der Gruppenstartseite sichtbar sein sollen"
   send_button: Sende
+  send_button_priv_msg: "Sende private Nachricht"
   send_contact_button: "Sende Kontakteinladung"
   send_contacts_title: "Sende eine Kontakteinladung an {{user}}"
   send_email: "Sende E-Mail"

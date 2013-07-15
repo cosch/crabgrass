@@ -671,6 +671,7 @@ pl:
   see_tips_to_get_started: "Zobacz Podpowiedzi by zacząć"
   select_image_file: "wybierz plik z obrazem"
   send_button: Wyślij
+  send_button_priv_msg: "Wyślij private message"
   send_invites: "wyślij zaproszenia"
   send_invites_button: "Wyślij zaproszenia"
   send_invites_headline: "Wyślij zaproszenia do grupy {{group}}"

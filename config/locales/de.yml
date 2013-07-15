@@ -523,13 +523,13 @@ de:
   message_page_description: "Eine Nachricht an einen oder mehrere Benutzer."
   message_page_display: Nachricht
   message_recipient_name_caption: "An: {{user}}"
-  message_recipient_name_input_caption: "An: Freund_Innen und Peers"
+  message_recipient_name_input_caption: "An: Kontake"
   message_to_self_error: "Selbstgespräche sind nicht möglich"
   message_user_wrote_caption: "{{user}} schrieb:"
   message_you_wrote_caption: "Du hast geschrieben:"
   messages: Nachrichten
   messages_back_to_all: "Zurück zu den Nachrichten"
-  messages_from_label: "Nur Nachrichten anzeigen von:"
+  messages_from_label: "Anzeigen von:"
   messages_mark_as_label: "Markieren als:"
   messages_mark_as_read_link: Gelesen
   messages_mark_as_unread_link: Ungelesen

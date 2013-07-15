@@ -1593,7 +1593,7 @@ en:
   ##
 
   set_status_button: "Update Status"
-  say_message_button: "Say"
+  say_message_button: "Say public to all"
   wall_heading: "Public Message Wall"
   wall_post_button: "Post New Message"
   wall_say_form_submit_caption: "Post to {{user}}'s activity feed"

@@ -929,6 +929,7 @@ es:
   select_unread: "Sin leer"
   select_visible_group_widgets: "Escoge los widgets visibles en la página de entrada de tu grupo"
   send_button: Enviar
+  send_button_priv_msg: "Enviar privado noticias"
   send_contact_button: "Enviar invitación de contacto"
   send_contacts_title: "Enviar invitación de contacto a {{user}}"
   send_email: "Enviar Correo"

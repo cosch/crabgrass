@@ -36,5 +36,9 @@ module PersonHelper
     end
   end
 
+  def send_message_function(default_recipient_name = nil)
+    submit_url = message_posts_path("__ID__")
+    "submitNestedResourceForm('recipient_name', '#{submit_url}', #{default_recipient_name.blank?})"
+  end
 end
 

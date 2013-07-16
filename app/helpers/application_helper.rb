@@ -403,9 +403,11 @@ module ApplicationHelper
 
   def replace_named_periodically_call_remote(options = {})
      variable = options[:variable] ||= 'poller'
-     code = "#{variable}.stop();"
-     frequency = options[:frequency] ||= 10
-     code += "#{variable} = new PeriodicalExecuter(function() {#{remote_function(options)}}, #{frequency})"
+     #code = "replace(frequency) { "
+     code =""
+     code += "#{variable}.stop();"
+     code += "#{variable} = new PeriodicalExecuter(function() {#{remote_function(options)}}, 60)"
+     #code += "}"
      javascript_tag(code)
   end
 end

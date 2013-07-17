@@ -12,6 +12,17 @@ loading_command = %(
 complete = "eval(request.responseText)"
 %>
 
+<%= javascript_tag '
+var chat_user_count = 0;
+
+function set_chat_user_count(count)
+{
+  chat_user_count=count;
+  if( chat_user_count == 1){slower_polling()};
+  if( chat_user_count > 1){normal_polling()};
+}
+'%>
+
 <div id="userlist">
   <%= render :partial => 'chat/userlist' %>
 </div>
@@ -46,14 +57,13 @@ complete = "eval(request.responseText)"
 <% form_tag(:action => :leave_channel, :id => @channel) do %>
   <input type='submit' value='<%= I18n.t(:leave_channel)%>' onclick='stop_ajax()' />
 <% end %>
-<% form_tag() do %>
-  <p> user_list_poller </p>
-  <input type='button' value='+' onclick='replace_user_list_poller(40)' />
-  <input type='button' value='-' onclick='replace_user_list_poller(4)' />
-  <p> channel_poller </p>
-  <input type='button' value='+' onclick='replace_channel_poller(30)' />
-  <input type='button' value='-' onclick='replace_channel_poller(3)' />
-<% end %>
+
+<%# use <%# to comment
+<%#<% form_tag() do %>
+<%#  <p> pollers </p>
+<%#  <input type='button' value='slower' onclick='slower_polling()' />
+<%#  <input type='button' value='normal' onclick='normal_polling()' />
+<%#<% end %>
 </p>
 
 <%=
@@ -98,6 +108,29 @@ observe_field(:entryfield,
 <%= javascript_tag '
 var stop_ajax_calls = false;
 function stop_ajax(){stop_ajax_calls = true;}
+'%>
+
+<%= javascript_tag '
+var poll_multiplier=1;
+var poll_multiplier_max=100;
+var user_list_poll_time=4;
+var channel_poll_time=3;
+
+function slower_polling()
+{
+  if (poll_multiplier>=poll_multiplier_max) {return;}
+  poll_multiplier +=5;
+  
+  replace_user_list_poller(user_list_poll_time*poll_multiplier);  
+  replace_channel_poller(channel_poll_time*poll_multiplier);
+}
+
+function normal_polling()
+{
+  poll_multiplier=1;
+  replace_user_list_poller(user_list_poll_time);  
+  replace_channel_poller(channel_poll_time);
+}
 '%>
 
 <%=

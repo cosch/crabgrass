@@ -10,3 +10,6 @@
 <%= render :partial => 'chat/userlist_status' %>
 </script>
 
+<script type="text/javascript">
+set_chat_user_count( <%= @channel.channels_users.count %> );
+</script>

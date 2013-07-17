@@ -395,19 +395,18 @@ module ApplicationHelper
   end
 
   def named_periodically_call_remote(options = {})
-     variable = options[:variable] ||= 'poller'
+     name = options[:name] ||= 'poller'
      frequency = options[:frequency] ||= 10
-     code = "#{variable} = new PeriodicalExecuter(function() {#{remote_function(options)}}, #{frequency})"
+     code = "var #{name} = new PeriodicalExecuter(function() {#{remote_function(options)}}, #{frequency})"
      javascript_tag(code)
   end
 
   def replace_named_periodically_call_remote(options = {})
-     variable = options[:variable] ||= 'poller'
-     #code = "replace(frequency) { "
-     code =""
-     code += "#{variable}.stop();"
-     code += "#{variable} = new PeriodicalExecuter(function() {#{remote_function(options)}}, 60)"
-     #code += "}"
+     name = options[:name] ||= 'poller'
+     code = "function replace_#{name}(frequency){\n"
+     code += "#{name}.stop();\n"
+     code += "#{name} = new PeriodicalExecuter(function() {#{remote_function(options)}}, frequency)"
+     code += "}"
      javascript_tag(code)
   end
 end

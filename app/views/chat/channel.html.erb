@@ -46,7 +46,11 @@ complete = "eval(request.responseText)"
 <% form_tag(:action => :leave_channel, :id => @channel) do %>
   <input type='submit' value='<%= I18n.t(:leave_channel)%>' onclick='stop_ajax()' />
 <% end %>
-<input type='submit' value='Hallo' onclick='replace()' />
+<% form_tag() do %>
+   <p> user_list_poller </p>
+  <input type='button' value='+' onclick='replace_user_list_poller(30)' />
+  <input type='button' value='-' onclick='replace_user_list_poller(4)' />
+<% end %>
 </p>
 
 <%=
@@ -56,17 +60,17 @@ content_tag(:p, link, :class => 'small_icon book_open_16')
 
 <%= # update the user list
 wait_time = 4
-named_periodically_call_remote(:variable => "user_list_poller",
-                               :url => {  :controller => 'chat',
+named_periodically_call_remote( :name => "user_list_poller",
+                                :url => { :controller => 'chat',
                                           :action => 'user_list',
-				                                  :id => @channel },
-			                         :frequency => wait_time,
-                               :update => 'userlist',
-                               :condition => 'stop_ajax_calls == false')
+                                          :id => @channel},
+                                :frequency => wait_time,
+                                :update => 'userlist',
+                                :condition => 'stop_ajax_calls == false')
 %>
 
 <%= # poll server every wait_time seconds for new messages
-wait_time = 30
+wait_time = 3
 periodically_call_remote :url => { :controller => 'chat',
                                    :action => 'poll_channel_for_updates',
                                    :id => @channel},
@@ -78,26 +82,25 @@ periodically_call_remote :url => { :controller => 'chat',
 
 <%= # update server if user has been typing
 wait_time = 6
-observe_field :entryfield,
+observe_field(:entryfield,
+              :frequency => wait_time,
               :url => { :controller => 'chat',
                         :action => 'user_is_typing',
                         :id => @channel },
-              :frequency => wait_time,
-              :condition => 'stop_ajax_calls == false'
+              :condition => 'stop_ajax_calls == false')
 %>
-<%= #https://www.ruby-forum.com/topic/119372
-%>
+
 <%= javascript_tag '
 var stop_ajax_calls = false;
 function stop_ajax(){stop_ajax_calls = true;}
 '%>
 
 <%=
-replace_named_periodically_call_remote(:variable => "user_list_poller",
-                               :url => {  :controller => 'chat',
-                                          :action => 'user_list',
-                                          :id => @channel },
-                               :update => 'userlist',
-                               :condition => 'stop_ajax_calls == false')
+replace_named_periodically_call_remote( :name => "user_list_poller",
+                                        :url => { :controller => 'chat',
+                                                  :action => 'user_list',
+                                                  :id => @channel },
+                                        :update => 'userlist',
+                                        :condition => 'stop_ajax_calls == false')
 
 %>

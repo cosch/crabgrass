@@ -105,6 +105,11 @@ observe_field(:entryfield,
               :condition => 'stop_ajax_calls == false')
 %>
 
+<%= # normal polling if user has been typing
+observe_field(:entryfield,
+              :frequency => 1, :function => "normal_polling()")
+%>
+
 <%= javascript_tag '
 var stop_ajax_calls = false;
 function stop_ajax(){stop_ajax_calls = true;}

@@ -47,9 +47,12 @@ complete = "eval(request.responseText)"
   <input type='submit' value='<%= I18n.t(:leave_channel)%>' onclick='stop_ajax()' />
 <% end %>
 <% form_tag() do %>
-   <p> user_list_poller </p>
-  <input type='button' value='+' onclick='replace_user_list_poller(30)' />
+  <p> user_list_poller </p>
+  <input type='button' value='+' onclick='replace_user_list_poller(40)' />
   <input type='button' value='-' onclick='replace_user_list_poller(4)' />
+  <p> channel_poller </p>
+  <input type='button' value='+' onclick='replace_channel_poller(30)' />
+  <input type='button' value='-' onclick='replace_channel_poller(3)' />
 <% end %>
 </p>
 
@@ -71,13 +74,15 @@ named_periodically_call_remote( :name => "user_list_poller",
 
 <%= # poll server every wait_time seconds for new messages
 wait_time = 3
-periodically_call_remote :url => { :controller => 'chat',
+named_periodically_call_remote( :name => "channel_poller",
+                                :url => { 
+                                   :controller => 'chat',
                                    :action => 'poll_channel_for_updates',
                                    :id => @channel},
-                         :frequency => wait_time,
-                         :complete => "eval(request.responseText)",
-                         :condition => 'stop_ajax_calls == false'
-#                         :update => 'userlist'
+                                :frequency => wait_time,
+                                :complete => "eval(request.responseText)",
+                                :condition => 'stop_ajax_calls == false')
+
 %>
 
 <%= # update server if user has been typing
@@ -102,5 +107,17 @@ replace_named_periodically_call_remote( :name => "user_list_poller",
                                                   :id => @channel },
                                         :update => 'userlist',
                                         :condition => 'stop_ajax_calls == false')
+
+%>
+
+<%=
+replace_named_periodically_call_remote( :name => "channel_poller",
+                                        :url => { 
+                                              :controller => 'chat',
+                                              :action => 'poll_channel_for_updates',
+                                              :id => @channel},
+                                        :complete => "eval(request.responseText)",
+                                        :condition => 'stop_ajax_calls == false')
+
 
 %>

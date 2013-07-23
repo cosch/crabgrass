@@ -89,7 +89,7 @@ module MenuHelper
       begin 
         content_tag :span, "(0)", :class => 'count', :id => 'menu_messages_count'
       end,
-      "/pages/my_work",
+      "/pages/all",
       :active => @active_tab == :me,
       :menu_items => menu_items('me'),
       :id => 'menu_me'

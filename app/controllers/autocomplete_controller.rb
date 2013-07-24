@@ -53,10 +53,12 @@ class AutocompleteController < ApplicationController
     if params[:query] == ""
       recipients = User.friends_of(current_user)
       recipients +=  current_user.peers
+      recipients += current_user.groups
     else
       filter = "#{params[:query]}%"
       recipients = User.friends_of(current_user)
       recipients +=  current_user.peers
+      recipients += current_user.groups
     end
     render_entities_to_json(recipients.uniq!)
   end

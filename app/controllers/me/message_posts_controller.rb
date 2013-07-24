@@ -40,7 +40,9 @@ class Me::MessagePostsController < Me::BaseController
 
   def fetch_recipient
     @recipient=nil
-    @recipient_group = Group.find_by_name( params[:message_id] )
+    @recipient_group=nil
+
+    @recipient_group = Group.find_by_name( params[:message_id] ) if Conf.private_message_to_group?
 
     if (!@recipient_group )
       @recipient = User.find_by_login(params[:message_id])
@@ -52,8 +54,6 @@ class Me::MessagePostsController < Me::BaseController
   end
 
   def authorized?
-    logger.fatal("oshie: #{@recipient}");
-    logger.fatal("oshie: #{@recipient_group}");
     if current_user == @recipient
       flash_message :error => I18n.t(:message_to_self_error)
       redirect_to messages_path

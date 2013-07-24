@@ -15,7 +15,8 @@ module Me::MessagesHelper
   end
 
   def recipient_name_text_field_tag(recipient_name = nil)
-    default_value =  recipient_name.blank? ? I18n.t(:message_recipient_name_input_caption) : recipient_name
+    fill = Conf.private_message_to_group? ? I18n.t(:message_recipient_name_input_caption_w_group) : I18n.t(:message_recipient_name_input_caption)
+    default_value =  recipient_name.blank? ? fill : recipient_name
     text_field_tag('id', params[:id], :id => 'recipient_name', :class => 'textinput',
                                         :value => default_value,
                                         :onkeypress => eat_enter,

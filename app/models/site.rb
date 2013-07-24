@@ -229,7 +229,7 @@ class Site < ActiveRecord::Base
     elsif self.network
       '/'
     else
-      {:controller => '/pages/my_work'}
+      {:controller => '/pages/all'}
      end
   end
 

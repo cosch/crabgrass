@@ -54,11 +54,11 @@ class AutocompleteController < ApplicationController
       recipients = User.friends_of(current_user)
       recipients +=  current_user.peers
     else
-      # already preloaded
-      recipients = []
+      filter = "#{params[:query]}%"
+      recipients = User.friends_of(current_user)
+      recipients +=  current_user.peers
     end
-
-    render_entities_to_json(recipients)
+    render_entities_to_json(recipients.uniq!)
   end
 
 

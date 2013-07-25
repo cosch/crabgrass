@@ -76,6 +76,7 @@ class Conf
   cattr_accessor :pad_url
   cattr_accessor :user_help_group
   cattr_accessor :cg_prod_log_level
+  cattr_accessor :private_message_to_group
 
   # set automatically from site.admin_group
   cattr_accessor :super_admin_group_id
@@ -102,7 +103,8 @@ class Conf
   def self.ensure_page_owner?; self.ensure_page_owner; end
   def self.social_activity_dropdown?; self.social_activity_dropdown; end
   def self.use_anonym_to?; self.use_anonym_to; end
-
+  def self.private_message_to_group?; self.private_message_to_group!=nil && 
+                                      self.private_message_to_group; end
   ##
   ## LOADING
   ##

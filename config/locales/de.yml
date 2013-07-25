@@ -520,6 +520,7 @@ de:
   message: Nachricht
   message_cant_perster_error: "Nur Freund_Innen können {{user}} Nachrichten senden"
   message_cant_group_error: "Nur Mitglieder können {{group}} Nachrichten senden"
+  message_sent: "Nachricht gesendet an: {{names}}"
   message_must_not_be_empty: "Nachricht darf nicht leer sein"
   message_recipent_not_found: "Empfänger nicht gefunden!"
   message_page_description: "Eine Nachricht an einen oder mehrere Benutzer."

@@ -60,7 +60,7 @@ class AutocompleteController < ApplicationController
       recipients +=  current_user.peers
       recipients += current_user.groups if Conf.private_message_to_group?
     end
-    render_entities_to_json(recipients.uniq!)
+    render_entities_to_json(recipients) if recipients
   end
 
 

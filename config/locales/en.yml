@@ -661,6 +661,7 @@ en:
   message_cant_perster_error: "Only friends may send messages to {{user}}"
   message_cant_group_error: "Only members may send messages to {{group}}"
   message_recipent_not_found: "Recipient not found!"
+  message_sent: "Message sent to: {{names}}"
 
   message_you_wrote_caption: "You wrote:"
   message_user_wrote_caption: "{{user}} wrote:"

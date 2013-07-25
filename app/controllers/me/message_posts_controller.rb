@@ -12,9 +12,16 @@ class Me::MessagePostsController < Me::BaseController
   def create_for_group
     prefix = I18n.t(:message_recipient_name_caption, :user => @recipient_group.name)
     params[:post][:body] = prefix +"\n"+params[:post][:body]
+    names =""
     @recipient_group.memberships.with_users.each do |m| 
-      send_to_user m.user if (m.user!=current_user)
+      if (m.user!=current_user && m.user.may_be_pestered_by?(current_user))
+        send_to_user m.user 
+        names+=m.user.login+", "
+      end
     end
+    
+    names = names[0..-3]
+    flash_message :info => I18n.t(:message_sent, :names => names)
 
     respond_to do |wants|
       wants.html { redirect_to messages_path }
@@ -24,7 +31,8 @@ class Me::MessagePostsController < Me::BaseController
 
   def create_for_user
     send_to_user @recipient
-   
+
+    flash_message :info => I18n.t(:message_sent, :names => @recipient.login) 
     respond_to do |wants|
       wants.html { redirect_to message_path(@recipient.login) }
       wants.js { render :nothing => true }

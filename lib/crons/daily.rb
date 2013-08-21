@@ -34,12 +34,17 @@ def update_dailies
   Daily.update
 end
 
+def rebuild_sphinx
+  puts "rebuild index_sphinx"
+  system('rake', '--rakefile', RAILS_ROOT+'/Rakefile', 'ts:rebuild', 'RAILS_ENV=production')
+end
 
 send_pending_digest_notifications_for_watched_pages
 clean_fragment_cache
 clean_session_cache
 clean_codes
 update_dailies
+rebuild_sphinx
 
 puts "daily workers done...."
 

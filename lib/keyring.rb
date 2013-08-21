@@ -53,8 +53,12 @@ class Keyring
     cmd('--encrypt', '--armor', '--recipient', fingerprint, '--trust-model', 'always', '--output', output_path, data_file.path)
     File.read(output_path)
   ensure
-    data_file.unlink
-    File.unlink(output_path)
+    begin
+      data_file.unlink    
+      File.unlink(output_path)
+    rescue Exception=>e
+      logger.fatal("deleting file failed - due to #{e}")
+    end
   end
 
   def encrypt_to_new(fingerprint, data)

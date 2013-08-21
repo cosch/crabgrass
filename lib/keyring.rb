@@ -48,16 +48,21 @@ class Keyring
     data_file = Tempfile.new('crabgrass_tmp')
     data_file.write(data)
     data_file.close
-
-    output_path = random_temp_filename(fingerprint)
-    cmd('--encrypt', '--armor', '--recipient', fingerprint, '--trust-model', 'always', '--output', output_path, data_file.path)
-    File.read(output_path)
+    f = ""
+    begin
+      output_path = random_temp_filename(fingerprint)
+      cmd('--encrypt', '--armor', '--recipient', fingerprint, '--trust-model', 'always', '--output', output_path, data_file.path)
+      f=File.read(output_path)
+    rescue Exception=>e
+      #logger.fatal("deleting file failed - due to #{e}")
+    end
+    f
   ensure
     begin
       data_file.unlink    
       File.unlink(output_path)
     rescue Exception=>e
-      logger.fatal("deleting file failed - due to #{e}")
+      #logger.fatal("deleting file failed - due to #{e}")
     end
   end
 

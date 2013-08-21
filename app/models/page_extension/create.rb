@@ -111,6 +111,7 @@ module PageExtension::Create
       elsif recipients.is_a? Array
         entities = recipients
       elsif recipients.is_a? String
+        recipients=recipients.gsub " ","+"
         entities = recipients.split(/[\s,]/)
       else
         entities = [recipients]

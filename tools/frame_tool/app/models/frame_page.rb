@@ -4,7 +4,11 @@ class FramePage < Page
   
   # :ep_full_pad_name returns 'group_id$pad_id', suitable for URLs
   def external_url
-    @external_url="http://www.ccc.de"
+    if frame
+      frame.external_url  
+    else
+      "http://www.ccc.de"
+    end
     #@external_url ||= frame.external_url if frame.respond_to?(:name)
   end
 

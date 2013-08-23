@@ -1832,3 +1832,7 @@ en:
   unread_msg_text: "{{user}} has {{count}} unread messages waiting."
 
   help: "Help"
+
+  frame_page_description: "external Url"
+  frame_page_display: "Embeded Site"
+  frame_page_embed_hint: "Url of the Site"

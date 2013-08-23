@@ -1257,3 +1257,7 @@ de:
   unread_msg_text: "{{user}} hat {{count}} ungelesene Nachricht(en)."
 
   help: "1. Hilfe"
+
+  frame_page_description: "externe Url"
+  frame_page_display: "Eingebettete Seite"
+  frame_page_embed_hint: "Url der Seite/des Threads"

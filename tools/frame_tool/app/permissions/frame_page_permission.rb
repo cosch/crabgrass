@@ -1,9 +1,11 @@
 module FramePagePermission
   def authorized?
-  #  if params[:action] == 'set_event_description' or params[:action] == 'edit'
-      return current_user.may?(:see, @page)
-  #  else
-  #    return true
-  #  end
+   if params[:action] == 'create'
+  		return true
+   elsif params[:action] == 'edit'
+     return current_user.may?(:edit, @page)
+   else
+     return current_user.may?(:see, @page)
+   end
   end
 end

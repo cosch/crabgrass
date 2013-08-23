@@ -19,7 +19,7 @@
       - else
         = render :partial => 'base_page/create/information', :locals => {:form => form}
 
-      - if sections.any_in? ['file','files','external_video','body', 'image', 'event']
+      - if sections.any_in? ['file','files','external_video','body', 'image', 'event', 'external_url']
         - sections.each do |section|
           = render :partial => "base_page/create/#{section}", :locals => {:form => form}
 

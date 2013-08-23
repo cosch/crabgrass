@@ -4,10 +4,10 @@ $:.unshift File.expand_path('../lib', __FILE__)
 PageClassRegistrar.add(
   'FramePage',
   :controller => 'frame_page',
-  :icon => 'page_text',
-  :class_display_name => 'Externe Url',
+  :icon => 'page_article',
+  :class_display_name => :frame_class_display,
   :class_description => :frame_class_description,
-  :class_group => 'text',
+  :class_group => 'media',
   :order => 5
 )
 

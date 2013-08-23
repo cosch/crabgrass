@@ -9,6 +9,9 @@
 # end
 
 class Frame < ActiveRecord::Base
+  include PageData
+  before_save :update_page_terms
+
   has_one :page, :as => :data
 
   # these are used during creation when name has not been set
@@ -27,5 +30,8 @@ class Frame < ActiveRecord::Base
   def update_session(old_sessions)
   end
 
+  def update_page_terms
+    self.page_terms = page.page_terms unless page.nil?
+  end
 end
 

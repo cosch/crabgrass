@@ -1,0 +1,31 @@
+<head>
+<style type="text/css">
+#wrap { width: 1400px; height: 400px; padding: 0; overflow: hidden; }
+#frame {
+	width: 700px; 
+	height: 600px; 
+	border-top: 1px solid black;
+  	border-right: 2px solid black;
+  	border-left: 1px solid black;
+  	border-bottom: 2px solid black;
+  	margin:  0;
+	padding: 0;
+	margin-bottom: 10px;
+    zoom: 1; 
+/*    -moz-transform: scale(0.1);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.1);
+    -o-transform-origin: 0 0;*/
+    -webkit-transform: scale(0.75,1);
+    -webkit-transform-origin: 0 0;
+}
+</style>
+</head>
+
+<% content_for :right_sidebar do %>
+  <%= render :partial => 'base_page/sidebar' %>
+<% end %>
+
+<%= render :partial => 'frame_page/tabs' %>
+
+<%= frame_iframe %>

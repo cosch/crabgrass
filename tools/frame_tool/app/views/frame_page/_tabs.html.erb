@@ -1,0 +1,11 @@
+<%- @info_box_class = 'tabs' -%>
+<%- @info_box = capture do -%>
+<%= Formy.tabs do |f|
+  f.tab do |t|
+    t.label I18n.t(:show)
+    t.url page_url(@page, :action=>'show')
+    t.selected action?(:show)
+    t.show_tab 'tab-one-div'
+  end 
+end -%>
+<%- end -%>

@@ -25,5 +25,7 @@ class FramePageController < BasePageController
   end
 
   def build_page_data
+    logger.debug "oshie FramePageController:build_page_data #{params}"
+    @frame
   end
 end

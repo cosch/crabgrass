@@ -77,6 +77,8 @@ class Conf
   cattr_accessor :user_help_group
   cattr_accessor :cg_prod_log_level
   cattr_accessor :private_message_to_group
+  cattr_accessor :external_url_tool_base
+  cattr_accessor :external_url_tool_name
 
   # set automatically from site.admin_group
   cattr_accessor :super_admin_group_id
@@ -105,6 +107,7 @@ class Conf
   def self.use_anonym_to?; self.use_anonym_to; end
   def self.private_message_to_group?; self.private_message_to_group!=nil && 
                                       self.private_message_to_group; end
+  def self.external_url_tool_only_relative?; self.external_url_tool_base!=nil; end
   ##
   ## LOADING
   ##

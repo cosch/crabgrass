@@ -32,8 +32,12 @@ class PageClassProxy
   end
 
   def class_display_name
-    symbol = (class_name.underscore + '_display').to_sym
-    I18n.t(symbol)
+    if( Conf.external_url_tool_name && class_name=="FramePage")
+      Conf.external_url_tool_name
+    else
+      symbol = (class_name.underscore + '_display').to_sym
+      I18n.t(symbol)
+    end
   end
 
   def class_description

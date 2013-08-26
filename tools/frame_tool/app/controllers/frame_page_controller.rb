@@ -2,7 +2,7 @@ class FramePageController < BasePageController
 
   permissions 'frame_page'
 
-  before_filter :fetch_user_participation  
+  before_filter :fetch_user_participation
 
   def show
   end
@@ -25,7 +25,19 @@ class FramePageController < BasePageController
   end
 
   def build_page_data
-    logger.debug "oshie FramePageController:build_page_data #{params}"
-    @frame
+    # unless @page.data
+    #   @page.create_frame params[:external_url]
+    #   current_user.updated @page
+    # end
+    @page.data = Frame.new params[:external_url]
   end
+
+  # def fetch_frame 
+  #   return true unless @page
+  #   unless @page.data
+  #     @page.create_frame params[:external_url]
+  #     current_user.updated @page
+  #   end
+  #   @page.data
+  # end
 end

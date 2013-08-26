@@ -1,21 +1,28 @@
 
 class FramePage < Page
   alias_method :frame, :data
-  before_create :create_frame
-  
-  # :ep_full_pad_name returns 'group_id$pad_id', suitable for URLs
-  def external_url
-    if frame
-      frame.external_url  
-    else
-      "http://www.ccc.de"
-    end
-    #@external_url ||= frame.external_url if frame.respond_to?(:name)
+
+  def external_url=(foo)
+    foo = "http://www.heise.de" unless foo
+    frame.url=foo
+    frame.name=foo[0..10]
+    frame.save!
   end
 
-  def create_frame
-    self.data = Frame.create 
-    frame.external_url="http://heise.de"
+  def external_url
+    frame.url
+  end
+
+  def create_frame(foo)
+    puts "foo: #{foo}"
+    foo = "http://www.heise.de" unless foo
+    foo = foo[:url] if foo.is_a?(Hash)
+    puts "foo: #{foo}"
+    self.data = Frame.create do | f |      
+      f.url=foo
+      f.name=foo[0..10]
+      f.save!
+    end
   end
   
 end

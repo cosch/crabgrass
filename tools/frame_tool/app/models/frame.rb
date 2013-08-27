@@ -10,59 +10,51 @@
 
 class Frame < ActiveRecord::Base
   include PageData
-  before_save :update_page_terms
+  before_save :update_page_terms, :ensure_no_base_url
 
   has_one :page, :as => :data
 
-  # def ext_url
-  # 	if Conf.external_url_tool_only_relative?
-  # 		if (url.starts_with? Conf.external_url_tool_base)
-  # 			return url
-  # 		else
-  # 			return Conf.external_url_tool_base+url
-  # 		end
-  # 	end
-  # 	url
-  # end
+  def external_url
+  	if Conf.external_url_tool_only_relative?
+  		if (url.start_with? Conf.external_url_tool_base)
+  			ensure_no_base_url
+  			save
+  		end
 
-  # def ext_url=(val)
-  # 	url=val
-  # end
+		u = url
+		slash = "/"
+		u=u[1..-1] if (Conf.external_url_tool_base.end_with?(slash) && u.start_with?(slash))
+		slash = "" if Conf.external_url_tool_base.end_with?(slash) || u.start_with?(slash)		
+		return Conf.external_url_tool_base+slash+u
+  	end
+  	url
+  end
 
-  # def ensure_no_base_url
-  # 	return if !Conf.external_url_tool_only_relative? 
+  def external_url=(val)  
+  	url=val
+  	ensure_no_base_url if Conf.external_url_tool_only_relative?
+  end
 
-  # 	puts "oshie #{url}"
-  #   url.gsub Conf.external_url_tool_base, ""
-  #   puts "oshie done #{url}"
-  # end
-
-  # def save!
-  #   ensure_no_base_url if Conf.external_url_tool_only_relative?
-  #   super.save!
-  # end
-
-  # def save
-  #   ensure_no_base_url if Conf.external_url_tool_only_relative?
-  #   super.save
-  # end
-
-  # these are used during creation when name has not been set
-  #attr_accessor :url
-  #validates_presence_of :name
+  def ensure_no_base_url
+  	return if !Conf.external_url_tool_only_relative? 
+  	return if !self.url
+  	
+    self.url=self.url.gsub Conf.external_url_tool_base, ""    
+  end
 
   def update_page_terms
     self.page_terms = page.page_terms unless page.nil?
   end
 
-  # private
+  private
 
-  # def url
-  # 	self[:url]
-  # end
+  def url
+  	self[:url]
+  end
 
-  # def url=(val)
-  # 	self[:url]=val
-  # end
+  def url=(val)
+  	self[:url]=val
+  end
+
 end
 

@@ -3,12 +3,12 @@ class FramePage < Page
   alias_method :frame, :data
 
   def external_url=(foo)
-    frame.url=foo
+    frame.external_url=foo
     frame.save!
   end
 
   def external_url
-    frame.url
+    frame.external_url
   end
 
   # def create_frame(foo)

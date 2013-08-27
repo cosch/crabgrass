@@ -22,9 +22,22 @@ def tally_votes
   RequestToDestroyOurGroup.tally_votes!
 end
 
+def clean_external_urls
+	puts "clean_external_urls..."
+	if Conf.external_url_tool_only_relative?
+		Frame.all.each do |f|
+			if (f.url.start_with? Conf.external_url_tool_base)
+				f.ensure_no_base_url
+				f.save
+			end
+		end
+	end
+end
+
 process_trackings
 reindex_sphinx
 tally_votes
+clean_external_urls
 
 puts "hourly workers done...."
 

@@ -177,7 +177,7 @@ class Conf
       self.send(conf_var+'=', self.send(conf_var).to_sym)
     end
   
-    self.set_cg_prod_log_level 0 if !self.cg_prod_log_level
+    self.cg_prod_log_level=0 if !self.cg_prod_log_level
 
     return true
   end

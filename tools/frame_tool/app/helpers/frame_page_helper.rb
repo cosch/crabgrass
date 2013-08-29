@@ -12,9 +12,9 @@ module FramePageHelper
   #
   # @param (Object) page the PadPage instance
   # @return (String) the iframe HTML tag for that pad
-  def frame_iframe(page = @page)
+  def frame_iframe_show(page = @page)
     if flash[:messages].empty?
-      "<iframe id=\"frame\" src=\"#{frame_url(page)}\"></iframe>\n"
+      "<div id=\"wrap\"><iframe id=\"frame\" src=\"#{frame_url(page)}\"></iframe></div>\n"
     else
       content_tag(:div, "<h3>External Service Down</h3><p>The site is not available (#{Time.now.to_s(:db)}). Please try again later.</p>", :class => "fieldWithErrors")
     end

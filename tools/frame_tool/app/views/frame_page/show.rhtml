@@ -1,26 +1,38 @@
 <head>
 <style type="text/css">
-#wrap { width: 1400px; height: 400px; padding: 0; overflow: hidden; }
+#wrap { width: 1150px; height: 800px; padding: 0; overflow: hidden; }
+#frame { /* Example size! */
+    height: 800px; /* original height */
+    width: 100%; /* original width */
+}
 #frame {
-	width: 700px; 
-	height: 600px; 
-	border-top: 1px solid black;
-  	border-right: 2px solid black;
-  	border-left: 1px solid black;
-  	border-bottom: 2px solid black;
-  	margin:  0;
+	height: 1600px; /* new height (1280 * (1/0.8) ) */
+  width: 92%; /* new width (100 * (1/0.8) )*/
+	border-top: 0px solid black;
+  border-right: 0px solid black;
+  border-left: 0px solid black;
+  border-bottom: 0px solid black;
+  margin:  0;
 	padding: 0;
 	margin-bottom: 10px;
-    zoom: 1; 
-/*    -moz-transform: scale(0.1);
+    -ms-zoom: 0.5; 
+    -moz-transform: scale(0.5,0.5);
     -moz-transform-origin: 0 0;
-    -o-transform: scale(0.1);
-    -o-transform-origin: 0 0;*/
-    -webkit-transform: scale(0.75,1);
+    -o-transform: scale(0.5,0.5);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.5,0.5);
     -webkit-transform-origin: 0 0;
 }
 </style>
+
+<style>
+/*    #wrap { width: 1620px; height: 3500px; padding: 0; position:relative; left:-100px; top:0px; overflow: hidden; }
+    #frame { width: 1620px; height: 3500px; position:relative; left:-65px; top:0px; }
+    #frame { -ms-zoom: 0.7; -moz-transform: scale(0.7); -moz-transform-origin: 0px 0; -o-transform: scale(0.7); -o-transform-origin: 0 0; -webkit-transform: scale(0.7); -webkit-transform-origin: 0 0; }
+*/</style>
+
 </head>
+
 
 <% content_for :right_sidebar do %>
   <%= render :partial => 'base_page/sidebar' %>
@@ -28,4 +40,4 @@
 
 <%= render :partial => 'frame_page/tabs' %>
 
-<%= frame_iframe %>
+<%= frame_iframe_show %>

@@ -1,0 +1,31 @@
+<head>
+<style type="text/css">
+#wrap { width: 1150px; height: 800px; padding: 0; overflow: hidden; }
+#frame { /* Example size! */
+    height: 1000px; /* original height */
+    width: 100%; /* original width */
+}
+#frame {
+  height: 1000px; /* new height (1280 * (1/0.8) ) */
+  width: 80%; /* new width (100 * (1/0.8) )*/
+  border-top: 0px solid black;
+  border-right: 0px solid black;
+  border-left: 0px solid black;
+  border-bottom: 0px solid black;
+  margin:  0;
+  padding: 0;
+  margin-bottom: 0px;
+    -ms-zoom: 0.8; 
+    -moz-transform: scale(0.8,0.8);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.8,0.8);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.8,0.8);
+    -webkit-transform-origin: 0 0;
+}
+</style>
+</head>
+
+<%= render :partial => 'frame_page/tabs' %>
+
+<%= frame_iframe_show %>

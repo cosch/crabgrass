@@ -1,0 +1,9 @@
+<%
+  form.row do |r|
+    r.label I18n.t(:frame_page_display)
+    r.label_for 'frame_external_url'
+    r.input text_field('external_url', 'url', :size => 40)
+    r.info I18n.t(:frame_page_embed_hint)
+  end
+%>
+

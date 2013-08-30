@@ -18,7 +18,8 @@ class Keyring
     key_file.close
 
     FileUtils.mkdir_p(File.dirname(path)) unless File.exists?(File.dirname(path))
-
+    File.rm(path) if File.exists?(path)
+    
     keyring = Keyring.new(path)
     status, output = keyring.cmd('--import', key_file.path)
     return keyring if status
